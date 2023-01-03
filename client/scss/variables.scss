@@ -1,0 +1,35 @@
+$black: #001217;
+
+$gray: #B5C6D2;
+$gray-d: #3B4D5A;
+$gray-l: #E4EBEF;
+
+$white: #F4FAFF;
+
+$prim: #0084ff;
+$prim-d: #005db4;
+$prim-l: #43bdff;
+$prim-s: #d1efff;
+
+$sec: #00b18e;
+$sec-d: #007b63;
+$sec-l: #34edc8;
+
+$wrong: #e63a62;
+$wrong-d: #a61c3c;
+$wrong-l: #ff85a2;
+
+$f-default: 14px;
+$f-title: 30px;
+$f-subtitle: 24px;
+$f-big: 18px;
+$f-small: 12px;
+
+$courtain: rgba(228, 235, 239, .25);
+$courtain-d: rgba(0, 18, 23, .75);
+
+$gradient-s: linear-gradient(34deg, $gray 0%, $white 33%, $white 71%, $gray 100%);
+$gradient-v: linear-gradient(157deg, $prim-d 0%, $sec 100%);
+$gradient-h: linear-gradient(85deg, $prim-d 0%, $sec 100%);
+
+$transition: all .2s ease-in-out;

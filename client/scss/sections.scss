@@ -1,0 +1,147 @@
+@import './variables.scss';
+
+.app-container {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 54px);
+    overflow-y: hidden;
+}
+
+.page-courtain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: $courtain-d;
+}
+
+.app-courtain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $courtain-d;
+}
+
+.drawer {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+.drawer-scroll {
+    height: 100%;
+}
+
+.drawer-close {
+    position: absolute !important;
+    top: 45px;
+    right: -75px;
+}
+
+.drawer-right {
+    left: auto;
+    right: 0;
+
+    .drawer-close {
+        right: auto;
+        left: -75px;
+    }
+}
+
+.floating-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 35px;
+    right: 45px;
+    transition: $transition;
+
+    button,
+    .btn {
+        text-align: left;
+    }
+}
+
+.notification-box {
+    max-width: 380px;
+    border-left: 8px solid $gray-l;
+    line-height: $f-default;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $gray-l;
+        border-color: $gray;
+
+        .notification-btns {
+            opacity: 1;
+        }
+    }
+
+    &.active {
+        border-color: $prim;
+        background-color: $gray-l;
+
+        &:hover {
+            background-color: $prim-s;
+            border-color: $prim-d;
+        }
+    }
+
+    .notification-btns {
+        opacity: 0;
+        transition: $transition;
+    }
+
+    .date {
+        display: inline-block;
+        color: $gray-d;
+        font-weight: bold;
+        padding-bottom: 2px;
+    }
+}
+
+.app-system-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    background: $gradient-s;
+}
+
+.window-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.window {
+    display: block;
+    background-color: $white;
+    width: 100%;
+    max-width: 1000px;
+    margin: 50px;
+
+    .bar {
+        background: $prim-d;
+        background: $gradient-h;
+        color: $white;
+        font-size: $f-subtitle !important;
+        font-weight: bold;
+    }
+
+    .window-body {
+        width: 100%;
+        overflow-y: scroll;
+    }
+}

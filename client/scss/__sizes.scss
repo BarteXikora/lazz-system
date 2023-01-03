@@ -1,0 +1,61 @@
+$_red: #ff2f40;
+$_orange: #ff712f;
+$_yellow: #d9ff2f;
+$_green: #2fff86;
+$_blue: #2facff;
+
+._sizes {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    z-index: 1000000;
+}
+
+._size {
+    padding: 5px 15px;
+    background-color: $_red;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
+    border: 1px solid black;
+
+    &.d-xl-flex {
+        background-color: $_blue;
+    }
+
+    &.d-lg-flex {
+        background-color: $_green;
+    }
+
+    &.d-md-flex {
+        background-color: $_yellow;
+    }
+
+    &.d-sm-flex {
+        background-color: $_orange;
+    }
+}
+
+.__scroll {
+    min-height: 200vh;
+}
+
+.__red {
+    background-color: $_red;
+}
+
+.__orange {
+    background-color: $_orange;
+}
+
+.__yellow {
+    background-color: $_yellow;
+}
+.__green {
+    background-color: $_green;
+}
+
+.__blue {
+    background-color: $_blue;
+}

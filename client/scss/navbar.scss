@@ -1,0 +1,10 @@
+@import './variables.scss';
+
+.navbar {
+    width: 100vw;
+    background-color: $gray-d;
+    color: $white;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}

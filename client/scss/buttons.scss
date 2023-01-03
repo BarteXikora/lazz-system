@@ -1,0 +1,153 @@
+@import './variables.scss';
+
+button,
+.btn {
+    border: 0 !important;
+    border-radius: 0 !important;
+    position: relative;
+
+    &:focus {
+        outline: 0 !important;
+    }
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-weight: bold;
+    transition: $transition;
+    font-size: $f-default;
+}
+
+.btn-prim {
+    background-color: $prim;
+    color: $white;
+
+    &:hover {
+        background-color: $prim-l !important;
+        color: $white !important;
+    }
+}
+
+.btn-sec {
+    background-color: $black;
+    color: $white;
+
+    &:hover {
+        background-color: $gray-d !important;
+        color: $white !important;
+    }
+}
+
+.navbar .btn-sec:hover,
+.section-black .btn-sec:hover {
+    background-color: $prim !important;
+}
+
+.btn-x {
+    background-color: $black;
+    color: $white;
+
+    &:hover {
+        background-color: $wrong !important;
+        color: $white !important;
+    }
+}
+
+.btn-wrong {
+    background-color: $wrong;
+    color: $white;
+
+    &:hover {
+        background-color: $wrong-d !important;
+    }
+}
+
+.btn-tet {
+    background-color: $sec;
+    color: $white;
+
+    &:hover {
+        background-color: $sec-d !important;
+    }
+}
+
+.btn-tr {
+    background-color: transparent !important;
+    color: $black;
+
+    &:hover {
+        background-color: $gray !important;
+        color: $black !important;
+    }
+}
+
+.btn-icon {
+    padding: 4px;
+    position: relative;
+
+    .pill {
+        position: absolute;
+        bottom: 4px;
+        right: 4px;
+        background-color: $wrong;
+        padding: 3px 8px;
+        font-size: $f-small;
+        color: $black;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: $transition;
+    }
+
+    &:hover .pill {
+        background-color: $black;
+        color: $white;
+    }
+}
+
+.btn-dock {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: $white;
+
+    &:hover {
+        background: $courtain !important;
+        color: $white !important;
+    }
+
+    img {
+        padding-right: 10px;
+    }
+
+    span {
+        padding-right: 8px;
+    }
+
+    &.active {
+        background: $courtain;
+        color: $white;
+    }
+}
+
+.section-white .btn-dock {
+    color: $black;
+    background-color: $gray-l;
+
+    &:hover {
+        background-color: $gray !important;
+        color: $black !important;
+    }
+}
+
+.btn-full-width {
+    width: 100%;
+}
+
+.btn-icon-small {
+    padding: 2px !important;
+
+    img {
+        width: 35px;
+    }
+}

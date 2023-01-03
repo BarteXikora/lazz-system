@@ -1,0 +1,63 @@
+@import './variables.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    background-color: $white;
+    color: $black;
+    font-size: $f-default;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+.section-scroll {
+    overflow-y: scroll;
+    padding-right: 15px;
+}
+
+.section-black {
+    background-color: $black;
+    color: $white;
+
+    hr {
+        border-color: $gray-l;
+    }
+}
+
+.section-white {
+    background-color: $white;
+    color: $black;
+
+    hr {
+        border-color: $gray-d;
+    }
+}
+
+.section-gradient {
+    background: $prim-d;
+    background: $gradient-v;
+}
+
+.font-title {
+    font-size: $f-title !important;
+}
+
+.font-subtitle {
+    font-size: $f-subtitle !important;
+}
+
+.font-big {
+    font-size: $f-big !important;
+}
+
+.font-gray-d {
+    color: $gray-d;
+}
+
+.font-gray {
+    color: $gray;
+}
+
+.font-wrong {
+    color: $wrong;
+}
