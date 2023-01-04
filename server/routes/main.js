@@ -1,5 +1,7 @@
 const path = require('path')
 
+// const verifyUser = require('./functions/verifyUserRedirect.js')
+
 // Creates an express router:
 const express = require('express')
 const router = express.Router()
