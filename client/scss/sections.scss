@@ -1,5 +1,9 @@
 @import './variables.scss';
 
+.section-login {
+    width: 480px;
+}
+
 .app-container {
     position: relative;
     width: 100vw;
@@ -110,8 +114,6 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-
-    background: $gradient-s;
 }
 
 .window-container {

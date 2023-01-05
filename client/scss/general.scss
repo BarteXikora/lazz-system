@@ -10,6 +10,13 @@ body {
     overflow: hidden;
 }
 
+.container-xy {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
 .section-scroll {
     overflow-y: scroll;
     padding-right: 15px;
@@ -36,6 +43,14 @@ body {
 .section-gradient {
     background: $prim-d;
     background: $gradient-v;
+}
+
+.section-gradient-s {
+    background: $gradient-s;
+}
+
+.transition {
+    transition: $transition;
 }
 
 .font-title {

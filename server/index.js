@@ -12,6 +12,10 @@ dbConnection.checkDB()
 const express = require('express')
 const server = express()
 
+// Sets cors:
+const cors = require('cors');
+server.use(cors());
+
 // Sets public folder:
 server.use(express.static(path.join(__dirname, 'public')))
 

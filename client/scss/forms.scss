@@ -1,0 +1,27 @@
+@import './variables.scss';
+
+input {
+    display: block;
+    width: 100%;
+    border: 1px solid $black;
+    background-color: $gray-l;
+    color: $black;
+    font-size: $f-default;
+    padding: 8px 12px;
+    transition: $transition;
+
+    &:hover,
+    &:focus {
+        outline: none !important;
+        border-color: $prim;
+    }
+
+    &:focus {
+        background-color: $prim-s;
+        color: $prim;
+    }
+
+    &::placeholder {
+        color: $gray-d;
+    }
+}

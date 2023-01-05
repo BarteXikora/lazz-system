@@ -30,18 +30,36 @@ const NotificationsCenter = ({ shown, notificationsList, closeAll }) => {
     const closeBtnRef = useRef(null)
     useCssAnimate(shown, [{
         element: ncRef.current,
-        onTrue: [{ addClass: ['drawer-slide-in-right'], removeClass: ['d-none'] }],
-        onFalse: [
-            { addClass: ['drawer-slide-out-right'] },
-            { delay: 200, addClass: ['d-none'], removeClass: ['drawer-slide-in-right', 'drawer-slide-out-right'] }
-        ]
+        animations: [{
+            on: true,
+            steps: [{ addClass: ['drawer-slide-in-right'], remClass: ['d-none'] }]
+        }, {
+            on: false,
+            steps: [
+                { addClass: ['drawer-slide-out-right'] },
+                {
+                    delay: 200,
+                    addClass: ['d-none'],
+                    remClass: ['drawer-slide-in-right', 'drawer-slide-out-right']
+                }
+            ]
+        }]
     }, {
         element: closeBtnRef.current,
-        onTrue: [{ addClass: ['btn-fade-in'], removeClass: ['d-none'] }],
-        onFalse: [
-            { addClass: ['fade-out'] },
-            { delay: 200, addClass: ['d-none'], removeClass: ['btn-fade-in', 'fade-out'] }
-        ]
+        animations: [{
+            on: true,
+            steps: [{ addClass: ['btn-fade-in'], remClass: ['d-none'] }]
+        }, {
+            on: false,
+            steps: [
+                { addClass: ['fade-out'] },
+                {
+                    delay: 200,
+                    addClass: ['d-none'],
+                    remClass: ['btn-fade-in', 'fade-out']
+                }
+            ]
+        }]
     }])
 
     return (

@@ -13,7 +13,7 @@ const loginUser = async (req, res) => {
 
     const response = { success: false }
 
-    if (!email || !password) return res.status(400).json({
+    if (!email || !password) return res.json({
         ...response,
         message: 'Proszę podać adres e-mail i hasło.'
     })
@@ -21,13 +21,13 @@ const loginUser = async (req, res) => {
 
     const userFound = await dbConnect.q(`SELECT * FROM system_users WHERE email=?;`, [email])
 
-    if (!userFound) return res.status(500).json({
+    if (!userFound) return res.json({
         ...response,
         message: errorMessage,
         error: '@API/system/user/login-user#00'
     })
 
-    if (userFound.length !== 1) return res.status(400).json({
+    if (userFound.length !== 1) return res.json({
         ...response,
         message: wrongData
     })
@@ -35,7 +35,7 @@ const loginUser = async (req, res) => {
     const validPassword = await bcrypt.compare(password, userFound[0].password)
 
     if (!validPassword) {
-        return res.status(400).json({
+        return res.json({
             ...response,
             message: wrongData
         })
@@ -43,10 +43,13 @@ const loginUser = async (req, res) => {
 
     // Creates and assigns a token:
     const token = jwt.sign({ id: userFound[0].id }, process.env.JWT_SECRET_TOKEN)
-    res.header('auth-token', token)
 
     console.log(`[>] ${userFound[0].name} just logged in.`)
-    return res.status(200).json({ success: true, message: '_zalogowano!', token })
+    return res.json({
+        success: true,
+        message: '',
+        data: { id: userFound[0].id, email: userFound[0].email, name: userFound[0].name, authToken: token }
+    })
 }
 
 module.exports = loginUser

@@ -7,6 +7,13 @@ body {
   overflow: hidden;
 }
 
+.container-xy {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
 .section-scroll {
   overflow-y: scroll;
   padding-right: 15px;
@@ -33,6 +40,14 @@ body {
   background: linear-gradient(157deg, #005db4 0%, #00b18e 100%);
 }
 
+.section-gradient-s {
+  background: linear-gradient(34deg, #B5C6D2 0%, #F4FAFF 33%, #F4FAFF 71%, #B5C6D2 100%);
+}
+
+.transition {
+  transition: all 0.2s ease-in-out;
+}
+
 .font-title {
   font-size: 30px !important;
 }
@@ -55,6 +70,10 @@ body {
 
 .font-wrong {
   color: #e63a62;
+}
+
+.section-login {
+  width: 480px;
 }
 
 .app-container {
@@ -159,7 +178,6 @@ body {
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: linear-gradient(34deg, #B5C6D2 0%, #F4FAFF 33%, #F4FAFF 71%, #B5C6D2 100%);
 }
 
 .window-container {
@@ -190,6 +208,34 @@ body {
 .window .window-body {
   width: 100%;
   overflow-y: scroll;
+}
+
+input {
+  display: block;
+  width: 100%;
+  border: 1px solid #001217;
+  background-color: #E4EBEF;
+  color: #001217;
+  font-size: 14px;
+  padding: 8px 12px;
+  transition: all 0.2s ease-in-out;
+}
+input:hover, input:focus {
+  outline: none !important;
+  border-color: #0084ff;
+}
+input:focus {
+  background-color: #d1efff;
+  color: #0084ff;
+}
+input::-moz-placeholder {
+  color: #3B4D5A;
+}
+input:-ms-input-placeholder {
+  color: #3B4D5A;
+}
+input::placeholder {
+  color: #3B4D5A;
 }
 
 .drawer-slide-in-left {

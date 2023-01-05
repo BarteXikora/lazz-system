@@ -12,7 +12,7 @@ import iconSettings from '../img/icon-settings.png'
 import iconLogOut from '../img/icon-logout.png'
 import iconClose from '../img/icon-close.png'
 
-const Dock = ({ appsList, shown, closeAll }) => {
+const Dock = ({ appsList, shown, closeAll, logout }) => {
     appsList = [] // __dev
 
     // Animates Dock:
@@ -20,18 +20,36 @@ const Dock = ({ appsList, shown, closeAll }) => {
     const closeBtnRef = useRef(null)
     useCssAnimate(shown, [{
         element: dockRef.current,
-        onTrue: [{ addClass: ['drawer-slide-in-left'], removeClass: ['d-none'] }],
-        onFalse: [
-            { addClass: ['drawer-slide-out-left'] },
-            { delay: 200, addClass: ['d-none'], removeClass: ['drawer-slide-in-left', 'drawer-slide-out-left'] }
-        ]
+        animations: [{
+            on: true,
+            steps: [{ addClass: ['drawer-slide-in-left'], remClass: ['d-none'] }]
+        }, {
+            on: false,
+            steps: [
+                { addClass: ['drawer-slide-out-left'] },
+                {
+                    delay: 200,
+                    addClass: ['d-none'],
+                    remClass: ['drawer-slide-in-left', 'drawer-slide-out-left']
+                }
+            ]
+        }]
     }, {
         element: closeBtnRef.current,
-        onTrue: [{ addClass: ['btn-fade-in'], removeClass: ['d-none'] }],
-        onFalse: [
-            { addClass: ['fade-out'] },
-            { delay: 200, addClass: ['d-none'], removeClass: ['btn-fade-in', 'fade-out'] }
-        ]
+        animations: [{
+            on: true,
+            steps: [{ addClass: ['btn-fade-in'], remClass: ['d-none'] }]
+        }, {
+            on: false,
+            steps: [
+                { addClass: ['fade-out'] },
+                {
+                    delay: 200,
+                    addClass: ['d-none'],
+                    remClass: ['btn-fade-in', 'fade-out']
+                }
+            ]
+        }]
     }])
 
     return <section ref={dockRef} className={`d-none drawer section-gradient`}>
@@ -78,7 +96,13 @@ const Dock = ({ appsList, shown, closeAll }) => {
 
                 <DockButton icon={iconAdmin} label='Administracja systemem' title='Administracja' />
                 <DockButton icon={iconSettings} label='Ustawienia' title='Ustawienia' />
-                <DockButton icon={iconLogOut} label='Wyloguj się z systemu' title='Wyloguj się' />
+
+                <DockButton
+                    icon={iconLogOut}
+                    label='Wyloguj się z systemu'
+                    title='Wyloguj się'
+                    action={logout}
+                />
 
             </div>
         </div>
