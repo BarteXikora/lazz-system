@@ -1,13 +1,13 @@
-import { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // Imports global components:
 import LoginForm from './components/LoginForm'
+import SelectingApp from './components/SelectingApp'
+import AppNotFound from './components/AppNotFound'
 
-import { LoadingBig as Loading } from './components/Loading'
-import Navbar from './components/Navbar'
-import AppCourtain from './components/AppCourtain'
-import Dock from './components/Dock'
-import NotificationsCenter from './components/NotificationsCenter'
+import SystemContext from './functions/SystemContext'
+import ProtectedRoutes from './components/ProtectedRoutes'
 
 // Adds styles:
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -27,69 +27,59 @@ const App = () => {
     const [initReady, setInitReady] = useState(false)
     const [systemState, systemDispatch] = useReducer(systemReducer, systemDefaultState)
 
+    // Creates navigate function:
+    const systemNavigate = useNavigate()
+
     // Initializes app:
+    const fetchInitialValues = async () => {
+        const initValues = await initialize(systemState.authToken)
+
+        setInitReady(true)
+        systemDispatch({ type: 'INIT', payload: initValues })
+    }
     useEffect(() => {
-        const fetchInitialValues = async () => {
-            const initValues = await initialize(systemState.authToken)
-
-            setInitReady(true)
-            systemDispatch({ type: 'INIT', payload: initValues })
-        }
-
         if (!initReady) fetchInitialValues()
     }, [])
 
-    // __DEV:
-    // useEffect(() => {
-    //     console.log(systemState)
-
-    // }, [initReady])
-
-    if (initReady) {
-        if (!systemState.user.loggedIn && !systemState.error.isError)
-            return <LoginForm
-                login={payload => systemDispatch({ type: 'LOG_IN', payload })}
-                apiLink={systemState.apiLink}
-            />
-
-        return <>
-            <Navbar
-                showDock={() => systemDispatch({ type: 'OPEN_DOCK' })}
-                showNC={() => systemDispatch({ type: 'OPEN_NC' })}
-            />
-
-            <div className="app-container">
-                siema!
-            </div>
-
-            {/* Shows courtain if dock or note. center is shown: */}
-            < AppCourtain
-                shown={systemState.isDockShown || systemState.isNotificationsCenterShown}
-                closeAll={() => systemDispatch({ type: 'CLOSE_ALL' })}
-            />
-
-            {/* Shows dock or note. center: */}
-            <Dock
-                shown={systemState.isDockShown}
-                closeAll={() => systemDispatch({ type: 'CLOSE_ALL' })}
-
-                logout={() => systemDispatch({ type: 'LOG_OUT' })}
-            />
-
-            <NotificationsCenter
-                shown={systemState.isNotificationsCenterShown}
-                closeAll={() => systemDispatch({ type: 'CLOSE_ALL' })}
-            />
-        </>
-
+    // Handle reload (reinitialize) system:
+    const reloadAfterError = () => {
+        setInitReady(false)
+        fetchInitialValues()
+        systemNavigate('/')
     }
 
-    // Renders App loading page:
-    else return <div
-        className="container-xy section-gradient-s d-flex align-items-center justify-content-center"
-    >
-        <Loading />
-    </div>
+    // Renders this awasome system!
+    return <SystemContext.Provider value={{ systemState, systemDispatch }}>
+        <Routes>
+            {/* Protected routes - available after login: */}
+            <Route element={<ProtectedRoutes init={initReady} reload={reloadAfterError} />}>
+
+                {/* Redirects to certain app: */}
+                <Route path='/' element={<SelectingApp />} />
+
+                {/* Handles apps routes: */}
+                {
+                    systemState.appsList.map(({ id, slug, component }) => {
+                        return (<Route
+                            path={`/${slug}`}
+                            element={component}
+                            key={id}
+                        />)
+                    })
+                }
+
+                {/* Handles 404 */}
+                <Route path='*' element={<AppNotFound systemNavigate={systemNavigate} />} />
+            </Route>
+
+            {/* Login Form: */}
+            <Route path='/login' element={<LoginForm
+                login={payload => { systemDispatch({ type: 'LOG_IN', payload }); systemNavigate('/') }}
+                apiLink={systemState.apiLink}
+            />} />
+
+        </Routes>
+    </SystemContext.Provider>
 }
 
 // Exports App:

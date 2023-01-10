@@ -425,7 +425,7 @@ input::placeholder {
   height: 30px;
   width: 30px;
   margin: 0 auto;
-  background-color: #B5C6D2;
+  background-color: #3B4D5A;
   -webkit-animation-name: loading;
           animation-name: loading;
   -webkit-animation-duration: 1.5s;
@@ -442,7 +442,7 @@ input::placeholder {
   position: absolute;
   width: 30px;
   height: 30px;
-  background-color: #B5C6D2;
+  background-color: #3B4D5A;
   -webkit-animation-name: loading;
           animation-name: loading;
   -webkit-animation-duration: 1.5s;
@@ -462,13 +462,13 @@ input::placeholder {
 }
 
 @-webkit-keyframes loading {
-  5% {
+  10% {
     background-color: #0084ff;
   }
-  33% {
+  30% {
     background-color: #0084ff;
   }
-  39% {
+  80% {
     background-color: #3B4D5A;
   }
   100% {
@@ -477,13 +477,13 @@ input::placeholder {
 }
 
 @keyframes loading {
-  5% {
+  10% {
     background-color: #0084ff;
   }
-  33% {
+  30% {
     background-color: #0084ff;
   }
-  39% {
+  80% {
     background-color: #3B4D5A;
   }
   100% {

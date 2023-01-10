@@ -1,7 +1,14 @@
 import { getAPILink, APIget } from './api'
 
 const initialize = async (authToken) => {
-    const response = { success: false, data: { user: {}, error: { isError: false, message: '', code: '' } } }
+    const response = {
+        success: false,
+        data: {
+            user: {},
+            error: { isError: false, message: '', code: '' },
+            appsList: []
+        }
+    }
 
     let apiLink = await getAPILink()
 
@@ -24,8 +31,8 @@ const initialize = async (authToken) => {
         const answer = userData.data
 
         if (!answer.success) {
-            response.error.message = answer.message
-            response.error.code = answer.error
+            response.data.error.message = answer.message
+            response.data.error.code = answer.error
 
             return response
         }
@@ -35,6 +42,9 @@ const initialize = async (authToken) => {
             response.data.user.id = answer.data.id
             response.data.user.name = answer.data.name
             response.data.user.email = answer.data.email
+            response.data.user.admin = answer.data.admin
+
+            response.data.appsList = answer.data.appsList
         }
     }
 

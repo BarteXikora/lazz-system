@@ -1,8 +1,9 @@
-import { useRef } from 'react'
+import { useRef, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import useCssAnimate from '../functions/useCssAnimate'
 
 import DockButton from './DockButton'
-
-import useCssAnimate from '../functions/useCssAnimate'
+import SystemContext from '../functions/SystemContext'
 
 // Imports images:
 import logoLazzoni from '../img/logo.png'
@@ -12,13 +13,14 @@ import iconSettings from '../img/icon-settings.png'
 import iconLogOut from '../img/icon-logout.png'
 import iconClose from '../img/icon-close.png'
 
-const Dock = ({ appsList, shown, closeAll, logout }) => {
-    appsList = [] // __dev
+const Dock = () => {
+    // Gets system context:
+    const { systemState, systemDispatch } = useContext(SystemContext)
 
     // Animates Dock:
     const dockRef = useRef(null)
     const closeBtnRef = useRef(null)
-    useCssAnimate(shown, [{
+    useCssAnimate(systemState.isDockShown, [{
         element: dockRef.current,
         animations: [{
             on: true,
@@ -52,11 +54,21 @@ const Dock = ({ appsList, shown, closeAll, logout }) => {
         }]
     }])
 
+    // Handles dock button click event:
+    const systemNavigate = useNavigate()
+    const handleClick = (slug) => {
+        if (slug !== systemState.currentApp) {
+            systemDispatch({ type: 'SELECT_APP', payload: slug })
+            systemDispatch({ type: 'CLOSE_ALL' })
+            systemNavigate(`/${slug}`)
+        }
+    }
+
     return <section ref={dockRef} className={`d-none drawer section-gradient`}>
         <button
             ref={closeBtnRef}
             className={`drawer-close btn btn-wrong btn-icon`}
-            onClick={closeAll}
+            onClick={() => systemDispatch({ type: 'CLOSE_ALL' })}
         >
             <img src={iconClose} alt="Zamknij Dock!" />
         </button>
@@ -69,14 +81,16 @@ const Dock = ({ appsList, shown, closeAll, logout }) => {
             </div>
 
             {
-                appsList.length > 0 ?
+                systemState.appsList.length > 0 ?
                     <div className='h-100 py-2'>
                         {
-                            appsList.map((app, i) => <DockButton
+                            systemState.appsList.map((app, i) => <DockButton
                                 key={i}
                                 icon={`/img/icon-app-${app.slug}.png`}
                                 label={`Otwórz aplikację ${app.name}`}
                                 title={app.name}
+                                classActive={systemState.currentApp === app.slug}
+                                action={() => handleClick(app.slug)}
                             />)
                         }
                     </div>
@@ -94,14 +108,18 @@ const Dock = ({ appsList, shown, closeAll, logout }) => {
 
                 <div className='py-3'></div>
 
-                <DockButton icon={iconAdmin} label='Administracja systemem' title='Administracja' />
+                {
+                    systemState.user.admin
+                    && <DockButton icon={iconAdmin} label='Administracja systemem' title='Administracja' />
+                }
+
                 <DockButton icon={iconSettings} label='Ustawienia' title='Ustawienia' />
 
                 <DockButton
                     icon={iconLogOut}
                     label='Wyloguj się z systemu'
                     title='Wyloguj się'
-                    action={logout}
+                    action={() => systemDispatch({ type: 'LOG_OUT' })}
                 />
 
             </div>

@@ -48,7 +48,8 @@ const loginUser = async (req, res) => {
     return res.json({
         success: true,
         message: '',
-        data: { id: userFound[0].id, email: userFound[0].email, name: userFound[0].name, authToken: token }
+        data: token
+        // id: userFound[0].id, email: userFound[0].email, name: userFound[0].name, 
     })
 }
 
