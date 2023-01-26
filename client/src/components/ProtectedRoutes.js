@@ -1,26 +1,24 @@
 import { useEffect, useContext } from 'react'
 import { Outlet, Navigate, useLocation } from 'react-router-dom'
 import SystemContext from '../functions/SystemContext'
-import isAppInList from '../functions/isAppInList'
 
 import AppLoading from './AppLoading'
 import FatalError from './FatalError'
 import Navbar from './Navbar'
-import AppCourtain from './AppCourtain'
+import SystemCourtain from './SystemCourtain'
 import Dock from './Dock'
 import NotificationsCenter from './NotificationsCenter'
+import Window from './Window'
 
 const ProtectedRoutes = ({ init, reload }) => {
     const { systemState, systemDispatch } = useContext(SystemContext)
 
-    // const link = useLocation()
-    // useEffect(() => {
-    //     const appSlugFromLink = link.pathname.replace('/', '')
-
-    //     if (isAppInList(appSlugFromLink, systemState.appsList))
-    //         systemDispatch({ type: 'SELECT_APP', payload: appSlugFromLink })
-
-    // }, [init])
+    // Save app from link, if not logged in:
+    const link = useLocation()
+    useEffect(() => {
+        const appSlugFromLink = link.pathname.replace('/', '')
+        localStorage.setItem('current-app', appSlugFromLink)
+    }, [])
 
     if (!init) return <AppLoading />
 
@@ -42,10 +40,12 @@ const ProtectedRoutes = ({ init, reload }) => {
             <Outlet />
         </div>
 
-        <AppCourtain
+        <SystemCourtain
             shown={systemState.isDockShown || systemState.isNotificationsCenterShown}
             closeAll={() => systemDispatch({ type: 'CLOSE_ALL' })}
         />
+
+        <Window />
 
         <Dock />
 

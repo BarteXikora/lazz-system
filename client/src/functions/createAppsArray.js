@@ -3,7 +3,7 @@ import AppLoading from '../components/AppLoading'
 
 const createAppsArray = (rawList) => {
     return rawList.map(app => {
-        const Component = React.lazy(() => import(`../apps/${app.slug}/App`))
+        const Component = React.lazy(() => import(`../apps/${app.slug}/`))
 
         return { ...app, component: <Suspense fallback={<AppLoading />}><Component /></Suspense> }
     })

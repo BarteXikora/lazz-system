@@ -41,6 +41,15 @@ const App = () => {
         if (!initReady) fetchInitialValues()
     }, [])
 
+    const handleLogIn = async (authToken) => {
+        setInitReady(false)
+
+        systemDispatch({ type: 'LOG_IN', payload: authToken })
+
+        await fetchInitialValues()
+        systemNavigate('/')
+    }
+
     // Handle reload (reinitialize) system:
     const reloadAfterError = () => {
         setInitReady(false)
@@ -61,7 +70,7 @@ const App = () => {
                 {
                     systemState.appsList.map(({ id, slug, component }) => {
                         return (<Route
-                            path={`/${slug}`}
+                            path={`/${slug}/*`}
                             element={component}
                             key={id}
                         />)
@@ -74,7 +83,7 @@ const App = () => {
 
             {/* Login Form: */}
             <Route path='/login' element={<LoginForm
-                login={payload => { systemDispatch({ type: 'LOG_IN', payload }); systemNavigate('/') }}
+                login={payload => handleLogIn(payload)}
                 apiLink={systemState.apiLink}
             />} />
 

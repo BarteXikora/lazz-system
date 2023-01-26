@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from 'react'
 import { APIpost } from '../functions/api'
 import useCssAnimate from '../functions/useCssAnimate'
 
+import ButtonLoading from './ButtonLoading'
+
 import logo from '../img/logo-dark.png'
 
 const emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -13,6 +15,8 @@ const LoginForm = ({ login, apiLink }) => {
     const [password, setPassword] = useState('')
     const [warning, setWarning] = useState('')
     const [errorCode, setErrorCode] = useState('')
+
+    const [isLoading, setIsLoading] = useState(false)
 
     const emailInput = useRef(null)
     const passwordInput = useRef(null)
@@ -25,8 +29,14 @@ const LoginForm = ({ login, apiLink }) => {
             { email, password }
         )
 
-        if (!user.success) return setWarning(user.message || 'Wystąpił błąd.')
+        if (!user.success) {
+            setIsLoading(false)
+
+            return setWarning(user.message || 'Wystąpił błąd.')
+        }
         if (!user.data.success) {
+            setIsLoading(false)
+
             setErrorCode(user.data.error)
             return setWarning(user.data.message || 'Wystąpił błąd.')
         }
@@ -37,30 +47,34 @@ const LoginForm = ({ login, apiLink }) => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        if (!email || !password) {
-            setWarning('Proszę wpisać adres e-mail i hasło.')
+        if (!isLoading) {
+            setIsLoading(true)
 
-            if (!email) emailInput.current.focus()
-            else passwordInput.current.focus()
+            if (!email || !password) {
+                setWarning('Proszę wpisać adres e-mail i hasło.')
 
-            return
+                if (!email) emailInput.current.focus()
+                else passwordInput.current.focus()
+
+                return
+            }
+
+            if (!email.match(emailRegex)) {
+                setWarning('Nieprawidłowy adres e-mail.')
+                emailInput.current.focus()
+
+                return
+            }
+
+            if (password.length < 8 || password.length > 50) {
+                setWarning('Hasło musi mieć między 8, a 50 znaków.')
+                passwordInput.current.focus()
+
+                return
+            }
+
+            apiLogin()
         }
-
-        if (!email.match(emailRegex)) {
-            setWarning('Nieprawidłowy adres e-mail.')
-            emailInput.current.focus()
-
-            return
-        }
-
-        if (password.length < 8 || password.length > 50) {
-            setWarning('Hasło musi mieć między 8, a 50 znaków.')
-            passwordInput.current.focus()
-
-            return
-        }
-
-        apiLogin()
     }
 
     useCssAnimate(warning, [{
@@ -115,7 +129,11 @@ const LoginForm = ({ login, apiLink }) => {
                     }
                 </div>
 
-                <button type="submit" className="mt-2 btn btn-prim">Zaloguj się</button>
+                <button type="submit" className="mt-2 btn btn-prim">
+                    {isLoading && <ButtonLoading />}
+
+                    Zaloguj się
+                </button>
             </form>
 
             <div className="mt-4">

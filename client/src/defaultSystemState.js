@@ -6,5 +6,6 @@ export default {
     notificationsList: [],
     isDockShown: false,
     isNotificationsCenterShown: false,
-    error: { isError: false, message: '', code: '' }
+    window: { isOpen: false, title: '', content: '', data: {} },
+    error: { isError: false, message: '', code: '' },
 }

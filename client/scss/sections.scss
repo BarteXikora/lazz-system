@@ -8,6 +8,7 @@
     position: relative;
     width: 100vw;
     height: calc(100vh - 54px);
+    max-height: calc(100vh - 54px);
     overflow-y: hidden;
 }
 
@@ -18,6 +19,7 @@
     width: 100vw;
     height: 100vh;
     background: $courtain-d;
+    z-index: 9000;
 }
 
 .app-courtain {
@@ -34,6 +36,7 @@
     top: 0;
     margin: 0;
     height: 100vh;
+    z-index: 10000;
 }
 
 .drawer-scroll {
@@ -125,6 +128,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 999999999999;
+    background-color: $courtain-d;
 }
 
 .window {
@@ -146,4 +151,19 @@
         width: 100%;
         overflow-y: scroll;
     }
+}
+
+.section-gray {
+    background-color: $gray;
+    color: $black;
+}
+
+.section-gray-l {
+    background-color: $gray-l;
+    color: $black;
+}
+
+.section-gray-d {
+    background-color: $gray-d;
+    color: $white;
 }

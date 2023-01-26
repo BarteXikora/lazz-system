@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
 import useCssAnimate from '../functions/useCssAnimate'
 
-const AppCourtain = ({ shown, closeAll }) => {
+const SystemCourtain = ({ shown, closeAll }) => {
     const courtainRef = useRef(null)
     useCssAnimate(shown, [{
         element: courtainRef.current,
@@ -21,4 +21,4 @@ const AppCourtain = ({ shown, closeAll }) => {
     return <div onClick={closeAll} ref={courtainRef} className="d-none page-courtain"></div>
 }
 
-export default AppCourtain
+export default SystemCourtain

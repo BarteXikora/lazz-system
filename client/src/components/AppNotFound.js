@@ -23,10 +23,10 @@ const AppNotFound = ({ systemNavigate }) => {
             </h2>
 
             <p>
-                Przekierowywanie do aplikacji <b>Zgłoszenia</b> &mdash; ({countDown} s)
+                Przekierowywanie do innej aplikacji &mdash; ({countDown} s)
             </p>
 
-            <button className="btn btn-sec mt-3">Przejdź do aplikacji Zgłoszenia</button>
+            <button className="btn btn-sec mt-3">Przejdź do aplikacji</button>
         </div>
     </div>
 }

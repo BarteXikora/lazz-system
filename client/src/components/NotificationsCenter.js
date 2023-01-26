@@ -7,8 +7,9 @@ import Notification from './Notification'
 // Imports images:
 import iconClose from '../img/icon-close.png'
 import iconDotsVertical from '../img/icon-dots-vertical.png'
-import picEmpty from '../img/pic-empty.png'
+// import picEmpty from '../img/pic-empty.png'
 import iconArchive from '../img/icon-archive.png'
+import picWIP from '../img/pic-wip.png'
 
 const NotificationsCenter = ({ shown, notificationsList, closeAll }) => {
     notificationsList = [] // __dev
@@ -102,11 +103,21 @@ const NotificationsCenter = ({ shown, notificationsList, closeAll }) => {
                     ) : (
                         <div className="h-100 d-flex align-items-center justify-content-center px-5">
                             <div className="d-block text-center mb-5">
-                                <img src={picEmpty} alt="Brak powiadomień" />
+                                {/* <img src={picEmpty} alt="Brak powiadomień" />
 
                                 <h2 className="font-subtitle font-gray-d fw-bold">
                                     Nie masz nowych <br /> powiadomień!
+                                </h2> */}
+
+                                <img src={picWIP} alt="Prace trwają..." />
+
+                                <h2 className="font-subtitle font-gray-d fw-bold">
+                                    Prace trwają...
                                 </h2>
+
+                                <p>
+                                    Funkcja powiadomień nie jest <br /> jeszcze gotowa!
+                                </p>
                             </div>
                         </div>
                     )

@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const verifyUserAPI = (req, res, next) => {
     const token = req.header('auth-token')
 
-    if (!token) return res.status(401).json({
+    if (!token) return res.json({
         success: false,
         message: 'Należy być zalogowanym do systemu, by wykonać tę operację.'
     })
@@ -14,7 +14,7 @@ const verifyUserAPI = (req, res, next) => {
         next()
 
     } catch (error) {
-        return res.status(400).json({
+        return res.json({
             success: false,
             message: 'Nie udało się zweryfikować tokenu. Proszę zalogować się do systemu ' +
                 'ponownie, a - jeżeli błąd wystąpi ponownie - skontaktować się z administratorem.'

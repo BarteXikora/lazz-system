@@ -33,6 +33,38 @@
     animation-delay: 1s;
 }
 
+.loading-small {
+    height: 15px;
+    width: 15px;
+
+    &::before,
+    &::after {
+        height: 15px;
+        width: 15px;
+    }
+
+    &::before {
+        left: -20px;
+    }
+
+    &::after {
+        right: -20px;
+    }
+}
+
+.btn-prim {
+    .loading-small {
+        animation-name: loading-prim;
+        background-color: $gray-l;
+
+        &::before,
+        &::after {
+            animation-name: loading-prim;
+            background-color: $gray-l;
+        }
+    }
+}
+
 @keyframes loading {
     10% {
         background-color: $prim;
@@ -48,5 +80,23 @@
 
     100% {
         background-color: $gray-d;
+    }
+}
+
+@keyframes loading-prim {
+    10% {
+        background-color: $gray-d;
+    }
+
+    30% {
+        background-color: $gray-d;
+    }
+
+    80% {
+        background-color: $gray-l;
+    }
+
+    100% {
+        background-color: $gray-l;
     }
 }

@@ -43,6 +43,7 @@ const initialize = async (authToken) => {
             response.data.user.name = answer.data.name
             response.data.user.email = answer.data.email
             response.data.user.admin = answer.data.admin
+            response.data.user.authToken = authToken
 
             response.data.appsList = answer.data.appsList
         }

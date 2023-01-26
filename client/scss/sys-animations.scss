@@ -110,3 +110,37 @@
         opacity: 0;
     }
 }
+
+.window-slide-in {
+    animation: window-slide-in;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+.window-slide-out {
+    animation: window-slide-out;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+@keyframes window-slide-in {
+    0% {
+        transform: translateY(50px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes window-slide-out {
+    0% {
+        transform: translate(0);
+    }
+
+    100% {
+        transform: translateY(-50px);
+    }
+}

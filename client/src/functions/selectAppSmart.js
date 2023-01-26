@@ -1,6 +1,8 @@
 import isAppInList from './isAppInList'
 
 const selectAppSmart = (appsList, currentApp, configDefaultApp) => {
+    appsList = appsList.filter(app => app.id > 0)
+
     if (currentApp)
         if (currentApp.slug !== undefined)
             if (isAppInList(currentApp.slug), appsList)

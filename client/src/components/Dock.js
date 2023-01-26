@@ -1,4 +1,4 @@
-import { useRef, useContext } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useCssAnimate from '../functions/useCssAnimate'
 
@@ -64,6 +64,15 @@ const Dock = () => {
         }
     }
 
+    // Count apps:
+    const [appsCount, setAppsCount] = useState(0)
+    useEffect(() => {
+        let cnt = 0
+        for (const app of systemState.appsList) if (app.id > 0) cnt++
+        setAppsCount(cnt)
+
+    }, [systemState.appsList])
+
     return <section ref={dockRef} className={`d-none drawer section-gradient`}>
         <button
             ref={closeBtnRef}
@@ -81,11 +90,11 @@ const Dock = () => {
             </div>
 
             {
-                systemState.appsList.length > 0 ?
+                appsCount > 0 ?
                     <div className='h-100 py-2'>
                         {
-                            systemState.appsList.map((app, i) => <DockButton
-                                key={i}
+                            systemState.appsList.map((app, i) => app.id > 0 && <DockButton
+                                key={app.id}
                                 icon={`/img/icon-app-${app.slug}.png`}
                                 label={`Otwórz aplikację ${app.name}`}
                                 title={app.name}
@@ -104,16 +113,33 @@ const Dock = () => {
 
             <div className="d-flex flex-column align-items-start pe-3">
 
-                <DockButton icon={iconHelp} label='Otwórz centrum pomocy' title='Pomoc' />
+                <DockButton
+                    icon={iconHelp}
+                    label='Otwórz centrum pomocy'
+                    title='Pomoc'
+                    classActive={systemState.currentApp === 'help'}
+                    action={() => handleClick('help')}
+                />
 
                 <div className='py-3'></div>
 
                 {
-                    systemState.user.admin
-                    && <DockButton icon={iconAdmin} label='Administracja systemem' title='Administracja' />
+                    systemState.user.admin && <DockButton
+                        icon={iconAdmin}
+                        label='Administracja systemem'
+                        title='Administracja'
+                        classActive={systemState.currentApp === 'admin'}
+                        action={() => handleClick('admin')}
+                    />
                 }
 
-                <DockButton icon={iconSettings} label='Ustawienia' title='Ustawienia' />
+                <DockButton
+                    icon={iconSettings}
+                    label='Ustawienia'
+                    title='Ustawienia'
+                    classActive={systemState.currentApp === 'settings'}
+                    action={() => handleClick('settings')}
+                />
 
                 <DockButton
                     icon={iconLogOut}
