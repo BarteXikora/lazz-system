@@ -31,19 +31,21 @@ const checkDB = async (doLog = true) => {
 }
 
 const q = async (query, rows) => {
-    return new Promise(async done => {
-        const db = await checkDB(false)
+    return new Promise(done => {
+        (async () => {
+            const db = await checkDB(false)
 
-        if (!db) done(false)
+            if (!db) done(false)
 
-        db.query(query, rows, (error, result) => {
-            if (error) {
-                console.error('[!] An error accured on database query!', error);
-                done(false)
-            }
+            db.query(query, rows, (error, result) => {
+                if (error) {
+                    console.error('[!] An error accured on database query!', error);
+                    return done(false)
+                }
 
-            done(result)
-        })
+                return done(result)
+            })
+        })()
     })
 }
 
