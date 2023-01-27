@@ -999,7 +999,6 @@ button:focus,
 }
 .btn-star.btn-star-active {
   color: #e63a62 !important;
-  text-shadow: 0px 0px 25px #e63a62;
 }
 .btn-star.btn-star-active:hover {
   color: #a61c3c !important;
@@ -1041,17 +1040,20 @@ button:focus,
 .list-item .item-column:last-of-type {
   border: 0;
 }
+.list-item:hover::before {
+  background-color: #3B4D5A;
+}
 .list-item:hover, .list-item.list-item-active {
   background-color: #B5C6D2;
 }
 .list-item:hover .item-column, .list-item.list-item-active .item-column {
   border-color: #3B4D5A;
 }
-.list-item:hover::before, .list-item.list-item-active::before {
-  background-color: #0084ff;
+.list-item.list-item-active {
+  cursor: default;
 }
-.list-item:hover::before {
-  background-color: #3B4D5A;
+.list-item.list-item-active::before {
+  background-color: #0084ff;
 }
 
 .section-title {

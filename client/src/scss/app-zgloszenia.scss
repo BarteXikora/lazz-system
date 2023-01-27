@@ -88,7 +88,6 @@
 
     &.btn-star-active {
         color: $wrong !important;
-        text-shadow: 0px 0px 25px $wrong;
 
         &:hover {
             color: $wrong-d !important;
@@ -137,6 +136,10 @@
         }
     }
 
+    &:hover::before {
+        background-color: $gray-d;
+    }
+
     &:hover,
     &.list-item-active {
         background-color: $gray;
@@ -144,15 +147,16 @@
         .item-column {
             border-color: $gray-d;
         }
+    }
+
+    &.list-item-active {
+        cursor: default;
 
         &::before {
             background-color: $prim;
         }
     }
 
-    &:hover::before {
-        background-color: $gray-d;
-    }
 }
 
 .section-title {
