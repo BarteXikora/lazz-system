@@ -71,22 +71,6 @@ const appReducer = (state, action) => {
         return { ...state, selectedContact: action.payload }
     }
 
-    if (action.type === 'UPDATE_FILTERS') {
-        console.log('filters')
-        return {
-            ...state,
-            currentFilters: { ...state.currentFilters, [action.payload.filter]: action.payload.values }
-        }
-    }
-
-    if (action.type === 'SET_FILTERS') {
-        return { ...state, currentFilters: action.payload }
-    }
-
-    if (action.type === 'DO_SEARCH') {
-        return { ...state, currentFilters: { ...state.currentFilters, search: action.payload } }
-    }
-
     return { ...state }
 }
 
