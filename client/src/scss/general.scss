@@ -77,3 +77,13 @@ body {
 .font-wrong {
     color: $wrong;
 }
+
+.warning-box {
+    background-color: $gray-l;
+    border-left: 10px solid $wrong;
+    padding: 15px 25px;
+
+    h3 {
+        color: $wrong;
+    }
+}

@@ -3,7 +3,7 @@ import AppContext from '../functions/AppContext'
 import iconSearch from '../img/icon-search.png'
 
 const SearchBar = () => {
-    const { appDispatch } = useContext(AppContext)
+    const { appState, appDispatch } = useContext(AppContext)
 
     const [search, setSearch] = useState('')
 
@@ -11,7 +11,7 @@ const SearchBar = () => {
         event.preventDefault()
 
         if (search)
-            appDispatch({ type: 'DO_SEARCH', payload: search })
+            appDispatch({ type: 'UPDATE_FILTERS', payload: { search: search } })
 
         setSearch('')
     }

@@ -1,11 +1,6 @@
-import { useState, useEffect } from 'react'
 import { Collapse } from 'react-bootstrap'
 
 const DateFilter = ({ currentOptions, update }) => {
-    const [current, setCurrent] = useState(currentOptions)
-
-    useEffect(() => update(current), [current])
-
     return <>
         <div className="d-block checkbox-container mt-1 ms-1">
             <label>
@@ -13,21 +8,21 @@ const DateFilter = ({ currentOptions, update }) => {
 
                 <input
                     type="checkbox"
-                    checked={current.fromStart}
-                    onChange={() => setCurrent({ ...current, fromStart: !current.fromStart })}
+                    checked={currentOptions.fromStart}
+                    onChange={() => update({ ...currentOptions, fromStart: !currentOptions.fromStart })}
                 />
 
                 <div className="checkmark"></div>
             </label>
         </div>
 
-        <Collapse in={!current.fromStart}>
+        <Collapse in={!currentOptions.fromStart}>
             <div className="px-1">
                 <div className="mt-2 mb-4">
                     <input
                         type="date"
-                        value={current.from}
-                        onChange={(e) => setCurrent({ ...current, from: e.target.value })}
+                        value={currentOptions.from}
+                        onChange={(e) => update({ ...currentOptions, from: e.target.value })}
                     />
                 </div>
             </div>
@@ -39,21 +34,21 @@ const DateFilter = ({ currentOptions, update }) => {
 
                 <input
                     type="checkbox"
-                    checked={current.toEnd}
-                    onChange={() => setCurrent({ ...current, toEnd: !current.toEnd })}
+                    checked={currentOptions.toEnd}
+                    onChange={() => update({ ...currentOptions, toEnd: !currentOptions.toEnd })}
                 />
 
                 <div className="checkmark"></div>
             </label>
         </div>
 
-        <Collapse in={!current.toEnd}>
+        <Collapse in={!currentOptions.toEnd}>
             <div className="px-1">
                 <div className="mt-2 mb-4">
                     <input
                         type="date"
-                        value={current.to}
-                        onChange={(e) => setCurrent({ ...current, to: e.target.value })}
+                        value={currentOptions.to}
+                        onChange={(e) => update({ ...currentOptions, to: e.target.value })}
                     />
                 </div>
             </div>

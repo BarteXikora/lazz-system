@@ -73,6 +73,15 @@ body {
   color: #e63a62;
 }
 
+.warning-box {
+  background-color: #E4EBEF;
+  border-left: 10px solid #e63a62;
+  padding: 15px 25px;
+}
+.warning-box h3 {
+  color: #e63a62;
+}
+
 .section-login {
   width: 480px;
 }
@@ -255,46 +264,23 @@ input:focus,
   background-color: #d1efff;
   color: #0084ff;
 }
-input::-moz-placeholder, .form-control::-moz-placeholder {
-  color: #3B4D5A;
-}
-input:-ms-input-placeholder, .form-control:-ms-input-placeholder {
-  color: #3B4D5A;
-}
 input::placeholder,
 .form-control::placeholder {
   color: #3B4D5A;
 }
 
 .drawer-slide-in-left {
-  -webkit-animation: drawer-slide-in-left;
-          animation: drawer-slide-in-left;
-  -webkit-animation-duration: 0.2s;
-          animation-duration: 0.2s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-out;
-          animation-timing-function: ease-out;
+  animation: drawer-slide-in-left;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
 }
 
 .drawer-slide-out-left {
-  -webkit-animation: drawer-slide-out-left;
-          animation: drawer-slide-out-left;
-  -webkit-animation-duration: 0.2s;
-          animation-duration: 0.2s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-in;
-          animation-timing-function: ease-in;
-}
-
-@-webkit-keyframes drawer-slide-in-left {
-  0% {
-    left: -500px;
-  }
-  100% {
-    left: 0;
-  }
+  animation: drawer-slide-out-left;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
 }
 
 @keyframes drawer-slide-in-left {
@@ -303,14 +289,6 @@ input::placeholder,
   }
   100% {
     left: 0;
-  }
-}
-@-webkit-keyframes drawer-slide-out-left {
-  0% {
-    left: 0;
-  }
-  100% {
-    left: -500px;
   }
 }
 @keyframes drawer-slide-out-left {
@@ -322,34 +300,17 @@ input::placeholder,
   }
 }
 .drawer-slide-in-right {
-  -webkit-animation: drawer-slide-in-right;
-          animation: drawer-slide-in-right;
-  -webkit-animation-duration: 0.2s;
-          animation-duration: 0.2s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-out;
-          animation-timing-function: ease-out;
+  animation: drawer-slide-in-right;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
 }
 
 .drawer-slide-out-right {
-  -webkit-animation: drawer-slide-out-right;
-          animation: drawer-slide-out-right;
-  -webkit-animation-duration: 0.2s;
-          animation-duration: 0.2s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-in;
-          animation-timing-function: ease-in;
-}
-
-@-webkit-keyframes drawer-slide-in-right {
-  0% {
-    right: -500px;
-  }
-  100% {
-    right: 0;
-  }
+  animation: drawer-slide-out-right;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
 }
 
 @keyframes drawer-slide-in-right {
@@ -358,14 +319,6 @@ input::placeholder,
   }
   100% {
     right: 0;
-  }
-}
-@-webkit-keyframes drawer-slide-out-right {
-  0% {
-    right: 0;
-  }
-  100% {
-    right: -500px;
   }
 }
 @keyframes drawer-slide-out-right {
@@ -378,37 +331,19 @@ input::placeholder,
 }
 .fade-in {
   opacity: 0;
-  -webkit-animation: fade-in;
-          animation: fade-in;
-  -webkit-animation-duration: 0.2s;
-          animation-duration: 0.2s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
+  animation: fade-in;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
 
 .btn-fade-in {
   opacity: 0;
-  -webkit-animation: fade-in;
-          animation: fade-in;
-  -webkit-animation-duration: 0.2s;
-          animation-duration: 0.2s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-  -webkit-animation-delay: 0.1s;
-          animation-delay: 0.1s;
-}
-
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  animation: fade-in;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.1s;
 }
 
 @keyframes fade-in {
@@ -421,23 +356,10 @@ input::placeholder,
 }
 .fade-out {
   opacity: 0;
-  -webkit-animation: fade-out;
-          animation: fade-out;
-  -webkit-animation-duration: 0.2s;
-          animation-duration: 0.2s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-}
-
-@-webkit-keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  animation: fade-out;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
 
 @keyframes fade-out {
@@ -449,34 +371,17 @@ input::placeholder,
   }
 }
 .window-slide-in {
-  -webkit-animation: window-slide-in;
-          animation: window-slide-in;
-  -webkit-animation-duration: 0.2s;
-          animation-duration: 0.2s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-out;
-          animation-timing-function: ease-out;
+  animation: window-slide-in;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
 }
 
 .window-slide-out {
-  -webkit-animation: window-slide-out;
-          animation: window-slide-out;
-  -webkit-animation-duration: 0.2s;
-          animation-duration: 0.2s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease-in;
-          animation-timing-function: ease-in;
-}
-
-@-webkit-keyframes window-slide-in {
-  0% {
-    transform: translateY(50px);
-  }
-  100% {
-    transform: translate(0);
-  }
+  animation: window-slide-out;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
 }
 
 @keyframes window-slide-in {
@@ -485,14 +390,6 @@ input::placeholder,
   }
   100% {
     transform: translate(0);
-  }
-}
-@-webkit-keyframes window-slide-out {
-  0% {
-    transform: translate(0);
-  }
-  100% {
-    transform: translateY(-50px);
   }
 }
 @keyframes window-slide-out {
@@ -509,14 +406,10 @@ input::placeholder,
   width: 30px;
   margin: 0 auto;
   background-color: #3B4D5A;
-  -webkit-animation-name: loading;
-          animation-name: loading;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
+  animation-name: loading;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.5s;
 }
 
 .loading::before,
@@ -526,12 +419,9 @@ input::placeholder,
   width: 30px;
   height: 30px;
   background-color: #3B4D5A;
-  -webkit-animation-name: loading;
-          animation-name: loading;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-name: loading;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
 }
 
 .loading::before {
@@ -540,8 +430,7 @@ input::placeholder,
 
 .loading::after {
   right: -35px;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 .loading-small {
@@ -560,29 +449,12 @@ input::placeholder,
 }
 
 .btn-prim .loading-small {
-  -webkit-animation-name: loading-prim;
-          animation-name: loading-prim;
+  animation-name: loading-prim;
   background-color: #E4EBEF;
 }
 .btn-prim .loading-small::before, .btn-prim .loading-small::after {
-  -webkit-animation-name: loading-prim;
-          animation-name: loading-prim;
+  animation-name: loading-prim;
   background-color: #E4EBEF;
-}
-
-@-webkit-keyframes loading {
-  10% {
-    background-color: #0084ff;
-  }
-  30% {
-    background-color: #0084ff;
-  }
-  80% {
-    background-color: #3B4D5A;
-  }
-  100% {
-    background-color: #3B4D5A;
-  }
 }
 
 @keyframes loading {
@@ -597,20 +469,6 @@ input::placeholder,
   }
   100% {
     background-color: #3B4D5A;
-  }
-}
-@-webkit-keyframes loading-prim {
-  10% {
-    background-color: #3B4D5A;
-  }
-  30% {
-    background-color: #3B4D5A;
-  }
-  80% {
-    background-color: #E4EBEF;
-  }
-  100% {
-    background-color: #E4EBEF;
   }
 }
 @keyframes loading-prim {
@@ -845,10 +703,7 @@ button:focus,
   position: relative;
   padding-left: 30px;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   font-size: 14px;
   transition: all 0.2s ease-in-out;
 }

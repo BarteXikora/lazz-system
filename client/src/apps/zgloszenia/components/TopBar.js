@@ -3,6 +3,8 @@ import AppContext from '../functions/AppContext'
 
 import SearchBar from './SearchBar'
 
+import clearFilters from '../functions/clearFilters'
+
 import iconFilter from '../img/icon-filter.png'
 import iconDelete from '../img/icon-delete.png'
 import iconX from '../../../img/icon-close.png'
@@ -48,7 +50,10 @@ const TopBar = () => {
 
         {
             (filterPills.search || filterPills.form || filterPills.department || filterPills.date)
-            && <button className="btn btn-icon-text-small btn-x ms-2">
+            && <button
+                className="btn btn-icon-text-small btn-x ms-2"
+                onClick={() => appDispatch({ type: 'UPDATE_FILTERS', payload: clearFilters })}
+            >
                 <img src={iconDelete} alt="Wyczyść filtry" />
 
                 <span>Wyczyść filtry</span>
@@ -66,9 +71,12 @@ const TopBar = () => {
 
                         {
                             filterPills.search && <div className="filter-pill me-3">
-                                <span>Fraza: <span className="phrase">{filterPills.search}</span></span>
+                                <span>Fraza: <i className="phrase">{filterPills.search}</i></span>
 
-                                <button className="btn btn-x btn-icon-small">
+                                <button
+                                    className="btn btn-x btn-icon-small"
+                                    onClick={() => appDispatch({ type: 'UPDATE_FILTERS', payload: { search: '' } })}
+                                >
                                     <img src={iconX} alt="Usuń filtr" />
                                 </button>
                             </div>
@@ -78,7 +86,10 @@ const TopBar = () => {
                             filterPills.form && <div className="filter-pill me-3">
                                 <span>Formularz...</span>
 
-                                <button className="btn btn-x btn-icon-small">
+                                <button
+                                    className="btn btn-x btn-icon-small"
+                                    onClick={() => appDispatch({ type: 'UPDATE_FILTERS', payload: { form: [] } })}
+                                >
                                     <img src={iconX} alt="Usuń filtr" />
                                 </button>
                             </div>
@@ -88,7 +99,10 @@ const TopBar = () => {
                             filterPills.department && <div className="filter-pill me-3">
                                 <span>Dział...</span>
 
-                                <button className="btn btn-x btn-icon-small">
+                                <button
+                                    className="btn btn-x btn-icon-small"
+                                    onClick={() => appDispatch({ type: 'UPDATE_FILTERS', payload: { department: '' } })}
+                                >
                                     <img src={iconX} alt="Usuń filtr" />
                                 </button>
                             </div>
@@ -98,7 +112,13 @@ const TopBar = () => {
                             filterPills.date && <div className="filter-pill me-3">
                                 <span>Data...</span>
 
-                                <button className="btn btn-x btn-icon-small">
+                                <button
+                                    className="btn btn-x btn-icon-small"
+                                    onClick={() => appDispatch({
+                                        type: 'UPDATE_FILTERS',
+                                        payload: { date: clearFilters.date }
+                                    })}
+                                >
                                     <img src={iconX} alt="Usuń filtr" />
                                 </button>
                             </div>
