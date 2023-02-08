@@ -83,6 +83,16 @@ const appReducer = (state, action) => {
         return { ...state, filteredSortedList: filteredList }
     }
 
+    if (action.type === 'SET_STAR') {
+        let newContacts = state.contactsList
+
+        newContacts.forEach((contact) => {
+            if (contact.id === action.payload.id) contact.star = action.payload.setTo
+        })
+
+        return { ...state, contactsList: newContacts }
+    }
+
     return { ...state }
 }
 

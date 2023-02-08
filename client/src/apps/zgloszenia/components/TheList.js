@@ -7,7 +7,7 @@ import ListItem from './ListItem'
 import ListEmpty from './ListEmpty'
 
 const TheList = () => {
-    const { appState, appDispatch } = useContext(AppContext)
+    const { appState, appDispatch, waitSetStars } = useContext(AppContext)
 
     return <>
         {
@@ -29,6 +29,7 @@ const TheList = () => {
                             contact={contact}
                             isActive={contact.id === appState.selectedContact}
                             select={(id) => appDispatch({ type: 'SELECT_CONTACT', payload: id })}
+                            setStar={waitSetStars}
                         />)
                     }
                 </main>

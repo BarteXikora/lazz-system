@@ -26,6 +26,7 @@ const LoginForm = ({ login, apiLink }) => {
         const user = await APIpost(
             apiLink,
             '/system/users/login-user',
+            {},
             { email, password }
         )
 

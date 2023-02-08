@@ -1,10 +1,17 @@
-import { useEffect } from 'react'
+import { useRef } from 'react'
 import Moment from 'react-moment'
 
-const ListItem = ({ contact, isActive, select }) => {
+const ListItem = ({ contact, isActive, select, setStar }) => {
+    const starRef = useRef()
+
+    const handleItemClick = (event, id) => {
+        if (event.target !== starRef.current && event.target !== starRef.current.children[0])
+            select(id)
+    }
+
     return <div
         className={`row mb-2 py-2 list-item ${isActive && 'list-item-active'}`}
-        onClick={() => select(contact.id)}
+        onClick={(event) => handleItemClick(event, contact.id)}
     >
         <div className="item-column col-2 py-1 ps-4 d-flex align-items-center">
             <div>
@@ -50,7 +57,11 @@ const ListItem = ({ contact, isActive, select }) => {
         </div>
 
         <div className="item-column col-1 py-1 d-flex align-items-center justify-content-center">
-            <button className={`btn btn-star ${contact.star && 'btn-star-active'}`}>
+            <button
+                className={`btn btn-star ${contact.star && 'btn-star-active'}`}
+                ref={starRef}
+                onClick={() => setStar(contact.id, !contact.star)}
+            >
                 <span>★</span>
             </button>
         </div>

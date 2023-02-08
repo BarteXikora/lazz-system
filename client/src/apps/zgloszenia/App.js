@@ -7,7 +7,6 @@ import TopBar from './components/TopBar'
 import ListHeader from './components/ListHeader'
 import TheList from './components/TheList'
 import ListError from './components/ListError'
-import ListEmpty from './components/ListEmpty'
 import PreviewWrong from './components/PreviewWrong'
 import ThePreview from './components/ThePreview'
 
@@ -15,7 +14,9 @@ import appReducer from './functions/appReducer'
 import defaultAppState from './functions/defaultAppState'
 import windowsSlugs from './functions/windowsSlugs'
 
-import { APIget } from '../../functions/api'
+import { APIget, APIpost } from '../../functions/api'
+
+let starsToSet = {}, setStarsTimeout = setTimeout(null, 0)
 
 const App = () => {
     const { systemState, systemDispatch } = useContext(SystemContext)
@@ -116,7 +117,39 @@ const App = () => {
         })
     }
 
-    return <AppContext.Provider value={{ appState, appDispatch, openWindow, fetchList }}>
+    const setStars = async () => {
+        const answer = await APIpost(
+            systemState.apiLink,
+            '/zgloszenia/post-stars',
+            { 'auth-token': systemState.user.authToken },
+            starsToSet,
+        )
+
+        if (!answer.success) return appDispatch({
+            type: 'LIST_ERROR', payload: {
+                success: false,
+                message: 'Nie udało się zaktualizować danych dotyczących oznaczeń kontaktów gwiazdkami!',
+                error: '@ZGLOSZENIA/set-stars#00'
+            }
+        })
+
+        if (!answer.data.success) appDispatch({ type: 'LIST_ERROR', payload: answer.data })
+    }
+
+    const waitSetStars = (id, setTo) => {
+        clearTimeout(setStarsTimeout)
+        starsToSet[id] = setTo
+
+        appDispatch({ type: 'SET_STAR', payload: { id, setTo } })
+
+        setStarsTimeout = setTimeout(() => {
+            setStars()
+            starsToSet = {}
+
+        }, 1000)
+    }
+
+    return <AppContext.Provider value={{ appState, appDispatch, openWindow, fetchList, waitSetStars }}>
         <TopBar />
 
         <div className="scroll-columns">

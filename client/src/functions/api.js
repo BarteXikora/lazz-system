@@ -15,8 +15,8 @@ const APIget = async (api, link, headers = {}) => {
         .catch(error => { return { success: false, message: 'Nie udało się nawiązać połączenia z API.' } })
 }
 
-const APIpost = async (api, link, body = {}) => {
-    return await axios.post(api + link, body)
+const APIpost = async (api, link, headers, body = {}) => {
+    return await axios.post(api + link, body, { headers })
         .then(answer => { return { success: true, data: answer.data } })
         .catch(error => { return { success: false, message: 'Nie udało się nawiązać połączenia z API.' } })
 }
