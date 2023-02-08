@@ -101,8 +101,11 @@ const App = () => {
         })
         if (!contacts.data.success) return appDispatch({ type: 'LIST_ERROR', payload: contacts.data })
         appDispatch({ type: 'LOAD_CONTACTS', payload: contacts.data.data })
+        appDispatch({ type: 'FILTER_SEGREGATE_CONTACTS' })
     }
     useEffect(() => { fetchList() }, [])
+
+    useEffect(() => appDispatch({ type: 'FILTER_SEGREGATE_CONTACTS' }), [appState.currentFilters])
 
     const openWindow = (slug, data = {}) => {
         const { title, content } = windowsSlugs.find(slug)
@@ -113,12 +116,15 @@ const App = () => {
         })
     }
 
-    return <AppContext.Provider value={{ appState, appDispatch, openWindow }}>
+    return <AppContext.Provider value={{ appState, appDispatch, openWindow, fetchList }}>
         <TopBar />
 
         <div className="scroll-columns">
             <div className="scroll-column px-3" style={{ width: '60vw' }}>
-                <ListHeader />
+                <ListHeader
+                    shownCnt={appState.filteredSortedList.length}
+                    allCnt={appState.contactsList.length}
+                />
 
                 {
                     !appState.listReady ?
@@ -133,12 +139,14 @@ const App = () => {
 
                             :
 
-                            appState.contactsList.length === 0 ?
-                                <ListEmpty />
+                            <TheList />
 
-                                :
+                    // appState.contactsList.length === 0 ?
+                    //     <ListEmpty />
 
-                                <TheList />
+                    //     :
+
+                    //     <TheList />
                 }
             </div>
 

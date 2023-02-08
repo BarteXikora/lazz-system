@@ -169,16 +169,11 @@
 }
 
 .filter-pill {
-    background-color: $gray-l;
+    background-color: $prim-s;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: default;
-    border-radius: 15px;
-
-    .btn {
-        border-radius: 15px !important;
-    }
 
     span:not(.phrase) {
         display: flex;

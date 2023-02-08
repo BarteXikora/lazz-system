@@ -31,7 +31,6 @@ const TopBar = () => {
         if (!date.fromStart || !date.toEnd) newPills.date = true
 
         setFilterPills(newPills)
-        console.log(newPills)
 
     }, [appState.currentFilters])
 
@@ -101,7 +100,7 @@ const TopBar = () => {
 
                                 <button
                                     className="btn btn-x btn-icon-small"
-                                    onClick={() => appDispatch({ type: 'UPDATE_FILTERS', payload: { department: '' } })}
+                                    onClick={() => appDispatch({ type: 'UPDATE_FILTERS', payload: { department: [] } })}
                                 >
                                     <img src={iconX} alt="Usuń filtr" />
                                 </button>

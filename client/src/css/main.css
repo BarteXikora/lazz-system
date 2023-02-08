@@ -921,15 +921,11 @@ button:focus,
 }
 
 .filter-pill {
-  background-color: #E4EBEF;
+  background-color: #d1efff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: default;
-  border-radius: 15px;
-}
-.filter-pill .btn {
-  border-radius: 15px !important;
 }
 .filter-pill span:not(.phrase) {
   display: flex;

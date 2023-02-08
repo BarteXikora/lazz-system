@@ -2,11 +2,11 @@ import iconDownload from '../img/icon-download.png'
 import iconReload from '../img/icon-reload.png'
 import iconAdd from '../img/icon-add.png'
 
-const ListHeader = () => {
+const ListHeader = ({ shownCnt, allCnt }) => {
     return <header className="d-flex justify-content-between align-items-center mt-4">
         <h2 className="fw-bold font-subtitle m-0">
             <span>Zgłoszenia:</span>
-            <span className="font-gray ms-2">(15 z 45)</span>
+            <span className="font-gray ms-2">({shownCnt === allCnt ? allCnt : `${shownCnt} z ${allCnt}`})</span>
         </h2>
 
         <div className='d-flex'>
