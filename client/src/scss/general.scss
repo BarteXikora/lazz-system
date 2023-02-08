@@ -78,6 +78,13 @@ body {
     color: $wrong;
 }
 
+.info-box {
+    background-color: $gray-l;
+    border-left: 10px solid $prim;
+    padding: 15px 25px;
+    background-color: $prim-s;
+}
+
 .warning-box {
     background-color: $gray-l;
     border-left: 10px solid $wrong;

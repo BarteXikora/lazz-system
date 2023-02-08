@@ -73,6 +73,13 @@ body {
   color: #e63a62;
 }
 
+.info-box {
+  background-color: #E4EBEF;
+  border-left: 10px solid #0084ff;
+  padding: 15px 25px;
+  background-color: #d1efff;
+}
+
 .warning-box {
   background-color: #E4EBEF;
   border-left: 10px solid #e63a62;

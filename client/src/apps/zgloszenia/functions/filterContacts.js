@@ -1,5 +1,22 @@
 import moment from 'moment'
 
+const doSearch = (list, search) => {
+    let newArray = []
+
+    list.forEach((contact) => {
+        for (const [key, value] of Object.entries(contact)) {
+            if (typeof value === 'string') {
+                if (value.toLowerCase().indexOf(search.toLowerCase()) >= 0) {
+                    newArray.push(contact)
+                    return
+                }
+            }
+        }
+    })
+
+    return newArray
+}
+
 const filterByArray = (list, field, filters) => {
     let newArray = []
 
@@ -42,26 +59,12 @@ const filterByDate = (list, filters) => {
     }
 
     return list
-
-
-    // For dates - from:
-    // if (!currentFilters.dates.from_start) {
-    //     filtered = []
-
-    //     let fromDate = currentFilters.dates.from_date
-
-    //     $.each(shown, (n, contact) => {
-    //         if (moment(contact.date) >= moment(fromDate)) filtered.push(contact)
-    //     })
-
-    //     shown = JSON.parse(JSON.stringify(filtered))
-    // }
-
 }
 
 const filterContacts = (list, filters) => {
     let currentList = [...list]
 
+    if (filters.search !== '') currentList = doSearch(currentList, filters.search)
     if (filters.form.length > 0) currentList = filterByArray(currentList, 'form', filters.form)
     if (filters.department.length > 0) currentList = filterByArray(currentList, 'department', filters.department)
     currentList = filterByDate(currentList, filters.date)
