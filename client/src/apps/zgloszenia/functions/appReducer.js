@@ -1,4 +1,5 @@
 import filterContacts from './filterContacts'
+import sortContacts from './sortContacts'
 
 const appReducer = (state, action) => {
     if (action.type === 'LOAD_FORMS') {
@@ -77,10 +78,18 @@ const appReducer = (state, action) => {
         return { ...state, currentFilters: { ...state.currentFilters, ...action.payload } }
     }
 
-    if (action.type === 'FILTER_SEGREGATE_CONTACTS') {
+    if (action.type === 'FILTER_SORT_CONTACTS') {
         const filteredList = filterContacts(state.contactsList, state.currentFilters)
+        const filteredSortedList = sortContacts(filteredList, state.sort)
 
-        return { ...state, filteredSortedList: filteredList }
+        return { ...state, filteredSortedList }
+    }
+
+    if (action.type === 'SORT_CONTACTS') {
+        const filteredList = filterContacts(state.contactsList, state.currentFilters)
+        const filteredSortedList = sortContacts(filteredList, action.payload)
+
+        return { ...state, sort: action.payload, filteredSortedList }
     }
 
     if (action.type === 'SET_STAR') {

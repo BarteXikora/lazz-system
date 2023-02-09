@@ -8,7 +8,7 @@ const defaultAppState = {
     starsList: [],
     contactsList: [],
     filteredSortedList: [],
-    sort: { by: 'date', method: 'desc' },
+    sort: { by: 'date', method: 'asc' },
     currentFilters: clearFilters,
     selectedContact: null,
     error: { isError: false, message: '', code: '' }

@@ -102,11 +102,11 @@ const App = () => {
         })
         if (!contacts.data.success) return appDispatch({ type: 'LIST_ERROR', payload: contacts.data })
         appDispatch({ type: 'LOAD_CONTACTS', payload: contacts.data.data })
-        appDispatch({ type: 'FILTER_SEGREGATE_CONTACTS' })
+        appDispatch({ type: 'FILTER_SORT_CONTACTS' })
     }
     useEffect(() => { fetchList() }, [])
 
-    useEffect(() => appDispatch({ type: 'FILTER_SEGREGATE_CONTACTS' }), [appState.currentFilters])
+    useEffect(() => appDispatch({ type: 'FILTER_SORT_CONTACTS' }), [appState.currentFilters])
 
     const openWindow = (slug, data = {}) => {
         const { title, content } = windowsSlugs.find(slug)
