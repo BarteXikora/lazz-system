@@ -168,18 +168,15 @@ const App = () => {
                         :
 
                         appState.error.isError ?
-                            <ListError message={appState.error.message} code={appState.error.code} />
+                            <ListError
+                                message={appState.error.message}
+                                code={appState.error.code}
+                                reload={fetchList}
+                            />
 
                             :
 
                             <TheList />
-
-                    // appState.contactsList.length === 0 ?
-                    //     <ListEmpty />
-
-                    //     :
-
-                    //     <TheList />
                 }
             </div>
 

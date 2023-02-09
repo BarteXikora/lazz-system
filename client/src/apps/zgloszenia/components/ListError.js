@@ -1,7 +1,7 @@
 import picError from '../../../img/pic-error.png'
 import iconReload from '../img/icon-reload.png'
 
-const ListError = ({ message, code }) => {
+const ListError = ({ message, code, reload }) => {
     return <div className="mt-5 pt-4 text-center">
         <img src={picError} alt="Wystąpił błąd!" />
 
@@ -16,7 +16,7 @@ const ListError = ({ message, code }) => {
         }
 
         <div className="d-flex justify-content-center">
-            <button className="mt-4 btn btn-prim btn-icon-text">
+            <button className="mt-4 btn btn-prim btn-icon-text" onClick={reload}>
                 <img src={iconReload} alt="Odśwież" />
                 <span>Odśwież</span>
             </button>
