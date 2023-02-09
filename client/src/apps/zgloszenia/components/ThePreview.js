@@ -38,7 +38,13 @@ const ThePreview = () => {
                         </>
                         : null
                 },
-                { label: 'Czas otrzymania zgłoszenia', value: moment(shownContact.date).format('DD.MM.YYYY, HH:mm') },
+                {
+                    label: 'Czas otrzymania zgłoszenia',
+                    value: moment(shownContact.date).isValid() ?
+                        moment(shownContact.date).format('DD.MM.YYYY, HH:mm')
+                        :
+                        <span className="font-gray fw-bold">[ brak danych ]</span>
+                },
                 {
                     label: 'Przekazano',
                     value: shownContact.worker ?

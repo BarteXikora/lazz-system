@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import Moment from 'react-moment'
+import moment from 'moment'
 
 const ListItem = ({ contact, isActive, select, setStar }) => {
     const starRef = useRef()
@@ -15,8 +15,16 @@ const ListItem = ({ contact, isActive, select, setStar }) => {
     >
         <div className="item-column col-2 py-1 ps-4 d-flex align-items-center">
             <div>
-                <b><Moment format='DD.MM.YYYY'>{contact.date}</Moment></b> <br />
-                <Moment format='HH:mm'>{contact.date}</Moment>
+                {
+                    moment(contact.date).isValid() ? <>
+                        <b>{moment(contact.date).format('DD.MM.YYYY')}</b> <br />
+                        {moment(contact.date).format('HH:mm')}
+                    </>
+
+                        :
+
+                        <span className="font-gray fw-bold">[ brak danych ]</span>
+                }
             </div>
         </div>
 
