@@ -71,7 +71,7 @@ const registerUser = async (req, res) => {
 
     // Adds user to database:
     const query = await dbConnect.q(
-        `INSERT INTO system_users VALUES('', ?, ?, ?);`,
+        `INSERT INTO system_users VALUES('', ?, ?, '1', ?);`,
         [email, name, hashPassword]
     )
 
