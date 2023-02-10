@@ -25,8 +25,8 @@ server.use(bodyParser.urlencoded({ extended: false }))
 server.use(bodyParser.json())
 
 // Adds routes:
-server.use('/', require('./routes/main.js'))
 server.use('/api', require('./routes/api.js'))
+server.use('/', require('./routes/main.js'))
 
 // Sets server's port:
 const PORT = process.env.SYS_PORT || 5000
