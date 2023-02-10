@@ -784,6 +784,61 @@ button:focus,
   border-color: #F4FAFF !important;
 }
 
+.csi-container {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.csi-container:hover .csi-selected {
+  border-color: #0084ff;
+  color: #0084ff;
+}
+.csi-container:hover .csi-selected::after {
+  border-color: #0084ff !important;
+}
+
+.csi-selected {
+  border: 1px solid #001217;
+  padding: 8px 12px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.csi-selected::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  border-bottom: 2px solid #001217;
+  border-right: 2px solid #001217;
+  transform: rotateZ(45deg);
+  transition: all 0.2s ease-in-out;
+}
+.csi-selected:hover {
+  background-color: #d1efff;
+}
+
+.csi-options-dropdown {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  width: 100%;
+  border: 1px solid #0084ff;
+  border-top: 0;
+  background-color: #F4FAFF;
+}
+
+.csi-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.csi-option:hover {
+  color: #0084ff;
+  background-color: #d1efff;
+}
+
 .separator {
   padding: 15px 0;
   border-left: 1px solid #001217;

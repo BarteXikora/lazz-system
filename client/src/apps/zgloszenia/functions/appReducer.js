@@ -102,6 +102,20 @@ const appReducer = (state, action) => {
         return { ...state, contactsList: newContacts }
     }
 
+    if (action.type === 'DELEGATE_CONTACT') {
+        let foundWorker = state.workersList.filter(worker => worker.id === action.payload.workerID)
+        if (foundWorker.length > 0) {
+            foundWorker = foundWorker[0]
+
+        } else foundWorker = null
+
+        state.contactsList.forEach(c => {
+            if (c.id === action.payload.contactID) c.worker = foundWorker
+        })
+
+        return { ...state }
+    }
+
     return { ...state }
 }
 

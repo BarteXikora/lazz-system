@@ -16,6 +16,8 @@ router.get('/get-workers', verifyBoth, require(path.join(__dirname, 'getWorkers.
 router.get('/get-stars', verifyBoth, require(path.join(__dirname, 'getStars.js')))
 
 router.post('/post-stars', verifyBoth, require(path.join(__dirname, 'postStars.js')))
+router.post('/delegate-contact', verifyBoth, require(path.join(__dirname, 'delegateContact.js')))
+
 
 router.get('/', (req, res) => res.status(200).json({ success: true }))
 router.get('*', (req, res) => res.status(404).json({ success: false }))

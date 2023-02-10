@@ -1,0 +1,61 @@
+.csi-container {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    &:hover {
+        .csi-selected {
+            border-color: $prim;
+            color: $prim;
+
+            &::after {
+                border-color: $prim !important;
+            }
+        }
+    }
+}
+
+.csi-selected {
+    border: 1px solid $black;
+    padding: 8px 12px;
+    transition: $transition;
+    cursor: pointer;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 3px;
+        right: 15px;
+        width: 20px;
+        height: 20px;
+        border-bottom: 2px solid $black;
+        border-right: 2px solid $black;
+        transform: rotateZ(45deg);
+        transition: $transition;
+    }
+
+    &:hover {
+        background-color: $prim-s;
+    }
+}
+
+.csi-options-dropdown {
+    position: absolute;
+    top: 38px;
+    left: 0;
+    width: 100%;
+    border: 1px solid $prim;
+    border-top: 0;
+    background-color: $white;
+}
+
+.csi-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+        color: $prim;
+        background-color: $prim-s;
+    }
+}

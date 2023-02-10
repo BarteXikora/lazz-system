@@ -9,7 +9,7 @@ import iconSend from '../img/icon-send.png'
 import iconPrint from '../img/icon-print.png'
 
 const PreviewHeader = ({ contact, empty, contentToPrint }) => {
-    const { openWindow } = useContext(AppContext)
+    const { appState, appDispatch, openWindow } = useContext(AppContext)
 
     return <header className="mb-4 p-4 section-gray-d">
         <h2 className="font-big fw-bold">
@@ -24,7 +24,10 @@ const PreviewHeader = ({ contact, empty, contentToPrint }) => {
         </h2>
 
         <div className='mt-4'>
-            <button className="btn btn-prim btn-icon-text-small me-2 mb-2 d-inline-block">
+            <button
+                className="btn btn-prim btn-icon-text-small me-2 mb-2 d-inline-block"
+                onClick={() => openWindow('delegate', { contact, workers: appState.workersList, appDispatch })}
+            >
                 <img src={iconDelegate} alt="Przekaż" />
                 <span>Przekaż zgłoszenie...</span>
             </button>
