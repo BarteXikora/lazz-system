@@ -1,8 +1,13 @@
+import { useContext } from 'react'
+import AppContext from '../functions/AppContext'
+
 import iconDownload from '../img/icon-download.png'
 import iconReload from '../img/icon-reload.png'
 import iconAdd from '../img/icon-add.png'
 
 const ListHeader = ({ shownCnt, allCnt }) => {
+    const { appState, appDispatch, openWindow } = useContext(AppContext)
+
     return <header className="d-flex justify-content-between align-items-center mt-4">
         <h2 className="fw-bold font-subtitle m-0">
             <span>Zgłoszenia:</span>
@@ -10,7 +15,10 @@ const ListHeader = ({ shownCnt, allCnt }) => {
         </h2>
 
         <div className='d-flex'>
-            <button className="btn btn-sec btn-icon-text-small ms-2">
+            <button
+                className="btn btn-sec btn-icon-text-small ms-2"
+                onClick={() => openWindow('download', { appState, appDispatch })}
+            >
                 <img src={iconDownload} alt="Pobierz..." />
                 <span>Pobierz listę...</span>
             </button>
