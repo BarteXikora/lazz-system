@@ -6,7 +6,7 @@ import iconReload from '../img/icon-reload.png'
 import iconAdd from '../img/icon-add.png'
 
 const ListHeader = ({ shownCnt, allCnt }) => {
-    const { appState, appDispatch, openWindow } = useContext(AppContext)
+    const { appState, appDispatch, openWindow, fetchList } = useContext(AppContext)
 
     return <header className="d-flex justify-content-between align-items-center mt-4">
         <h2 className="fw-bold font-subtitle m-0">
@@ -23,7 +23,10 @@ const ListHeader = ({ shownCnt, allCnt }) => {
                 <span>Pobierz listę...</span>
             </button>
 
-            <button className="btn btn-sec btn-icon-text-small ms-2">
+            <button
+                className="btn btn-sec btn-icon-text-small ms-2"
+                onClick={fetchList}
+            >
                 <img src={iconReload} alt="Odśwież" />
                 <span>Odśwież</span>
             </button>
