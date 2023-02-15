@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react'
+import { useEffect, useContext, useRef } from 'react'
 import SystemContext from '../functions/SystemContext'
 import useCssAnimate from '../functions/useCssAnimate'
 
@@ -11,6 +11,7 @@ const Window = () => {
 
     const containerRef = useRef(null)
     const windowRef = useRef(null)
+    const scrollRef = useRef(null)
     useCssAnimate(systemState.window.isOpen, [{
         element: containerRef.current,
         animations: [{
@@ -37,6 +38,8 @@ const Window = () => {
         }]
     }])
 
+    useEffect(() => scrollRef.current.scroll({ top: 0 }), [systemState.window])
+
     return <WindowContext.Provider value={{ systemState, systemDispatch }}>
         <div className="d-none window-container" ref={containerRef}>
             <div className="window" ref={windowRef}>
@@ -48,7 +51,7 @@ const Window = () => {
                     </button>
                 </div>
 
-                <div className="window-body p-4 m-0">
+                <div className="window-body p-4 m-0" ref={scrollRef}>
                     {systemState.window.content}
                 </div>
             </div>
