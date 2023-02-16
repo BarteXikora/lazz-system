@@ -1,6 +1,7 @@
-import logoLazzoni from './../img/logo.png'
-import iconDock from './../img/icon-dock.png'
-import iconBell from './../img/icon-bell.png'
+import logoLazzoni from '../img/logo.png'
+import logoLazzoniMobile from '../img/logo-mobile.png'
+import iconDock from '../img/icon-dock.png'
+import iconBell from '../img/icon-bell.png'
 
 const Navbar = ({ showDock, showNC }) => {
     return <>
@@ -10,7 +11,8 @@ const Navbar = ({ showDock, showNC }) => {
                     <img src={iconDock} alt="Otwórz dock!" />
                 </button>
 
-                <img src={logoLazzoni} height="16" className="px-3" alt="Logo Lazzoni Group" />
+                <img src={logoLazzoni} height="16" className="d-none d-md-inline px-3" alt="Logo Lazzoni Group" />
+                <img src={logoLazzoniMobile} height="26" className="d-md-none px-3" alt="Logo Lazzoni Group" />
             </div>
 
             <div className="d-block">

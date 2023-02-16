@@ -59,6 +59,28 @@
     }
 }
 
+@media (max-width: 575.98px) {
+    .drawer {
+        height: 100%;
+        width: 100%;
+    }
+
+    .drawer-close {
+        position: relative !important;
+        top: 0;
+        right: 0;
+    }
+
+    .drawer-scroll {
+        height: auto !important;
+    }
+
+    .drawer-right .drawer-close {
+        top: 0;
+        left: 0;
+    }
+}
+
 .floating-menu {
     display: flex;
     flex-direction: column;

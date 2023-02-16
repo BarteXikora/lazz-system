@@ -96,7 +96,7 @@ const LoginForm = ({ login, apiLink }) => {
 
     return <div className="container-xy section-gradient d-flex align-items-center justify-content-center">
         <div className="section-login section-white text-center p-5 pb-4">
-            <img src={logo} width="350" alt="Lazzoni Group" />
+            <img src={logo} className='img-fluid' alt="Lazzoni Group" />
 
             <h2 className="font-subtitle fw-bold py-5 pb-3">Zaloguj się!</h2>
 

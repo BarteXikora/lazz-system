@@ -7,6 +7,7 @@ import SystemContext from '../functions/SystemContext'
 
 // Imports images:
 import logoLazzoni from '../img/logo.png'
+import logoLazzoniMobile from '../img/logo-mobile.png'
 import iconHelp from '../img/icon-help.png'
 import iconAdmin from '../img/icon-administration.png'
 import iconSettings from '../img/icon-settings.png'
@@ -74,24 +75,27 @@ const Dock = () => {
     }, [systemState.appsList])
 
     return <section ref={dockRef} className={`d-none drawer section-gradient`}>
-        <button
-            ref={closeBtnRef}
-            className={`drawer-close btn btn-wrong btn-icon`}
-            onClick={() => systemDispatch({ type: 'CLOSE_ALL' })}
-        >
-            <img src={iconClose} alt="Zamknij Dock!" />
-        </button>
-
-        <div className="h-100 d-flex flex-column justify-content-between p-4 pe-5">
+        <div className="h-100 d-flex flex-column justify-content-start justify-content-sm-between p-4 pe-5">
             <div>
-                <img src={logoLazzoni} height="16" alt="Lazzoni Group" className="ps-2 mb-2" />
+                <div className='d-flex align-items-center justify-content-between'>
+                    <img src={logoLazzoniMobile} height="26" alt="Lazzoni Group" className="d-sm-none ps-2" />
+                    <img src={logoLazzoni} height="16" alt="Lazzoni Group" className="d-none d-sm-inline ps-2" />
 
-                <hr />
+                    <button
+                        ref={closeBtnRef}
+                        className={`drawer-close btn btn-wrong btn-icon ms-3 ms-sm-0`}
+                        onClick={() => systemDispatch({ type: 'CLOSE_ALL' })}
+                    >
+                        <img src={iconClose} alt="Zamknij Dock!" />
+                    </button>
+                </div>
+
+                <hr className='mt-4' />
             </div>
 
             {
                 appsCount > 0 ?
-                    <div className='h-100 py-2'>
+                    <div className='drawer-scroll py-2'>
                         {
                             systemState.appsList.map((app, i) => app.id > 0 && <DockButton
                                 key={app.id}
@@ -104,14 +108,14 @@ const Dock = () => {
                         }
                     </div>
 
-                    : <div className="h-100 py-5 text-center font-wrong">
+                    : <div className="drawer-scroll py-5 text-center font-wrong">
                         [ Nie znaleziono aplikacji ]
                     </div>
             }
 
             <hr />
 
-            <div className="d-flex flex-column align-items-start pe-3">
+            <div className="w-100 d-flex flex-column align-items-start pe-3">
 
                 <DockButton
                     icon={iconHelp}
@@ -121,7 +125,7 @@ const Dock = () => {
                     action={() => handleClick('help')}
                 />
 
-                <div className='py-3'></div>
+                <div className='py-2 py-sm-3'></div>
 
                 {
                     systemState.user.admin && <DockButton

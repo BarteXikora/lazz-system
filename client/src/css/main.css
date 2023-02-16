@@ -155,6 +155,24 @@ body {
   left: -75px;
 }
 
+@media (max-width: 575.98px) {
+  .drawer {
+    height: 100%;
+    width: 100%;
+  }
+  .drawer-close {
+    position: relative !important;
+    top: 0;
+    right: 0;
+  }
+  .drawer-scroll {
+    height: auto !important;
+  }
+  .drawer-right .drawer-close {
+    top: 0;
+    left: 0;
+  }
+}
 .floating-menu {
   display: flex;
   flex-direction: column;
@@ -533,6 +551,7 @@ button:focus,
   font-weight: bold;
   transition: all 0.2s ease-in-out;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .btn-prim {
@@ -1028,31 +1047,31 @@ button:focus,
 
 ._sizes {
   position: fixed;
-  bottom: 15px;
-  left: 15px;
+  bottom: 0;
+  left: 0;
   z-index: 1000000;
 }
 
 ._size {
   padding: 5px 15px;
-  background-color: #ff2f40;
-  border-radius: 5px;
+  background-color: #ff0044;
+  border-radius: 0;
   font-size: 1.2rem;
   font-weight: bold;
-  color: black;
-  border: 1px solid black;
+  color: white;
+  border-left: 8px solid #180e28;
 }
 ._size.d-xl-flex {
-  background-color: #2facff;
+  background-color: #006aff;
 }
 ._size.d-lg-flex {
-  background-color: #2fff86;
+  background-color: #00db25;
 }
 ._size.d-md-flex {
-  background-color: #d9ff2f;
+  background-color: #cfb700;
 }
 ._size.d-sm-flex {
-  background-color: #ff712f;
+  background-color: #ff4400;
 }
 
 .__scroll {
@@ -1060,21 +1079,21 @@ button:focus,
 }
 
 .__red {
-  background-color: #ff2f40;
+  background-color: #ff0044;
 }
 
 .__orange {
-  background-color: #ff712f;
+  background-color: #ff4400;
 }
 
 .__yellow {
-  background-color: #d9ff2f;
+  background-color: #cfb700;
 }
 
 .__green {
-  background-color: #2fff86;
+  background-color: #00db25;
 }
 
 .__blue {
-  background-color: #2facff;
+  background-color: #006aff;
 }

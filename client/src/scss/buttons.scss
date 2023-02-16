@@ -17,6 +17,7 @@ button,
     font-weight: bold;
     transition: $transition;
     font-size: $f-default;
+    white-space: nowrap;
 }
 
 .btn-prim {

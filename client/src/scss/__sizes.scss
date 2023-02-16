@@ -1,24 +1,25 @@
-$_red: #ff2f40;
-$_orange: #ff712f;
-$_yellow: #d9ff2f;
-$_green: #2fff86;
-$_blue: #2facff;
+$_red: #ff0044;
+$_orange: #ff4400;
+$_yellow: #cfb700;
+$_green: #00db25;
+$_blue: #006aff;
+$_black: #180e28;
 
 ._sizes {
     position: fixed;
-    bottom: 15px;
-    left: 15px;
+    bottom: 0;
+    left: 0;
     z-index: 1000000;
 }
 
 ._size {
     padding: 5px 15px;
     background-color: $_red;
-    border-radius: 5px;
+    border-radius: 0;
     font-size: 1.2rem;
     font-weight: bold;
-    color: black;
-    border: 1px solid black;
+    color: white;
+    border-left: 8px solid $_black;
 
     &.d-xl-flex {
         background-color: $_blue;
@@ -52,6 +53,7 @@ $_blue: #2facff;
 .__yellow {
     background-color: $_yellow;
 }
+
 .__green {
     background-color: $_green;
 }

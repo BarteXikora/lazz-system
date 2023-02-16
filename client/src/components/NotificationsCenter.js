@@ -65,16 +65,20 @@ const NotificationsCenter = ({ shown, notificationsList, closeAll }) => {
 
     return (
         <section ref={ncRef} className="d-none drawer drawer-right section-white" >
-            <button onClick={closeAll} ref={closeBtnRef} className="drawer-close btn btn-wrong btn-icon">
-                <img src={iconClose} alt="Zamknij Dock!" />
-            </button>
-
             <div className="h-100 d-flex flex-column justify-content-between p-4">
                 <div className="d-flex align-items-center justify-content-between">
                     <h2 className="font-subtitle fw-bold ps-2 m-0">Powiadomienia:</h2>
 
-                    <button title="Rozwiń dodatkowe opcje" className="btn btn-icon">
+                    {/* <button title="Rozwiń dodatkowe opcje" className="btn btn-icon">
                         <img src={iconDotsVertical} alt="Zobacz opcje" />
+                    </button> */}
+
+                    <button
+                        onClick={closeAll}
+                        ref={closeBtnRef}
+                        className="drawer-close btn btn-wrong btn-icon ms-2 ms-sm-0"
+                    >
+                        <img src={iconClose} alt="Zamknij Dock!" />
                     </button>
 
                     {/* <div class="floating-menu section-black p-2">
