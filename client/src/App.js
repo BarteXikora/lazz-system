@@ -22,6 +22,8 @@ import initialize from './functions/initialize'
 // Default system state for reducer:
 import systemDefaultState from './defaultSystemState'
 
+import DevSizes from './components/DevSizes'
+
 // Main app:
 const App = () => {
     const [initReady, setInitReady] = useState(false)
@@ -59,6 +61,8 @@ const App = () => {
 
     // Renders this awasome system!
     return <SystemContext.Provider value={{ systemState, systemDispatch }}>
+        <DevSizes />
+
         <Routes>
             {/* Protected routes - available after login: */}
             <Route element={<ProtectedRoutes init={initReady} reload={reloadAfterError} />}>
