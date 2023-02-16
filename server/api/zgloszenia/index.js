@@ -2,6 +2,7 @@ const path = require('path')
 
 const verifyUser = require(path.join(__dirname, '..', 'functions', 'verifyUserAPI.js'))
 const verifyAppPrivilages = require(path.join(__dirname, '..', 'functions', 'verifyAppPrivilages.js'))
+const verifyByAuthOrIP = require(path.join(__dirname, '..', 'functions', 'verifyByAuthOrIP.js'))
 
 const verifyBoth = [verifyUser, verifyAppPrivilages]
 
@@ -17,6 +18,7 @@ router.get('/get-stars', verifyBoth, require(path.join(__dirname, 'getStars.js')
 
 router.post('/post-stars', verifyBoth, require(path.join(__dirname, 'postStars.js')))
 router.post('/delegate-contact', verifyBoth, require(path.join(__dirname, 'delegateContact.js')))
+router.post('/post-contact', verifyByAuthOrIP, require(path.join(__dirname, 'postContact.js')))
 
 
 router.get('/', (req, res) => res.status(200).json({ success: true }))

@@ -78,6 +78,14 @@ body {
     color: $wrong;
 }
 
+.font-prim {
+    color: $prim;
+}
+
+.font-sec {
+    color: $sec;
+}
+
 .info-box {
     background-color: $gray-l;
     border-left: 10px solid $prim;

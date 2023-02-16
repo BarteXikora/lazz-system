@@ -1,6 +1,7 @@
 @import './variables.scss';
 
 input,
+textarea,
 .form-control {
     display: block;
     width: 100%;
@@ -27,4 +28,14 @@ input,
     &::placeholder {
         color: $gray-d;
     }
+}
+
+.input-wrong {
+    border-color: $wrong;
+    color: $wrong;
+    background-color: $wrong-s;
+}
+
+label {
+    display: block;
 }

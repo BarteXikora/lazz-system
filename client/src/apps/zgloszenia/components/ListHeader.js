@@ -31,7 +31,10 @@ const ListHeader = ({ shownCnt, allCnt }) => {
                 <span>Odśwież</span>
             </button>
 
-            <button className="btn btn-prim btn-icon-text-small ms-4">
+            <button
+                className="btn btn-prim btn-icon-text-small ms-4"
+                onClick={() => openWindow('add', { openWindow, reload: fetchList })}
+            >
                 <img src={iconAdd} alt="Dodaj" />
                 <span>Dodaj zgłoszenie</span>
             </button>
