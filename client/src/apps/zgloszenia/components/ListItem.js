@@ -13,7 +13,7 @@ const ListItem = ({ contact, isActive, select, setStar }) => {
         className={`row mb-2 py-2 list-item ${isActive && 'list-item-active'}`}
         onClick={(event) => handleItemClick(event, contact.id)}
     >
-        <div className="item-column col-2 py-1 ps-4 d-flex align-items-center">
+        <div className="item-column sep-right col-4 col-sm-3 col-md-2 col-lg-3 col-xl-2 py-1 ps-4 d-flex align-items-center">
             <div>
                 {
                     moment(contact.date).isValid() ? <>
@@ -28,7 +28,7 @@ const ListItem = ({ contact, isActive, select, setStar }) => {
             </div>
         </div>
 
-        <div className="item-column col-4 py-1 ps-3 d-flex align-items-center">
+        <div className="item-column sep-sm-right col-8 col-sm-4 py-1 ps-3 d-flex align-items-center">
             <div>
                 <b>
                     {
@@ -44,7 +44,7 @@ const ListItem = ({ contact, isActive, select, setStar }) => {
             </div>
         </div>
 
-        <div className="item-column col-2 py-1 ps-3 d-flex align-items-center">
+        <div className="item-column sep-right d-none d-md-flex d-lg-none d-xl-flex col-2 py-1 ps-3 d-flex align-items-center">
             <b>
                 {
                     contact.department &&
@@ -54,7 +54,7 @@ const ListItem = ({ contact, isActive, select, setStar }) => {
             </b>
         </div>
 
-        <div className="item-column col-3 py-1 ps-3 d-flex align-items-center">
+        <div className="item-column sep-right d-none d-sm-flex col-3 py-1 ps-3 d-flex align-items-center">
             <b>
                 {
                     contact.worker &&
@@ -64,7 +64,7 @@ const ListItem = ({ contact, isActive, select, setStar }) => {
             </b>
         </div>
 
-        <div className="item-column col-1 py-1 d-flex align-items-center justify-content-center">
+        <div className="item-column d-none d-sm-flex col-2 col-md-1 col-lg-2 col-xl-1 py-1 d-flex align-items-center justify-content-center">
             <button
                 className={`btn btn-star ${contact.star && 'btn-star-active'}`}
                 ref={starRef}

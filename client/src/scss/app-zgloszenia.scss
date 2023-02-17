@@ -5,13 +5,76 @@
 
 .scroll-columns {
     height: calc(100% - 55px);
-    width: 100%;
+    max-width: 100vw;
     display: flex;
+    overflow-x: hidden !important;
 
     .scroll-column {
         height: 100%;
         display: block;
         overflow-y: scroll;
+    }
+}
+
+.scroll-column-list {
+    width: 60vw;
+}
+
+.scroll-column-preview {
+    width: 40vw;
+}
+
+.scroll-column-preview-shown {
+    position: relative;
+    left: auto;
+}
+
+@media (max-width: 991.98px) {
+    .scroll-column-list {
+        width: 100vw;
+    }
+
+    .scroll-column-preview {
+        position: absolute;
+        left: 100vw;
+        width: 100vw;
+        top: 0;
+        z-index: 9999;
+        overflow-x: hidden;
+    }
+
+    .scroll-column-preview-shown {
+        animation: preview-slide-in;
+        animation-duration: .2s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-out;
+    }
+
+    .scroll-column-preview-hide {
+        animation: preview-slide-out;
+        animation-duration: .2s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+    }
+}
+
+@keyframes preview-slide-in {
+    0% {
+        left: 100vw;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes preview-slide-out {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: 100vw;
     }
 }
 
@@ -95,8 +158,7 @@
     }
 }
 
-.list-item:hover,
-.list-item-active {
+.list-item:hover {
     .btn-star {
         color: $gray-d;
 
@@ -128,35 +190,20 @@
     }
 
     .item-column {
-        border-right: 1px solid $gray;
         transition: $transition;
-
-        &:last-of-type {
-            border: 0;
-        }
     }
 
     &:hover::before {
         background-color: $gray-d;
     }
 
-    &:hover,
-    &.list-item-active {
+    &:hover {
         background-color: $gray;
 
         .item-column {
             border-color: $gray-d;
         }
     }
-
-    &.list-item-active {
-        cursor: default;
-
-        &::before {
-            background-color: $prim;
-        }
-    }
-
 }
 
 .section-title {
@@ -187,5 +234,161 @@
         max-width: 150px;
         overflow: hidden;
         white-space: nowrap;
+    }
+}
+
+.sep-right {
+    border-right: 1px solid $gray;
+}
+
+.sep-right-none {
+    border-right: 0;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    .sep-sm-right {
+        border-right: 1px solid $gray;
+    }
+
+    .sep-sm-right-none {
+        border-right: 0;
+    }
+
+    .section-sm-gray {
+        background-color: $gray;
+        color: $black;
+
+        .btn-sort::after {
+            border-color: $black;
+        }
+    }
+
+    .section-sm-gray-d {
+        background-color: $gray-d;
+        color: $white;
+
+        .btn-sort::after {
+            border-color: $white;
+        }
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .sep-md-right {
+        border-right: 1px solid $gray;
+    }
+
+    .sep-md-right-none {
+        border-right: 0;
+    }
+
+    .section-md-gray {
+        background-color: $gray;
+        color: $black;
+
+        .btn-sort::after {
+            border-color: $black;
+        }
+    }
+
+    .section-md-gray-d {
+        background-color: $gray-d;
+        color: $white;
+
+        .btn-sort::after {
+            border-color: $white;
+        }
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .sep-lg-right {
+        border-right: 1px solid $gray;
+    }
+
+    .sep-lg-right-none {
+        border-right: 0;
+    }
+
+    .section-lg-gray {
+        background-color: $gray;
+        color: $black;
+
+        .btn-sort::after {
+            border-color: $black;
+        }
+    }
+
+    .section-lg-gray-d {
+        background-color: $gray-d;
+        color: $white;
+
+        .btn-sort::after {
+            border-color: $white;
+        }
+    }
+
+    .list-item {
+        &.list-item-active {
+            background-color: $gray;
+
+            .item-column {
+                border-color: $gray-d;
+            }
+        }
+
+        &.list-item-active {
+            cursor: default;
+
+            &::before {
+                background-color: $prim;
+            }
+        }
+    }
+
+    .list-item-active {
+        .btn-star {
+            color: $gray-d;
+
+            &:hover {
+                color: $black;
+            }
+        }
+
+        .font-gray {
+            color: $gray-l;
+        }
+    }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .sep-xl-right {
+        border-right: 1px solid $gray;
+    }
+
+    .sep-xl-right-none {
+        border-right: 0;
+    }
+
+    .section-xl-gray {
+        background-color: $gray;
+        color: $black;
+
+        .btn-sort::after {
+            border-color: $black;
+        }
+    }
+
+    .section-xl-gray-d {
+        background-color: $gray-d;
+        color: $white;
+
+        .btn-sort::after {
+            border-color: $white;
+        }
     }
 }

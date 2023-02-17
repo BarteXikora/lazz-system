@@ -34,8 +34,11 @@ const TopBar = () => {
 
     }, [appState.currentFilters])
 
-    return <section className="section-gray py-2 px-3 d-flex justify-content-start align-items-center">
-        <div style={{ width: '250px' }} className="me-3">
+    return <section
+        className="section-gray py-2 px-1 px-md-3 d-flex justify-content-start align-items-center"
+        style={{ overflow: 'hidden' }}
+    >
+        <div style={{ minWidth: '150px', width: '250px' }} className="me-3">
             <SearchBar />
         </div>
 
@@ -50,7 +53,7 @@ const TopBar = () => {
         {
             (filterPills.search || filterPills.form || filterPills.department || filterPills.date)
             && <button
-                className="btn btn-icon-text-small btn-x ms-2"
+                className="d-none d-sm-flex btn btn-icon-text-small btn-x ms-2"
                 onClick={() => appDispatch({ type: 'UPDATE_FILTERS', payload: clearFilters })}
             >
                 <img src={iconDelete} alt="Wyczyść filtry" />
@@ -59,9 +62,12 @@ const TopBar = () => {
             </button>
         }
 
-        <div className="separator mx-3"></div>
+        <div className="d-none d-lg-flex separator mx-3"></div>
 
-        <div className="me-3 fw-bold font-gray-d d-flex align-items-center">
+        <div
+            className="d-none d-lg-flex me-3 fw-bold font-gray-d d-flex align-items-center"
+            style={{ overflow: 'hidden' }}
+        >
             {
                 filterPills.search || filterPills.form || filterPills.department || filterPills.date ?
 

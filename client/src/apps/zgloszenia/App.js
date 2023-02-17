@@ -1,4 +1,5 @@
-import { useEffect, useContext, useReducer } from 'react'
+import { useEffect, useContext, useReducer, useRef } from 'react'
+import useCssAnimate from '../../functions/useCssAnimate'
 import SystemContext from '../../functions/SystemContext'
 import AppContext from './functions/AppContext'
 
@@ -149,11 +150,28 @@ const App = () => {
         }, 1000)
     }
 
+    const previewRef = useRef(null)
+    useCssAnimate(appState.previewShown, [{
+        element: previewRef.current,
+        animations: [{
+            on: true,
+            steps: [{ addClass: ['scroll-column-preview-shown'] }]
+        }, {
+            on: false,
+            steps: [
+                { addClass: ['scroll-column-preview-hide'] },
+                { delay: 200, remClass: ['scroll-column-preview-shown', 'scroll-column-preview-hide'] }
+            ]
+        }]
+    }])
+
+    useEffect(() => previewRef.current.scroll({ top: 0 }), [appState.previewShown])
+
     return <AppContext.Provider value={{ appState, appDispatch, openWindow, fetchList, waitSetStars }}>
         <TopBar />
 
         <div className="scroll-columns">
-            <div className="scroll-column px-3" style={{ width: '60vw' }}>
+            <div className="scroll-column scroll-column-list">
                 <ListHeader
                     shownCnt={appState.filteredSortedList.length}
                     allCnt={appState.contactsList.length}
@@ -180,7 +198,7 @@ const App = () => {
                 }
             </div>
 
-            <div className="scroll-column section-gray-l" style={{ width: '40vw' }}>
+            <div ref={previewRef} className="scroll-column scroll-column-preview section-gray-l">
                 {
                     !appState.listReady ?
                         <div className="mt-5 pt-5">

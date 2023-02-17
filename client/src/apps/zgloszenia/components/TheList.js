@@ -22,17 +22,22 @@ const TheList = () => {
 
                 <ListSortPanel />
 
-                <main className="container-fluid mt-3 mb-5 px-3">
+                <main className="container-fluid mt-3 mb-5 px-3 px-md-4">
                     {
                         appState.filteredSortedList.map(contact => <ListItem
                             key={contact.id}
                             contact={contact}
                             isActive={contact.id === appState.selectedContact}
-                            select={(id) => appDispatch({ type: 'SELECT_CONTACT', payload: id })}
+                            select={(id) => {
+                                appDispatch({ type: 'SELECT_CONTACT', payload: id });
+                                appDispatch({ type: 'OPEN_CLOSE_PREVIEW', payload: true })
+                            }}
                             setStar={waitSetStars}
                         />)
                     }
                 </main>
+
+                <div className="my-5 py-5 my-md-0 py-md-0"></div>
             </>
         }
     </>

@@ -11,7 +11,7 @@ import iconPrint from '../img/icon-print.png'
 const PreviewHeader = ({ contact, empty, contentToPrint }) => {
     const { appState, appDispatch, openWindow } = useContext(AppContext)
 
-    return <header className="mb-4 p-4 section-gray-d">
+    return <header className="mb-4 py-4 px-2 px-md-3 section-gray-d">
         <h2 className="font-big fw-bold">
             <span className="font-gray me-2">Zgłoszenie od:</span>
             {' '}

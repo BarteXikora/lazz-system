@@ -4,6 +4,8 @@ import WindowDelegate from '../windows/WindowDelegate'
 import WindowDownload from '../windows/WindowDownload'
 import WindowAdd from '../windows/WindowAdd'
 import WindowAddConfirm from '../windows/WindowAddConfirm'
+import WindowListOptions from '../windows/WindowListOptions'
+import WindowSort from '../windows/WindowSort'
 
 import NoWindow from '../windows/NoWindow'
 
@@ -13,7 +15,9 @@ const slugs = {
     delegate: { title: 'Przekaż pracownikowi', content: <WindowDelegate /> },
     download: { title: 'Pobierz listę kontaktów', content: <WindowDownload /> },
     add: { title: 'Dodaj kontakt', content: <WindowAdd /> },
-    confirm: { title: 'Dodaj kontakt', content: <WindowAddConfirm /> }
+    confirm: { title: 'Dodaj kontakt', content: <WindowAddConfirm /> },
+    list: { title: 'Lista...', content: <WindowListOptions /> },
+    sort: { title: 'Sortuj listę', content: <WindowSort /> }
 }
 
 const find = (slug) => {

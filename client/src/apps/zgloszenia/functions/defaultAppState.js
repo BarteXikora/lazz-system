@@ -11,7 +11,8 @@ const defaultAppState = {
     sort: { by: 'date', method: 'asc' },
     currentFilters: clearFilters,
     selectedContact: null,
-    error: { isError: false, message: '', code: '' }
+    error: { isError: false, message: '', code: '' },
+    previewShown: false
 }
 
 export default defaultAppState

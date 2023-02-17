@@ -116,6 +116,10 @@ const appReducer = (state, action) => {
         return { ...state }
     }
 
+    if (action.type === 'OPEN_CLOSE_PREVIEW') {
+        return { ...state, previewShown: action.payload }
+    }
+
     return { ...state }
 }
 

@@ -15,50 +15,45 @@ const ListSortPanel = () => {
         appDispatch({ type: 'SORT_CONTACTS', payload: newSort })
     }
 
-    return <section className="container-fluid sticky-top mt-4 px-3">
+    return <section className="container-fluid sticky-top mt-4 px-3 px-md-4">
         <div className="row">
             <ListSortSection
-                cols='2'
+                classes='section-gray-d col-4 col-sm-3 col-md-2 col-lg-3 col-xl-2'
                 text='Data:'
                 isActive={currentSort.by === 'date'}
                 isDesc={currentSort.by === 'date' && currentSort.method === 'desc'}
-                isEven={true}
                 action={() => handleSortClick('date')}
             />
 
             <ListSortSection
-                cols='4'
+                classes='section-gray col-8 col-sm-4'
                 text='Klient:'
                 isActive={currentSort.by === 'client'}
                 isDesc={currentSort.by === 'client' && currentSort.method === 'desc'}
-                isEven={false}
                 action={() => handleSortClick('client')}
             />
 
             <ListSortSection
-                cols='2'
+                classes='section-gray-d col-2 d-none d-md-flex d-lg-none d-xl-flex'
                 text='Dział:'
                 isActive={currentSort.by === 'department'}
                 isDesc={currentSort.by === 'department' && currentSort.method === 'desc'}
-                isEven={true}
                 action={() => handleSortClick('department')}
             />
 
             <ListSortSection
-                cols='3'
+                classes='section-gray-d section-md-gray section-lg-gray-d section-xl-gray col-3 d-none d-sm-flex'
                 text='Przekazano:'
                 isActive={currentSort.by === 'worker'}
                 isDesc={currentSort.by === 'worker' && currentSort.method === 'desc'}
-                isEven={false}
                 action={() => handleSortClick('worker')}
             />
 
             <ListSortSection
-                cols='1'
+                classes='section-gray section-md-gray-d section-lg-gray section-xl-gray-d d-none d-sm-flex col-2 col-md-1 col-lg-2 col-xl-1'
                 text='★'
                 isActive={currentSort.by === 'star'}
                 isDesc={currentSort.by === 'star' && currentSort.method === 'desc'}
-                isEven={true}
                 action={() => handleSortClick('star')}
             />
         </div>
