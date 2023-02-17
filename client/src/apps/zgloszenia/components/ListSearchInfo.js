@@ -1,7 +1,7 @@
 import iconX from '../../../img/icon-close.png'
 
 const ListSearchInfo = ({ phrase, action }) => {
-    return <div className="info-box my-4 d-flex align-items-center justify-content-between">
+    return <div className="info-box my-4 d-flex align-items-center justify-content-between mx-2 mx-md-3">
         <h2 className="fw-bold font-big mb-0">
             Wyniki wyszukiwania dla <q><i className="font-black">{phrase}</i></q>:
         </h2>
