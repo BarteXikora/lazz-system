@@ -72,15 +72,17 @@ const WindowDelegate = () => {
             <h2 className='font-subtitle fw-bold m-0 mb-2'>
                 Przekaż zgłoszenie
 
-                {
-                    (contact.company || contact.name) && <>
-                        {` od `}
+                <span className="d-none d-md-inline">
+                    {
+                        (contact.company || contact.name) && <>
+                            {` od `}
 
-                        {contact.company}
-                        {contact.company && contact.name ? ', ' : ''}
-                        {contact.name}
-                    </>
-                }
+                            {contact.company}
+                            {contact.company && contact.name ? ', ' : ''}
+                            {contact.name}
+                        </>
+                    }
+                </span>
 
                 :
             </h2>
@@ -102,13 +104,13 @@ const WindowDelegate = () => {
 
         <div className="col-12 mb-2"><hr /></div>
 
-        <div className="col-6 mb-2">
+        <div className="col-12 col-md-6 mb-2">
             <h3 className="font-big fw-bold">Przekaż:</h3>
 
             <SelectInput options={workers} state={worker} setState={setWorker} />
         </div>
 
-        <div className="col-6 mb-3 ps-4">
+        <div className="col-12 col-md-6 mb-3 ps-md-4 mt-4 mt-md-0">
             <h3 className="font-big fw-bold">Aktualnie przekazano:</h3>
             {
                 contact.worker !== null ?
@@ -149,16 +151,16 @@ const WindowDelegate = () => {
 
         <div className="col-12 mb-2"><hr /></div>
 
-        <div className="col-12 d-flex d-flex justify-content-end">
+        <div className="col-12 d-flex flex-column-reverse flex-md-row justify-content-end">
             <button
-                className="btn btn-sec mb-1 ms-1"
+                className="btn btn-sec mb-1 ms-md-1"
                 onClick={() => systemDispatch({ type: 'CLOSE_WINDOW' })}
             >
                 Anuluj
             </button>
 
             <button
-                className={`${contact.worker === null ? 'btn-dis' : 'btn-x'} btn mb-1 ms-3`}
+                className={`${contact.worker === null ? 'btn-dis' : 'btn-x'} btn mb-4 mb-md-1 ms-md-3`}
                 onClick={() => postContactWorder(contact.id, null)}
             >
                 {(isLoading && contact.worker !== null) && <ButtonLoading />}
@@ -167,7 +169,7 @@ const WindowDelegate = () => {
             </button>
 
             <button
-                className={`btn ${worker ? 'btn-prim' : 'btn-dis'} mb-1 ms-1`}
+                className={`btn ${worker ? 'btn-prim' : 'btn-dis'} mb-1 ms-md-1`}
                 onClick={() => postContactWorder(contact.id, worker.id)}
             >
                 {isLoading && <ButtonLoading />}

@@ -60,7 +60,7 @@ const WindowAddConfirm = () => {
     return <div className='row px-2'>
         {
             success ?
-                <div className="col-12 mb-4 d-flex align-items-center justify-content-center">
+                <div className="col-12 mb-4 d-flex flex-column flex-sm-row text-center text-sm-start align-items-center justify-content-center">
                     <img src={picSuccess} alt="Wysłano kontakt!" className='mb-3' />
 
                     <div className='ms-4 me-5'>

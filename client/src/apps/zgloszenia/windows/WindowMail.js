@@ -35,22 +35,22 @@ const WindowMail = () => {
 
         <div className="col-12 mb-2"><hr /></div>
 
-        <div className="col-12">
+        <div className="col-12 d-flex flex-column flex-sm-row">
             <button className='btn btn-prim mb-3' onClick={() => sendMail(contact)}>
                 Wyślij e-mail z danymi
             </button>
+        </div>
 
-            <br />
-
+        <div className="col-12 d-flex flex-column flex-sm-row">
             <button
-                className='btn btn-prim mb-1 me-2'
+                className='btn btn-prim mb-1 me-sm-2'
                 onClick={() => sendMail(contact, systemState.user.email)}
             >
                 Wyślij do siebie
             </button>
 
             <button
-                className={`btn ${contact.email ? 'btn-prim' : 'btn-dis'} mb-1 me-2`}
+                className={`btn ${contact.email ? 'btn-prim' : 'btn-dis'} mb-1 me-sm-2`}
                 onClick={
                     () => contact.email ?
                         sendMail(contact, contact.email)
@@ -62,7 +62,7 @@ const WindowMail = () => {
             </button>
 
             <button
-                className={`btn ${contact.worker !== null ? 'btn-prim' : 'btn-dis'} mb-1 me-2`}
+                className={`btn ${contact.worker !== null ? 'btn-prim' : 'btn-dis'} mb-1 me-sm-2`}
                 onClick={
                     () => contact.worker !== null ?
                         sendMail(contact, contact.worker.email)
@@ -82,10 +82,12 @@ const WindowMail = () => {
                     </button>
                 </div>
             }
+        </div>
 
+        <div>
             <div className="col-12 mb-2"><hr /></div>
 
-            <div className="col-12 mt-2 d-flex justify-content-end">
+            <div className="col-12 mt-2 d-flex flex-column flex-sm-row justify-content-end">
                 <button className="btn btn-sec" onClick={() => systemDispatch({ type: 'CLOSE_WINDOW' })}>
                     Anuluj
                 </button>

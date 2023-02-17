@@ -58,19 +58,19 @@ const WindowDownload = () => {
 
         <div className="col-12 mb-2"><hr /></div>
 
-        <div className="col-12 mb-2 d-flex justify-content-between">
-            <div>
-                <button className='btn btn-prim mb-1 me-1' onClick={() => handleDownload('txt')}>
+        <div className="col-12 mb-2 d-flex flex-column flex-md-row justify-content-between">
+            <div className='d-flex flex-column flex-md-row'>
+                <button className='btn btn-prim mb-1 me-md-1' onClick={() => handleDownload('txt')}>
                     Pobierz listę .TXT do Excela
                 </button>
 
-                <button className='btn btn-prim mb-1 me-1' onClick={() => handleDownload('json')}>
+                <button className='btn btn-prim mb-1 me-md-1' onClick={() => handleDownload('json')}>
                     Pobierz listę .JSON
                 </button>
             </div>
 
             <button
-                className='btn btn-sec'
+                className='btn btn-sec mt-4 mt-md-0'
                 onClick={() => systemDispatch({ type: 'CLOSE_WINDOW' })}
             >
                 Anuluj

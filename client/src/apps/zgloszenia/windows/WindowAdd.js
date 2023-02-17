@@ -68,7 +68,7 @@ const WindowAdd = () => {
             <h3 className="font-big fw-bold">Dane podstawowe:</h3>
         </div>
 
-        <div className="col-6 mb-2">
+        <div className="col-12 col-md-6 mb-2">
             <label>
                 <span className='fw-bold'>Numer telefonu: <span className="font-wrong fw-bold">*</span></span>
                 <input
@@ -90,7 +90,7 @@ const WindowAdd = () => {
             </label>
         </div>
 
-        <div className="col-6 mb-2">
+        <div className="col-12 col-md-6 mb-2">
             <label>
                 <span>Nazwa firmy:</span>
                 <input type="text" className='mb-2' value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} />
@@ -138,7 +138,7 @@ const WindowAdd = () => {
                 <div className="row">
                     <div className="col-12 mb-2"><hr /></div>
 
-                    <div className="col-6 mb-2">
+                    <div className="col-12 col-md-6 mb-2">
                         <h3 className="font-big fw-bold mb-3">Szczegóły:</h3>
 
                         <label>
@@ -157,8 +157,8 @@ const WindowAdd = () => {
                         </label>
                     </div>
 
-                    <div className="col-6 mb-2">
-                        <h3 className="font-big fw-bold mb-3">Dane urządzenia:</h3>
+                    <div className="col-12 col-md-6 mb-2">
+                        <h3 className="font-big fw-bold mt-4 mt-md-0 mb-3">Dane urządzenia:</h3>
 
                         <label>
                             <span>Marka / model:</span>
@@ -186,9 +186,13 @@ const WindowAdd = () => {
                         Należy uzupełnić przynajmniej jedo pole kontaktowe!
                     </h3>
 
-                    <p className='m-0'>
+                    <p className='d-none d-md-inline m-0'>
                         Aby dodać kontakt wymagane jest uzupełnienie przynajmniej jednogo z
-                        pól: <br /> <b>Numer telefonu I/LUB Adres e-mail.</b>
+                        pól:
+                    </p>
+
+                    <p className="m-0">
+                        <b>Numer telefonu I/LUB Adres e-mail.</b>
                     </p>
                 </div>
             </div>
@@ -196,12 +200,12 @@ const WindowAdd = () => {
 
         <div className="col-12 mb-2"><hr /></div>
 
-        <div className="col-12 d-flex justify-content-between">
+        <div className="col-12 d-flex flex-column flex-sm-row justify-content-between">
             <button className="btn btn-x ms-2 mb-1" onClick={() => setForm(emptyForm)}>
                 Wyczyść formularz
             </button>
 
-            <div>
+            <div className='d-flex flex-column-reverse flex-sm-row mt-4 mt-sm-0'>
                 <button
                     className="btn btn-sec ms-2 mb-1"
                     onClick={() => systemDispatch({ type: 'CLOSE_WINDOW' })}

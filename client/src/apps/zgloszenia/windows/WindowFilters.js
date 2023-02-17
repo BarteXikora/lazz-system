@@ -106,11 +106,14 @@ const WindowFilters = () => {
 
     return <div className='row px-2'>
         <div className="col-12">
-            <h2 className='font-subtitle fw-bold m-0 mb-2'>Filtry zgłoszeń:</h2>
+            <h2 className='font-subtitle fw-bold m-0 mb-md-2'>Filtry zgłoszeń:</h2>
 
             <p className='m-0'>
-                Filtry pomagają w szybszym odnalezieniu rządanych zgłoszeń.
-                <br />
+                <span className="d-none d-md-inline">
+                    Filtry pomagają w szybszym odnalezieniu rządanych zgłoszeń.
+                    <br />
+                </span>
+
                 <b>
                     Więcej informacji na temat filtrowania zgłoszeń znaleźć
                     można w <button
@@ -129,7 +132,7 @@ const WindowFilters = () => {
 
         <div className="col-12 mb-2"><hr /></div>
 
-        <div className="col-4">
+        <div className="col-12 col-md-4">
             <h3 className='font-big fw-bold mb-3'>Formularz kontaktowy:</h3>
 
             <CheckBoxFilter
@@ -138,7 +141,7 @@ const WindowFilters = () => {
             />
         </div>
 
-        <div className="col-4">
+        <div className="col-12 col-md-4 mt-4 mt-md-0">
             <h3 className='font-big fw-bold mb-3'>Dział:</h3>
 
             <CheckBoxFilter
@@ -147,7 +150,7 @@ const WindowFilters = () => {
             />
         </div>
 
-        <div className="col-4">
+        <div className="col-12 col-md-4 mt-4 mt-md-0">
             <h3 className='font-big fw-bold mb-3'>Data zgłoszenia:</h3>
 
             <DateFilter
@@ -160,7 +163,7 @@ const WindowFilters = () => {
             (!isCorrect.ok && isCorrect.clicked) && <div className="col-12 mt-5 warning-box">
                 <h3 className="fw-bold font-big mb-0">{isCorrect.message || 'Wystąpił błąd'}.</h3>
 
-                <p className='mb-0'>
+                <p className='d-none d-md-block mb-0'>
                     Aby zastosować filtry należy rozwiązać ten problem, lub {` `}
                     <button className="fake-link fw-bold" onClick={clearFilters}>wyczyścić filtry</button>.
 
@@ -181,26 +184,26 @@ const WindowFilters = () => {
 
         <div className="col-12 mt-4"><hr /></div>
 
-        <div className="col-12 mt-2 d-flex justify-content-between">
-            <div>
+        <div className="col-12 mt-2 d-flex flex-column flex-sm-row justify-content-between">
+            <div className='d-flex flex-column flex-sm-row'>
                 <button
-                    className="btn btn-x me-2 mb-1"
+                    className="btn btn-x me-sm-2 mb-1"
                     onClick={clearFilters}
                 >
                     <span>Wyczyść filtry</span>
                 </button>
 
                 <button
-                    className="btn btn-sec me-2 mb-1"
+                    className="btn btn-sec me-sm-2 mb-1"
                     onClick={undoChanges}
                 >
                     <span>Cofnij zmiany</span>
                 </button>
             </div>
 
-            <div>
+            <div className='d-flex flex-column-reverse flex-sm-row mt-4 mt-sm-0'>
                 <button
-                    className='btn btn-sec ms-2 mb-1'
+                    className='btn btn-sec ms-sm-2 mb-1'
                     onClick={() => {
                         undoChanges()
                         systemDispatch({ type: 'CLOSE_WINDOW' })
@@ -210,7 +213,7 @@ const WindowFilters = () => {
                 </button>
 
                 <button
-                    className={`btn ${isCorrect.ok ? 'btn-prim' : 'btn-dis'} ms-2 mb-1`}
+                    className={`btn ${isCorrect.ok ? 'btn-prim' : 'btn-dis'} ms-sm-2 mb-1`}
                     onClick={() => {
                         handleSetFilters()
                     }}
