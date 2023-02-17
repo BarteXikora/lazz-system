@@ -353,6 +353,30 @@ label {
   display: block;
 }
 
+.input-btn {
+  display: flex;
+}
+.input-btn input {
+  border-right: 0;
+}
+.input-btn input:hover + button, .input-btn input:focus + button {
+  border-color: #0084ff !important;
+}
+.input-btn button {
+  border: 1px solid #001217 !important;
+  border-left: 0 !important;
+  background-color: #E4EBEF;
+}
+.input-btn button:hover {
+  background-color: #B5C6D2;
+}
+.input-btn button.active {
+  background-color: #43bdff;
+}
+.input-btn button.active:hover {
+  background-color: #B5C6D2;
+}
+
 .drawer-slide-in-left {
   animation: drawer-slide-in-left;
   animation-duration: 0.2s;

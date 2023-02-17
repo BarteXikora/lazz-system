@@ -39,3 +39,34 @@ textarea,
 label {
     display: block;
 }
+
+.input-btn {
+    display: flex;
+
+    input {
+        border-right: 0;
+
+        &:hover+button,
+        &:focus+button {
+            border-color: $prim !important;
+        }
+    }
+
+    button {
+        border: 1px solid $black !important;
+        border-left: 0 !important;
+        background-color: $gray-l;
+
+        &:hover {
+            background-color: $gray;
+        }
+
+        &.active {
+            background-color: $prim-l;
+
+            &:hover {
+                background-color: $gray;
+            }
+        }
+    }
+}
