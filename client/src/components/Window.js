@@ -44,14 +44,16 @@ const Window = () => {
         <div className="d-none window-container" ref={containerRef}>
             <div className="window" ref={windowRef}>
                 <div className="bar d-flex align-items-center justify-content-between">
-                    <span className="px-4">{systemState.window.title}</span>
+                    <div className="window-title">
+                        <span className="px-3">{systemState.window.title}</span>
+                    </div>
 
                     <button className="btn btn-x btn-icon">
                         <img src={iconClose} alt="Zamknij okno" onClick={() => systemDispatch({ type: 'CLOSE_WINDOW' })} />
                     </button>
                 </div>
 
-                <div className="window-body p-4 m-0" ref={scrollRef}>
+                <div className="window-body py-4 px-2 px-md-4 m-0" ref={scrollRef}>
                     {systemState.window.content}
                 </div>
             </div>
