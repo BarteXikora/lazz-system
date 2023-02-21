@@ -17,35 +17,35 @@ const connect = () => {
     })
 }
 
-const checkDB = async (doLog = true) => {
+const checkDB = async () => {
     const ok = await connect()
 
-    if (ok) {
-        if (doLog) console.log('[>] Connected to database!')
-        return ok
-    }
-    else {
-        if (doLog) console.log('[!] Database connection error!')
-        return false
-    }
+    if (ok) console.log('[>] Connected to database!')
+    else console.log('[!] Database connection error!')
+
+    ok.end()
+    return ok === true
 }
 
 const q = async (query, rows) => {
-    return new Promise(done => {
-        (async () => {
-            const db = await checkDB(false)
+    return new Promise(async done => {
+        const db = await connect()
 
-            if (!db) done(false)
+        if (!db) {
+            db.end()
+            return done(false)
+        }
 
-            db.query(query, rows, (error, result) => {
-                if (error) {
-                    console.error('[!] An error accured on database query!', error);
-                    return done(false)
-                }
+        db.query(query, rows, (error, result) => {
+            db.end()
 
-                return done(result)
-            })
-        })()
+            if (error) {
+                console.error('[!] An error accured on database query!\n[!] ERROR: ', error);
+                return done(false)
+            }
+
+            return done(result)
+        })
     })
 }
 
