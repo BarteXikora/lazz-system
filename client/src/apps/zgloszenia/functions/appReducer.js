@@ -51,6 +51,16 @@ const appReducer = (state, action) => {
             let foundStar = state.starsList.filter(star => star.contact_id === contact.id)
             if (foundStar.length > 0) contact.star = true
             else contact.star = false
+
+            // Fill author data:
+            let foundAuthor = null
+            if (contact.author === 0) foundAuthor = { id: 0, name: 'Strona internetowa' }
+            else {
+                foundAuthor = state.workersList.filter(worker => worker.id === contact.author)
+                if (foundAuthor.length > 0) foundAuthor = foundAuthor[0]
+                else foundAuthor = null
+            }
+            contact.author = foundAuthor
         }
 
         return {
