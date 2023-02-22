@@ -1,5 +1,7 @@
-import { useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import AppContext from '../functions/AppContext'
+
+import ButtonLoading from '../../../components/ButtonLoading'
 
 import iconDownload from '../img/icon-download.png'
 import iconReload from '../img/icon-reload.png'
@@ -8,6 +10,16 @@ import iconHamburger from '../../../img/icon-hamburger.png'
 
 const ListHeader = ({ shownCnt, allCnt }) => {
     const { appState, appDispatch, openWindow, fetchList } = useContext(AppContext)
+    const [isLoading, setIsLoading] = useState(false)
+
+    const handleReload = () => {
+        if (isLoading) return
+
+        setIsLoading(true)
+        fetchList()
+    }
+
+    useEffect(() => setIsLoading(false), [appState.contactsList, appState.error])
 
     return <header
         className={`d-flex flex-row flex-lg-column flex-xl-row 
@@ -34,8 +46,10 @@ const ListHeader = ({ shownCnt, allCnt }) => {
 
             <button
                 className="btn btn-sec btn-icon-text-small ms-1"
-                onClick={fetchList}
+                onClick={handleReload}
             >
+                {isLoading && <ButtonLoading />}
+
                 <img src={iconReload} alt="Odśwież" />
                 <span>Odśwież</span>
             </button>

@@ -65,6 +65,19 @@
     }
 }
 
+.btn-sec {
+    .loading-small {
+        animation-name: loading-sec;
+        background-color: $gray-l;
+
+        &::before,
+        &::after {
+            animation-name: loading-sec;
+            background-color: $gray-l;
+        }
+    }
+}
+
 @keyframes loading {
     10% {
         background-color: $prim;
@@ -90,6 +103,24 @@
 
     30% {
         background-color: $gray-d;
+    }
+
+    80% {
+        background-color: $gray-l;
+    }
+
+    100% {
+        background-color: $gray-l;
+    }
+}
+
+@keyframes loading-sec {
+    10% {
+        background-color: $prim-l;
+    }
+
+    30% {
+        background-color: $prim-l;
     }
 
     80% {

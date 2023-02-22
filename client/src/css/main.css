@@ -565,6 +565,15 @@ label {
   background-color: #E4EBEF;
 }
 
+.btn-sec .loading-small {
+  animation-name: loading-sec;
+  background-color: #E4EBEF;
+}
+.btn-sec .loading-small::before, .btn-sec .loading-small::after {
+  animation-name: loading-sec;
+  background-color: #E4EBEF;
+}
+
 @keyframes loading {
   10% {
     background-color: #0084ff;
@@ -585,6 +594,20 @@ label {
   }
   30% {
     background-color: #3B4D5A;
+  }
+  80% {
+    background-color: #E4EBEF;
+  }
+  100% {
+    background-color: #E4EBEF;
+  }
+}
+@keyframes loading-sec {
+  10% {
+    background-color: #43bdff;
+  }
+  30% {
+    background-color: #43bdff;
   }
   80% {
     background-color: #E4EBEF;
@@ -773,6 +796,10 @@ button:focus,
 
 .btn-prim .btn-loading-courtain {
   background-color: #0084ff;
+}
+
+.btn-sec .btn-loading-courtain {
+  background-color: #001217;
 }
 
 .fake-link {

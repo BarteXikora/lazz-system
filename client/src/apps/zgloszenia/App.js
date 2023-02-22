@@ -190,6 +190,7 @@ const App = () => {
                                 message={appState.error.message}
                                 code={appState.error.code}
                                 reload={fetchList}
+                                appState={appState}
                             />
 
                             :
