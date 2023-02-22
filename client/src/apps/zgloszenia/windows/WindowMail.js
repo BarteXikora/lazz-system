@@ -72,17 +72,20 @@ const WindowMail = () => {
             >
                 Wyślij do pracownika
             </button>
+        </div>
 
-            {
-                warning.show && <div className="warning-box my-4 d-flex align-items-center justify-content-between">
+
+        {
+            warning.show && <div className='col-12 mb-2'>
+                <div className="warning-box my-4 d-flex align-items-center justify-content-between">
                     <h2 className='font-big fw-bold font-wrong m-0 me-4'>{warning.message}</h2>
 
                     <button className='btn btn-x btn-icon-small' onClick={() => setWarning({ show: false, message: '' })}>
                         <img src={iconX} alt="Zamknij powiadomienie" />
                     </button>
                 </div>
-            }
-        </div>
+            </div>
+        }
 
         <div>
             <div className="col-12 mb-2"><hr /></div>
