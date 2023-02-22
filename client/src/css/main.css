@@ -1299,6 +1299,15 @@ button:focus,
     border-color: #F4FAFF;
   }
 }
+.scroll-column-half {
+  width: 50%;
+}
+
+.calculator-form {
+  height: 100%;
+  overflow-y: scroll;
+}
+
 ._sizes {
   position: fixed;
   bottom: 0;

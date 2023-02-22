@@ -1,7 +1,11 @@
-import WorkInProgress from '../../components/WorkInProgress'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import App from './App'
 
-const App = () => {
-    return <WorkInProgress />
+const Index = () => {
+    return <Routes>
+        <Route index element={<App />} />
+        <Route path='*' element={<Navigate to={'/'} />} />
+    </Routes>
 }
 
-export default App
+export default Index
