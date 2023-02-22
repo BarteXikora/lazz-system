@@ -1053,10 +1053,18 @@ button:focus,
   top: 8px;
 }
 
-.section-gray .btn-sort.btn-sort-active::after {
+.section-gray .btn-sort.btn-sort-active::after,
+.section-sm-gray .btn-sort.btn-sort-active::after,
+.section-md-gray .btn-sort.btn-sort-active::after,
+.section-lg-gray .btn-sort.btn-sort-active::after,
+.section-xl-gray .btn-sort.btn-sort-active::after {
   border-color: #F4FAFF;
 }
-.section-gray .btn-sort::after {
+.section-gray .btn-sort::after,
+.section-sm-gray .btn-sort::after,
+.section-md-gray .btn-sort::after,
+.section-lg-gray .btn-sort::after,
+.section-xl-gray .btn-sort::after {
   border-color: #001217;
 }
 

@@ -125,7 +125,11 @@
     }
 }
 
-.section-gray .btn-sort {
+.section-gray .btn-sort,
+.section-sm-gray .btn-sort,
+.section-md-gray .btn-sort,
+.section-lg-gray .btn-sort,
+.section-xl-gray .btn-sort {
     &.btn-sort-active::after {
         border-color: $white;
     }
