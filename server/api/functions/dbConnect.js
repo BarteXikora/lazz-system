@@ -23,7 +23,7 @@ const checkDB = async () => {
     if (ok) console.log('[>] Connected to database!')
     else console.log('[!] Database connection error!')
 
-    ok.end()
+    if (ok) ok.end()
     return ok === true
 }
 
@@ -31,10 +31,7 @@ const q = async (query, rows) => {
     return new Promise(async done => {
         const db = await connect()
 
-        if (!db) {
-            db.end()
-            return done(false)
-        }
+        if (!db) return done(false)
 
         db.query(query, rows, (error, result) => {
             db.end()
