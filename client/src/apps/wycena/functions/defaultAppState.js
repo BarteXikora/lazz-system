@@ -7,7 +7,8 @@ const defaultAppReducer = {
             timeLathe: 0,
             timeMontage: 0
         },
-        shipment: { id: 0, name: 'Polska' }
+        shipment: { id: 0, name: 'Polska' },
+        spindles: [{ id: 0, type: { id: -1, name: '' }, montage: { id: -1, name: '' }, cnt: 1 }]
     }
 }
 

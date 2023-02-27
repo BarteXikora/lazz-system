@@ -1405,6 +1405,11 @@ button:focus,
   background-color: #F4FAFF;
 }
 
+.spindle-container {
+  background-color: #E4EBEF;
+  border-left: 10px solid #3B4D5A;
+}
+
 ._sizes {
   position: fixed;
   bottom: 0;
