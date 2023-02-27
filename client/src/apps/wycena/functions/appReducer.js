@@ -11,6 +11,10 @@ const appReducer = (state, action) => {
                     times: { ...state.calculator.times, ...action.payload.value }
                 }
             }
+        } else if (action.payload.section === 'shipment') {
+            return {
+                ...state, calculator: { ...state.calculator, shipment: action.payload.value }
+            }
         }
 
         return { ...state }
