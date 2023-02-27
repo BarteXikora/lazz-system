@@ -96,6 +96,7 @@ label {
     input,
     .input-unit {
         border: 0;
+        transition: $transition;
     }
 
     &:hover,
@@ -106,6 +107,21 @@ label {
     .fake-input-text {
         padding: 8px 0;
         background-color: $gray-l;
+        transition: $transition;
+    }
+
+    &.fake-input-validated {
+        border-color: $sec-d;
+
+        input,
+        .fake-input-text {
+            background-color: $sec-s;
+        }
+
+        .input-unit {
+            background-color: $sec;
+            color: $white;
+        }
     }
 }
 

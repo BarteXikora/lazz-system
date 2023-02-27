@@ -400,6 +400,7 @@ label {
 .fake-input input,
 .fake-input .input-unit {
   border: 0;
+  transition: all 0.2s ease-in-out;
 }
 .fake-input:hover, .fake-input:focus-within {
   border-color: #0084ff;
@@ -407,6 +408,18 @@ label {
 .fake-input .fake-input-text {
   padding: 8px 0;
   background-color: #E4EBEF;
+  transition: all 0.2s ease-in-out;
+}
+.fake-input.fake-input-validated {
+  border-color: #007b63;
+}
+.fake-input.fake-input-validated input,
+.fake-input.fake-input-validated .fake-input-text {
+  background-color: #a7ffed;
+}
+.fake-input.fake-input-validated .input-unit {
+  background-color: #00b18e;
+  color: #F4FAFF;
 }
 
 input[type=number]::-webkit-inner-spin-button {

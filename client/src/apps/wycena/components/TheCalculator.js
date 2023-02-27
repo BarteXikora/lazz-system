@@ -33,7 +33,7 @@ const TheCalculator = () => {
             <h2 className="font-big fw-bold m-0">Czas pracy:</h2>
 
             <p>
-                Czas zaokrąglany do połowy godziny zapisywanej jako <b>X,5</b>.
+                Czas zaokrąglany jest do pełnej połowy godziny.
             </p>
         </div>
 
