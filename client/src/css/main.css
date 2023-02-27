@@ -1033,6 +1033,13 @@ button:focus,
   background-color: #d1efff;
 }
 
+.section-gray .csi-container {
+  background-color: #E4EBEF;
+}
+.section-gray .csi-options-dropdown {
+  background-color: #E4EBEF;
+}
+
 .separator {
   padding: 15px 0;
   border-left: 1px solid #001217;
