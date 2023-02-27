@@ -377,6 +377,21 @@ label {
   background-color: #B5C6D2;
 }
 
+.input-unit {
+  display: block;
+  padding: 8px 12px;
+  background-color: #B5C6D2;
+  border: 1px solid #001217;
+  font-weight: bold;
+}
+.input-unit.input-unit-middle {
+  border-left: 0;
+  border-right: 0;
+}
+.input-unit.input-unit-end {
+  border-left: 0;
+}
+
 .drawer-slide-in-left {
   animation: drawer-slide-in-left;
   animation-duration: 0.2s;
@@ -695,12 +710,22 @@ button:focus,
 }
 
 .btn-tr {
-  background-color: transparent !important;
+  background-color: transparent;
   color: #001217;
 }
 .btn-tr:hover {
-  background-color: #B5C6D2 !important;
-  color: #001217 !important;
+  background-color: #B5C6D2;
+  color: #001217;
+}
+.btn-tr.btn-active {
+  background-color: #43bdff !important;
+}
+.btn-tr.btn-active:hover {
+  background-color: #d1efff !important;
+}
+
+.section-gray .btn-tr:not(.btn-active):hover {
+  background-color: #E4EBEF !important;
 }
 
 .btn-icon {
@@ -813,6 +838,11 @@ button:focus,
 }
 .fake-link:hover {
   color: #43bdff;
+}
+
+.fake-link-black {
+  color: #001217;
+  text-decoration: none;
 }
 
 .link-help {
@@ -1303,9 +1333,35 @@ button:focus,
   width: 50%;
 }
 
-.calculator-form {
-  height: 100%;
-  overflow-y: scroll;
+.tabs-container {
+  background-color: #B5C6D2;
+  border-bottom: 2px solid #0084ff;
+}
+
+.tab {
+  margin: 0;
+  background-color: #E4EBEF;
+  border-radius: 5px 5px 0 0 !important;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+.tab:hover {
+  background-color: #d1efff;
+}
+.tab.tab-active {
+  position: relative;
+  outline: 2px solid #0084ff !important;
+  background-color: #F4FAFF;
+}
+.tab.tab-active::after {
+  position: absolute;
+  content: "";
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #F4FAFF;
 }
 
 ._sizes {

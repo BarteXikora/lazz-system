@@ -2,7 +2,36 @@
     width: 50%;
 }
 
-.calculator-form {
-    height: 100%;
-    overflow-y: scroll;
+.tabs-container {
+    background-color: $gray;
+    border-bottom: 2px solid $prim;
+}
+
+.tab {
+    margin: 0;
+    background-color: $gray-l;
+    border-radius: 5px 5px 0 0 !important;
+    font-weight: bold;
+    font-size: $f-default;
+    transition: $transition;
+
+    &:hover {
+        background-color: $prim-s;
+    }
+
+    &.tab-active {
+        position: relative;
+        outline: 2px solid $prim !important;
+        background-color: $white;
+
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: -2px;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background-color: $white;
+        }
+    }
 }

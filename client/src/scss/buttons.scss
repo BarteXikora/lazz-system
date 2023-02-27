@@ -87,13 +87,25 @@ button,
 }
 
 .btn-tr {
-    background-color: transparent !important;
+    background-color: transparent;
     color: $black;
 
     &:hover {
-        background-color: $gray !important;
-        color: $black !important;
+        background-color: $gray;
+        color: $black;
     }
+
+    &.btn-active {
+        background-color: $prim-l !important;
+
+        &:hover {
+            background-color: $prim-s !important;
+        }
+    }
+}
+
+.section-gray .btn-tr:not(.btn-active):hover {
+    background-color: $gray-l !important;
 }
 
 .btn-icon {
@@ -217,6 +229,11 @@ button,
     &:hover {
         color: $prim-l;
     }
+}
+
+.fake-link-black {
+    color: $black;
+    text-decoration: none;
 }
 
 .link-help {

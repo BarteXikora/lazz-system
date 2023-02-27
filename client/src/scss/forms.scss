@@ -70,3 +70,20 @@ label {
         }
     }
 }
+
+.input-unit {
+    display: block;
+    padding: 8px 12px;
+    background-color: $gray;
+    border: 1px solid $black;
+    font-weight: bold;
+
+    &.input-unit-middle {
+        border-left: 0;
+        border-right: 0;
+    }
+
+    &.input-unit-end {
+        border-left: 0;
+    }
+}
