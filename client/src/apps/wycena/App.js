@@ -6,8 +6,8 @@ import defaultAppState from './functions/defaultAppState'
 import AppContext from './functions/AppContext'
 
 import AppTabs from './components/AppTabs'
-import TheCalculator from './components/TheCalculator'
-import TheList from './components/TheList'
+import TheCalculator from './components/calculator/TheCalculator'
+import TheList from './components/list/TheList'
 
 const App = () => {
     const { systemState, systemDispatch } = useContext(SystemContext)

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import AppContext from '../functions/AppContext'
+import AppContext from '../../functions/AppContext'
 
 import InputTime from './InputTime'
 
