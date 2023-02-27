@@ -87,3 +87,28 @@ label {
         border-left: 0;
     }
 }
+
+.fake-input {
+    display: flex;
+    border: 1px solid $black;
+    transition: $transition;
+
+    input,
+    .input-unit {
+        border: 0;
+    }
+
+    &:hover,
+    &:focus-within {
+        border-color: $prim;
+    }
+
+    .fake-input-text {
+        padding: 8px 0;
+        background-color: $gray-l;
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

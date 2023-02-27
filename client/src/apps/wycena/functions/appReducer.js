@@ -4,7 +4,16 @@ const appReducer = (state, action) => {
     }
 
     if (action.type === 'SET_CALCULATOR') {
-        return { ...state, calculator: { ...state.calculator, ...action.payload } }
+        if (action.payload.section === 'times') {
+            return {
+                ...state, calculator: {
+                    ...state.calculator,
+                    times: { ...state.calculator.times, ...action.payload.value }
+                }
+            }
+        }
+
+        return { ...state }
     }
 
     return { ...state }

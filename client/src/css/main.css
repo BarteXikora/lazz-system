@@ -392,6 +392,27 @@ label {
   border-left: 0;
 }
 
+.fake-input {
+  display: flex;
+  border: 1px solid #001217;
+  transition: all 0.2s ease-in-out;
+}
+.fake-input input,
+.fake-input .input-unit {
+  border: 0;
+}
+.fake-input:hover, .fake-input:focus-within {
+  border-color: #0084ff;
+}
+.fake-input .fake-input-text {
+  padding: 8px 0;
+  background-color: #E4EBEF;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .drawer-slide-in-left {
   animation: drawer-slide-in-left;
   animation-duration: 0.2s;
