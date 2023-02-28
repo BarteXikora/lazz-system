@@ -23,6 +23,10 @@ const appReducer = (state, action) => {
             return {
                 ...state, calculator: { ...state.calculator, body: action.payload.value }
             }
+        } else if (action.payload.section === 'extra') {
+            return {
+                ...state, calculator: { ...state.calculator, extra: action.payload.value }
+            }
         }
 
         return { ...state }

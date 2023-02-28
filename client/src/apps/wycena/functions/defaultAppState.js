@@ -22,6 +22,10 @@ const defaultAppReducer = {
         body: {
             length: 0,
             flatBar: { id: 0 }
+        },
+        extra: {
+            cluth: { id: 0 },
+            backHead: false
         }
     }
 }

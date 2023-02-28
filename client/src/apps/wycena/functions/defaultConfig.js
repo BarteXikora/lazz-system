@@ -23,6 +23,12 @@ export default {
                 { id: 1, name: 'Płaskownik 100', price: 0 },
                 { id: 2, name: 'Płaskownik 120', price: 0 },
             ]
+        },
+        extra: {
+            cluthes: [
+                { id: 0, name: 'LAZZONI - na płetwę', price: 0 },
+                { id: 1, name: 'Gomad', price: 0 }
+            ]
         }
     }
 }
