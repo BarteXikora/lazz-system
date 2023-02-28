@@ -1,5 +1,8 @@
+import defaultConfig from './defaultConfig'
+
 const defaultAppReducer = {
     showCalculator: true,
+    config: defaultConfig,
     calculator: {
         times: {
             timeProject: 0,
@@ -11,9 +14,9 @@ const defaultAppReducer = {
         spindles: [
             {
                 id: 0,
-                type: { id: 0, name: 'Szybkozłączka - standard' },
-                montage: { id: 0, name: '6001 32 mm rozstaw' },
-                cnt: 1
+                type: { id: 0 },
+                montage: { id: 0 },
+                cnt: 0
             }
         ]
     }
