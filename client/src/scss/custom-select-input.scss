@@ -19,7 +19,20 @@
     border: 1px solid $black;
     padding: 8px 12px;
     transition: $transition;
+    white-space: nowrap;
+    overflow: hidden;
     cursor: pointer;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        height: calc(100% - 2px);
+        width: 50px;
+        background-color: $white;
+        transition: $transition;
+    }
 
     &::after {
         content: '';
@@ -36,6 +49,10 @@
 
     &:hover {
         background-color: $prim-s;
+
+        &::before {
+            background-color: $prim-s;
+        }
     }
 }
 
@@ -62,11 +79,33 @@
 }
 
 .section-gray {
-    .csi-container {
+    .csi-selected {
         background-color: $gray-l;
+
+        &::before {
+            background-color: $gray-l;
+        }
+
+        &:hover {
+            background-color: $prim-s;
+
+            &::before {
+                background-color: $prim-s;
+            }
+        }
     }
 
     .csi-options-dropdown {
         background-color: $gray-l;
+    }
+}
+
+.section-gray-l {
+    .csi-selected {
+        background-color: $white;
+
+        &:hover {
+            background-color: $prim-s;
+        }
     }
 }

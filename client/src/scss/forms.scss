@@ -128,3 +128,17 @@ label {
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+
+.section-gray-l {
+
+    input,
+    textarea,
+    .form-control {
+        background-color: $white;
+
+        &:focus {
+            background-color: $prim-s;
+            color: $prim;
+        }
+    }
+}

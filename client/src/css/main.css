@@ -426,6 +426,18 @@ input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
+.section-gray-l input,
+.section-gray-l textarea,
+.section-gray-l .form-control {
+  background-color: #F4FAFF;
+}
+.section-gray-l input:focus,
+.section-gray-l textarea:focus,
+.section-gray-l .form-control:focus {
+  background-color: #d1efff;
+  color: #0084ff;
+}
+
 .drawer-slide-in-left {
   animation: drawer-slide-in-left;
   animation-duration: 0.2s;
@@ -994,7 +1006,19 @@ button:focus,
   border: 1px solid #001217;
   padding: 8px 12px;
   transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
   cursor: pointer;
+}
+.csi-selected::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  height: calc(100% - 2px);
+  width: 50px;
+  background-color: #F4FAFF;
+  transition: all 0.2s ease-in-out;
 }
 .csi-selected::after {
   content: "";
@@ -1009,6 +1033,9 @@ button:focus,
   transition: all 0.2s ease-in-out;
 }
 .csi-selected:hover {
+  background-color: #d1efff;
+}
+.csi-selected:hover::before {
   background-color: #d1efff;
 }
 
@@ -1033,11 +1060,27 @@ button:focus,
   background-color: #d1efff;
 }
 
-.section-gray .csi-container {
+.section-gray .csi-selected {
   background-color: #E4EBEF;
+}
+.section-gray .csi-selected::before {
+  background-color: #E4EBEF;
+}
+.section-gray .csi-selected:hover {
+  background-color: #d1efff;
+}
+.section-gray .csi-selected:hover::before {
+  background-color: #d1efff;
 }
 .section-gray .csi-options-dropdown {
   background-color: #E4EBEF;
+}
+
+.section-gray-l .csi-selected {
+  background-color: #F4FAFF;
+}
+.section-gray-l .csi-selected:hover {
+  background-color: #d1efff;
 }
 
 .separator {
