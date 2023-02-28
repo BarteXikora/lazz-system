@@ -88,6 +88,11 @@ label {
     }
 }
 
+.section-gray .input-unit {
+    background-color: $gray-d;
+    color: $white;
+}
+
 .fake-input {
     display: flex;
     border: 1px solid $black;

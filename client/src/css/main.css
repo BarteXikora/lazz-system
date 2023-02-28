@@ -392,6 +392,11 @@ label {
   border-left: 0;
 }
 
+.section-gray .input-unit {
+  background-color: #3B4D5A;
+  color: #F4FAFF;
+}
+
 .fake-input {
   display: flex;
   border: 1px solid #001217;

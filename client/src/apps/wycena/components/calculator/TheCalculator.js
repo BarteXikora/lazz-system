@@ -1,6 +1,7 @@
 import SectionTimes from './SectionTimes'
 import SectionShipment from './SectionShipment'
 import SectionSpindles from './SectionSpindles'
+import SectionBody from './SectionBody'
 
 const TheCalculator = () => {
     return <>
@@ -9,6 +10,10 @@ const TheCalculator = () => {
         <SectionShipment />
 
         <SectionSpindles />
+
+        <SectionBody />
+
+        <div className="my-5 py-5"></div>
     </>
 }
 
