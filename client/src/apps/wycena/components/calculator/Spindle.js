@@ -4,11 +4,22 @@ import iconPlus from '../../../../img/icon-plus.png'
 import iconMinus from '../../../../img/icon-minus.png'
 import iconDelete from '../../../../img/icon-delete.png'
 
-const Spindle = ({ types, montage, spindle }) => {
+const Spindle = ({ types, montage, spindle, count }) => {
     console.log(spindle)
 
-    return <div className="row spindle-container py-3 m-0 p-0">
-        <div className="col-6 mb-2">
+    return <div className="row spindle-container m-0 mb-3">
+        <div className="col-12 p-0 ps-2 d-flex align-items-center justify-content-between">
+            <span className="fw-bold">Wrzeciono</span>
+
+            <button
+                className={`btn ${count > 1 ? 'btn-x' : 'btn-dis'} btn-icon-small`}
+                title={count > 1 ? 'Usuń wrzeciono z listy' : 'Na liście musi znajdować się przynajmniej jedno wrzeciono'}
+            >
+                <img src={iconDelete} alt="Usuń wrzeciono z listy" />
+            </button>
+        </div>
+
+        <div className="col-4 px-2 pt-0 pb-4">
             <span>Rodzaj:</span>
 
             <SelectInput
@@ -16,8 +27,10 @@ const Spindle = ({ types, montage, spindle }) => {
                 state={spindle.type}
                 setState={undefined}
             />
+        </div>
 
-            <span className='d-block mt-3'>Normalia montażu:</span>
+        <div className="col-4 px-2 pt-0 pb-4">
+            <span>Normalia montażu:</span>
 
             <SelectInput
                 options={montage}
@@ -26,7 +39,7 @@ const Spindle = ({ types, montage, spindle }) => {
             />
         </div>
 
-        <div className="col-6 mb-2">
+        <div className="col-4 px-2 pt-0 pb-4">
             <span>Liczba:</span>
 
             <div class="input-group">
@@ -45,16 +58,6 @@ const Spindle = ({ types, montage, spindle }) => {
                     <img src={iconPlus} alt="Dodaj 1" />
                 </button>
             </div>
-
-            <span className="d-block mt-3">Operacje:</span>
-
-            <button
-                className="btn btn-dis btn-icon-text-small"
-                title='Na liście musi pozostać przynajmniej jedno wrzeciono.'
-            >
-                <img src={iconDelete} alt="Usuń wrzeciono" />
-                <span>Usuń z listy</span>
-            </button>
         </div>
     </div>
 }

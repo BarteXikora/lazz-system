@@ -20,6 +20,8 @@ const SectionSpindles = () => {
         { id: 1, name: 'hk - rozstaw inny niż 32 mm' },
     ]
 
+    const _spindlesLimit = 2
+
     return <div className="row mt-4 m-0">
         <div className="col-12 px-3">
             <h2 className="font-big fw-bold m-0">Wrzeciona:</h2>
@@ -32,10 +34,19 @@ const SectionSpindles = () => {
                     types={_types}
                     montage={_montage}
                     spindle={spindle}
+                    count={appState.calculator.spindles.length}
                 />)
             }
 
-            <button className="btn btn-prim btn-icon-text mt-4">
+            <button
+                className={`
+                    btn btn-icon-text mt-3
+                    ${appState.calculator.spindles.length < _spindlesLimit ? 'btn-prim' : 'btn-dis'} 
+                `}
+                title={appState.calculator.spindles.length < _spindlesLimit ?
+                    'Dodaj wrzeciono do listy' : 'Osiągnięto limit liczby wrzecion na głowicę'
+                }
+            >
                 <img src={iconPlus} alt="Dodaj wrzeciono" />
 
                 <span>Dodaj wrzeciono</span>
