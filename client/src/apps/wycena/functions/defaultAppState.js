@@ -18,7 +18,11 @@ const defaultAppReducer = {
                 montage: { id: 0 },
                 cnt: 0
             }
-        ]
+        ],
+        body: {
+            length: 0,
+            flatBar: { id: 0 }
+        }
     }
 }
 

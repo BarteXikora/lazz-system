@@ -16,6 +16,13 @@ export default {
                 { id: 1, name: 'hk - rozstaw inny niż 32 mm', price: 0 },
             ],
             spindlesLimit: 2
+        },
+        body: {
+            flatBars: [
+                { id: 0, name: 'Płaskownik 80', price: 0 },
+                { id: 1, name: 'Płaskownik 100', price: 0 },
+                { id: 2, name: 'Płaskownik 120', price: 0 },
+            ]
         }
     }
 }

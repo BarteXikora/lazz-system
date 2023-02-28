@@ -19,6 +19,10 @@ const appReducer = (state, action) => {
             return {
                 ...state, calculator: { ...state.calculator, spindles: action.payload.value }
             }
+        } else if (action.payload.section === 'body') {
+            return {
+                ...state, calculator: { ...state.calculator, body: action.payload.value }
+            }
         }
 
         return { ...state }

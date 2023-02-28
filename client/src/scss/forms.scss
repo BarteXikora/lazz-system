@@ -77,6 +77,7 @@ label {
     background-color: $gray;
     border: 1px solid $black;
     font-weight: bold;
+    transition: $transition;
 
     &.input-unit-middle {
         border-left: 0;
@@ -127,6 +128,18 @@ label {
             background-color: $sec;
             color: $white;
         }
+    }
+}
+
+.input-group.input-validated {
+    input {
+        border-color: $sec-d !important;
+        background-color: $sec-s;
+    }
+
+    .input-unit {
+        border-color: $sec-d !important;
+        background-color: $sec;
     }
 }
 

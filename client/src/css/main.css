@@ -383,6 +383,7 @@ label {
   background-color: #B5C6D2;
   border: 1px solid #001217;
   font-weight: bold;
+  transition: all 0.2s ease-in-out;
 }
 .input-unit.input-unit-middle {
   border-left: 0;
@@ -425,6 +426,15 @@ label {
 .fake-input.fake-input-validated .input-unit {
   background-color: #00b18e;
   color: #F4FAFF;
+}
+
+.input-group.input-validated input {
+  border-color: #007b63 !important;
+  background-color: #a7ffed;
+}
+.input-group.input-validated .input-unit {
+  border-color: #007b63 !important;
+  background-color: #00b18e;
 }
 
 input[type=number]::-webkit-inner-spin-button {
