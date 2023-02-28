@@ -52,9 +52,9 @@ const SectionBody = () => {
         })
     }
 
-    return <div className="row section-gray py-4 mt-4 m-0">
+    return <div className="row section-gray pt-4 pb-5 mt-5 m-0">
         <div className="col-12 px-3">
-            <h2 className="font-big fw-bold m-0">Korpus głowicy:</h2>
+            <h2 className="font-big fw-bold m-0 mt-2">Korpus głowicy:</h2>
 
             <p>
                 Długość korpusu zaokrąglana jest w górę do pełnego milimetra.

@@ -30,15 +30,15 @@ const SectionTimes = () => {
 
     return <>
         <div className="row mt-4 m-0">
-            <div className="col-12">
+            <div className="col-12 px-3">
                 <h2 className="font-big fw-bold m-0">Czas pracy:</h2>
 
                 <p>
-                    Czas zaokrąglany jest do pełnej połowy godziny.
+                    Czas zaokrąglany jest do całej połowy godziny.
                 </p>
             </div>
 
-            <div className="col-6 mt-2">
+            <div className="col-6 px-3 mt-2">
                 <label>
                     <span>Czas wykonania projektu:</span>
 
@@ -52,7 +52,7 @@ const SectionTimes = () => {
                 </label>
             </div>
 
-            <div className="col-6 mt-2">
+            <div className="col-6 px-3 px-3 mt-2">
                 <label>
                     <span>Czas frezowania:</span>
 
@@ -66,7 +66,7 @@ const SectionTimes = () => {
                 </label>
             </div>
 
-            <div className="col-6 mt-4">
+            <div className="col-6 px-3 mt-4">
                 <label>
                     <span>Czas pracy tokarki CNC:</span>
 
@@ -80,7 +80,7 @@ const SectionTimes = () => {
                 </label>
             </div>
 
-            <div className="col-6 mt-4">
+            <div className="col-6 px-3 mt-4">
                 <label>
                     <span>Czas montażu:</span>
 
@@ -94,7 +94,7 @@ const SectionTimes = () => {
                 </label>
             </div>
 
-            <div className="col-12 mt-4">
+            <div className="col-12 px-3 mt-4">
                 <hr className='mb-1' />
 
                 <div className="text-end font-gray-d">

@@ -25,7 +25,7 @@ const Spindle = ({ types, montage, spindle, count, setSpindle, remove }) => {
     }
 
     return <div className={`row section-gray-l spindle-container m-0 mb-3 ${spindle.cnt == 0 ? 'spindle-wrong' : ''}`}>
-        <div className="col-12 p-0 ps-2 d-flex align-items-center justify-content-between">
+        <div className="col-12 p-0 ps-3 d-flex align-items-center justify-content-between">
             <span className="fw-bold">Wrzeciono</span>
 
             <button
@@ -37,7 +37,7 @@ const Spindle = ({ types, montage, spindle, count, setSpindle, remove }) => {
             </button>
         </div>
 
-        <div className="col-4 px-2 pt-0 pb-4">
+        <div className="col-4 ps-3 px-2 pt-1 pb-4">
             <span>Rodzaj:</span>
 
             <SelectInput
@@ -47,7 +47,7 @@ const Spindle = ({ types, montage, spindle, count, setSpindle, remove }) => {
             />
         </div>
 
-        <div className="col-4 px-2 pt-0 pb-4">
+        <div className="col-4 px-2 pt-1 pb-4">
             <span>Normalia montażu:</span>
 
             <SelectInput
@@ -57,7 +57,7 @@ const Spindle = ({ types, montage, spindle, count, setSpindle, remove }) => {
             />
         </div>
 
-        <div className="col-4 px-2 pt-0 pb-4">
+        <div className="col-4 px-2 pt-1 pb-4">
             <span>Liczba:</span>
 
             <div className="input-group">

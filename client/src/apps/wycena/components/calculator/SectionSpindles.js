@@ -45,12 +45,12 @@ const SectionSpindles = () => {
         })
     }
 
-    return <div className="row mt-4 m-0">
+    return <div className="row mt-5 m-0">
         <div className="col-12 px-3">
             <h2 className="font-big fw-bold m-0">Wrzeciona:</h2>
         </div>
 
-        <div className="col-12 px-3 mt-3">
+        <div className="col-12 px-3 mt-4">
             {
                 localSpindles.map((spindle, n) => <Spindle
                     key={n}

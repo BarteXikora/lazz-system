@@ -26,7 +26,7 @@ const SectionExtra = () => {
         })
     }
 
-    return <div className="row mt-4 m-0">
+    return <div className="row mt-5 m-0">
         <div className="col-12 px-3">
             <h2 className="font-big fw-bold m-0">Sprzęgło i głowica tylna:</h2>
         </div>
