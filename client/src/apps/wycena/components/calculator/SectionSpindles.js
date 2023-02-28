@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import AppContext from '../../functions/AppContext'
 
 import Spindle from './Spindle'
@@ -8,6 +8,43 @@ import iconPlus from '../../../../img/icon-plus.png'
 const SectionSpindles = () => {
     const { appState, appDispatch } = useContext(AppContext)
 
+    const [localSpindles, setLocalSpindles] = useState([])
+    useEffect(() => setLocalSpindles(appState.calculator.spindles), [appState.calculator.spindles])
+
+    const handleSetSpindle = (n, spindle) => {
+        const nthSpindle = localSpindles[n]
+        if (!nthSpindle) return
+
+        let newSpindles = [...localSpindles]
+        newSpindles[n] = spindle
+
+        appDispatch({
+            type: 'SET_CALCULATOR',
+            payload: { section: 'spindles', value: newSpindles }
+        })
+    }
+
+    const handleAddSpindle = () => {
+        if (appState.calculator.spindles.length >= appState.config.calculator.spindles.spindlesLimit) return
+
+        let newSpindles = [...localSpindles]
+        newSpindles.push({ type: { id: -1 }, montage: { id: -1 }, cnt: 0 })
+
+        appDispatch({
+            type: 'SET_CALCULATOR',
+            payload: { section: 'spindles', value: newSpindles }
+        })
+    }
+
+    const handleRemove = (n) => {
+        const newSpindles = localSpindles.filter((s, nth) => nth !== n)
+
+        appDispatch({
+            type: 'SET_CALCULATOR',
+            payload: { section: 'spindles', value: newSpindles }
+        })
+    }
+
     return <div className="row mt-4 m-0">
         <div className="col-12 px-3">
             <h2 className="font-big fw-bold m-0">Wrzeciona:</h2>
@@ -15,12 +52,14 @@ const SectionSpindles = () => {
 
         <div className="col-12 px-3 mt-3">
             {
-                appState.calculator.spindles.map(spindle => <Spindle
-                    key={spindle.id}
+                localSpindles.map((spindle, n) => <Spindle
+                    key={n}
                     types={appState.config.calculator.spindles.types}
                     montage={appState.config.calculator.spindles.montage}
                     spindle={spindle}
                     count={appState.calculator.spindles.length}
+                    setSpindle={spindle => handleSetSpindle(n, spindle)}
+                    remove={() => handleRemove(n)}
                 />)
             }
 
@@ -34,6 +73,7 @@ const SectionSpindles = () => {
                 title={appState.calculator.spindles.length < appState.config.calculator.spindles.spindlesLimit ?
                     'Dodaj wrzeciono do listy' : 'Osiągnięto limit liczby wrzecion na głowicę'
                 }
+                onClick={handleAddSpindle}
             >
                 <img src={iconPlus} alt="Dodaj wrzeciono" />
 

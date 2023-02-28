@@ -15,7 +15,7 @@ const appReducer = (state, action) => {
             return {
                 ...state, calculator: { ...state.calculator, shipment: action.payload.value }
             }
-        } else if (action.payload.section === 'shipment') {
+        } else if (action.payload.section === 'spindles') {
             return {
                 ...state, calculator: { ...state.calculator, spindles: action.payload.value }
             }

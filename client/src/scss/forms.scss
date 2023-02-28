@@ -31,9 +31,9 @@ textarea,
 }
 
 .input-wrong {
-    border-color: $wrong;
-    color: $wrong;
-    background-color: $wrong-s;
+    border-color: $wrong !important;
+    color: $wrong !important;
+    background-color: $wrong-s !important;
 }
 
 label {

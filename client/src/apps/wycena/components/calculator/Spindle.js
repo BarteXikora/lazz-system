@@ -1,19 +1,37 @@
+import { useState, useEffect } from 'react'
+
 import SelectInput from '../../../../components/SelectInput'
 
 import iconPlus from '../../../../img/icon-plus.png'
 import iconMinus from '../../../../img/icon-minus.png'
 import iconDelete from '../../../../img/icon-delete.png'
 
-const Spindle = ({ types, montage, spindle, count }) => {
-    console.log(spindle)
+const Spindle = ({ types, montage, spindle, count, setSpindle, remove }) => {
+    const [localSpindle, setLocalSpindle] = useState({ type: { id: -1 }, montage: { id: -1 }, cnt: 0 })
+    useEffect(() => setLocalSpindle(spindle), [spindle])
 
-    return <div className="row spindle-container m-0 mb-3">
+    const handleSetType = (type) => {
+        setSpindle({ ...localSpindle, type })
+    }
+
+    const handleSetMontage = (montage) => {
+        setSpindle({ ...localSpindle, montage })
+    }
+
+    const handleSetCnt = (cnt) => {
+        if (cnt < 0) cnt = 0
+
+        setSpindle({ ...localSpindle, cnt })
+    }
+
+    return <div className={`row section-gray-l spindle-container m-0 mb-3 ${spindle.cnt == 0 ? 'spindle-wrong' : ''}`}>
         <div className="col-12 p-0 ps-2 d-flex align-items-center justify-content-between">
             <span className="fw-bold">Wrzeciono</span>
 
             <button
                 className={`btn ${count > 1 ? 'btn-x' : 'btn-dis'} btn-icon-small`}
                 title={count > 1 ? 'Usuń wrzeciono z listy' : 'Na liście musi znajdować się przynajmniej jedno wrzeciono'}
+                onClick={count > 1 ? remove : null}
             >
                 <img src={iconDelete} alt="Usuń wrzeciono z listy" />
             </button>
@@ -24,8 +42,8 @@ const Spindle = ({ types, montage, spindle, count }) => {
 
             <SelectInput
                 options={types}
-                state={spindle.type}
-                setState={undefined}
+                state={localSpindle.type}
+                setState={handleSetType}
             />
         </div>
 
@@ -34,27 +52,34 @@ const Spindle = ({ types, montage, spindle, count }) => {
 
             <SelectInput
                 options={montage}
-                state={spindle.montage}
-                setState={undefined}
+                state={localSpindle.montage}
+                setState={handleSetMontage}
             />
         </div>
 
         <div className="col-4 px-2 pt-0 pb-4">
             <span>Liczba:</span>
 
-            <div class="input-group">
-                <button class="btn btn-sec btn-icon-small">
+            <div className="input-group">
+                <button
+                    className="btn btn-sec btn-icon-small"
+                    onClick={() => handleSetCnt(Number(localSpindle.cnt) - 1)}
+                >
                     <img src={iconMinus} alt="Odejmij 1" />
                 </button>
 
                 <input
                     type="number"
-                    class="form-control text-end"
+                    className={`form-control text-end ${localSpindle.cnt == 0 ? 'input-wrong' : ''}`}
                     placeholder="0"
-                    value={spindle.cnt}
+                    value={localSpindle.cnt}
+                    onChange={(e) => handleSetCnt(e.target.value)}
                 />
 
-                <button class="btn btn-sec btn-icon-small">
+                <button
+                    className="btn btn-sec btn-icon-small"
+                    onClick={() => handleSetCnt(Number(localSpindle.cnt) + 1)}
+                >
                     <img src={iconPlus} alt="Dodaj 1" />
                 </button>
             </div>

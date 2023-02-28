@@ -39,4 +39,8 @@
 .spindle-container {
     background-color: $gray-l;
     border-left: 10px solid $gray-d;
+
+    &.spindle-wrong {
+        border-color: $wrong;
+    }
 }

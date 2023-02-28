@@ -344,9 +344,9 @@ textarea::placeholder,
 }
 
 .input-wrong {
-  border-color: #e63a62;
-  color: #e63a62;
-  background-color: #ffd5df;
+  border-color: #e63a62 !important;
+  color: #e63a62 !important;
+  background-color: #ffd5df !important;
 }
 
 label {
@@ -1451,6 +1451,9 @@ button:focus,
 .spindle-container {
   background-color: #E4EBEF;
   border-left: 10px solid #3B4D5A;
+}
+.spindle-container.spindle-wrong {
+  border-color: #e63a62;
 }
 
 ._sizes {
