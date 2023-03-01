@@ -8,6 +8,8 @@ import AppContext from './functions/AppContext'
 import AppTabs from './components/AppTabs'
 import TheCalculator from './components/calculator/TheCalculator'
 import TheList from './components/list/TheList'
+import ThePrice from './components/price/ThePrice'
+import ThePreview from './components/preview/ThePreview'
 
 const App = () => {
     const { systemState, systemDispatch } = useContext(SystemContext)
@@ -29,6 +31,14 @@ const App = () => {
             </div>
 
             <div className="scroll-column scroll-column-half section-gray-l">
+                {
+                    appState.showCalculator ?
+                        <ThePrice />
+
+                        :
+
+                        <ThePreview />
+                }
             </div>
         </div>
     </AppContext.Provider>
