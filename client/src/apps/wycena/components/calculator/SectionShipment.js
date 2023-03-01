@@ -23,7 +23,7 @@ const SectionShipment = () => {
                 <span>Region wysyłki:</span>
 
                 <SelectInput
-                    options={appState.config.calculator.shipment}
+                    options={appState.config.shipment}
                     state={appState.calculator.shipment}
                     setState={handleSetRegion}
                 />

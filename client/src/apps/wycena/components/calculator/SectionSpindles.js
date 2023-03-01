@@ -25,7 +25,7 @@ const SectionSpindles = () => {
     }
 
     const handleAddSpindle = () => {
-        if (appState.calculator.spindles.length >= appState.config.calculator.spindles.spindlesLimit) return
+        if (appState.calculator.spindles.length >= appState.config.spindles.validation.spindlesLimit) return
 
         let newSpindles = [...localSpindles]
         newSpindles.push({ type: { id: -1 }, montage: { id: -1 }, cnt: 0 })
@@ -54,8 +54,8 @@ const SectionSpindles = () => {
             {
                 localSpindles.map((spindle, n) => <Spindle
                     key={n}
-                    types={appState.config.calculator.spindles.types}
-                    montage={appState.config.calculator.spindles.montage}
+                    types={appState.config.spindles.types}
+                    montage={appState.config.spindles.montage}
                     spindle={spindle}
                     count={appState.calculator.spindles.length}
                     setSpindle={spindle => handleSetSpindle(n, spindle)}
@@ -66,11 +66,11 @@ const SectionSpindles = () => {
             <button
                 className={`
                     btn btn-icon-text mt-3
-                    ${appState.calculator.spindles.length < appState.config.calculator.spindles.spindlesLimit ?
+                    ${appState.calculator.spindles.length < appState.config.spindles.validation.spindlesLimit ?
                         'btn-prim' : 'btn-dis'
                     } 
                 `}
-                title={appState.calculator.spindles.length < appState.config.calculator.spindles.spindlesLimit ?
+                title={appState.calculator.spindles.length < appState.config.spindles.validation.spindlesLimit ?
                     'Dodaj wrzeciono do listy' : 'Osiągnięto limit liczby wrzecion na głowicę'
                 }
                 onClick={handleAddSpindle}

@@ -36,7 +36,7 @@ const SectionExtra = () => {
                 <span>Sprzęgło i mocowanie:</span>
 
                 <SelectInput
-                    options={appState.config.calculator.extra.cluthes}
+                    options={appState.config.extra.cluthes}
                     state={appState.calculator.extra.cluth}
                     setState={handleSetCluth}
                 />

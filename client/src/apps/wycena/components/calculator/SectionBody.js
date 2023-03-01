@@ -86,7 +86,7 @@ const SectionBody = () => {
                 <span>Płaskownik:</span>
 
                 <SelectInput
-                    options={appState.config.calculator.body.flatBars}
+                    options={appState.config.body.flatBars}
                     state={appState.calculator.body.flatBar}
                     setState={handleSetFlatBar}
                 />
