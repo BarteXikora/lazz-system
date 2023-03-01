@@ -11,7 +11,6 @@ const SectionBody = () => {
     const [localLength, setLocalLength] = useState(0)
     useEffect(() => {
         setLocalLength(appState.calculator.body.length)
-        console.log('update')
 
     }, [appState.calculator.body.length])
 
