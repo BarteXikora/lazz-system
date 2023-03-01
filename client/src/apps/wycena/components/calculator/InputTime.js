@@ -17,7 +17,9 @@ const InputTime = ({ value, setValue }) => {
     }, [value])
 
     const handleHours = (v) => {
-        setInnerValue({ ...innerValue, h: v })
+        const allowed = /^-?[0-9]{0,}$/
+
+        if (allowed.test(v)) setInnerValue({ ...innerValue, h: v })
     }
 
     const handleComma = (key) => {
@@ -39,6 +41,20 @@ const InputTime = ({ value, setValue }) => {
         if (key === 'Enter') {
             hoursRef.current.blur()
             minutesRef.current.blur()
+        }
+    }
+
+    const handleRightArrow = (key) => {
+        if (key === 'ArrowRight')
+            if (hoursRef.current.selectionStart === hoursRef.current.value.length)
+                minutesRef.current.focus()
+    }
+
+    const handleLeftArrow = (event) => {
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault()
+
+            hoursRef.current.focus()
         }
     }
 
@@ -70,12 +86,12 @@ const InputTime = ({ value, setValue }) => {
 
     return <div ref={inputRef} className="fake-input">
         <input
-            type="number"
+            type='text'
             className='text-end pe-1'
             placeholder='0'
             value={innerValue.h || ''}
             onChange={(e) => handleHours(e.target.value)}
-            onKeyDown={(e) => { handleComma(e.key); handleEnter(e.key) }}
+            onKeyDown={(e) => { handleComma(e.key); handleEnter(e.key); handleRightArrow(e.key) }}
             onBlur={validate}
             ref={hoursRef}
         />
@@ -89,7 +105,7 @@ const InputTime = ({ value, setValue }) => {
             placeholder='0'
             value={innerValue.m || ''}
             onChange={(e) => handleMinutes(e.target.value)}
-            onKeyDown={(e) => { handleBackSpace(e.key); handleEnter(e.key) }}
+            onKeyDown={(e) => { handleBackSpace(e.key); handleEnter(e.key); handleLeftArrow(e) }}
             onBlur={validate}
             ref={minutesRef}
         />
