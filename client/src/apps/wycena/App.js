@@ -17,7 +17,7 @@ const App = () => {
 
     return <AppContext.Provider value={{ appState, appDispatch }}>
         <div className="scroll-columns h-100">
-            <div className="scroll-column scroll-column-half">
+            <div className="scroll-column scroll-column-list _scroll-column-half">
                 <AppTabs />
 
                 {
@@ -30,7 +30,7 @@ const App = () => {
                 }
             </div>
 
-            <div className="scroll-column scroll-column-half section-gray-l">
+            <div className="scroll-column scroll-column-preview _scroll-column-half section-gray-l">
                 {
                     appState.showCalculator ?
                         <ThePrice />
