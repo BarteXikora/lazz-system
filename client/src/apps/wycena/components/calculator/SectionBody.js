@@ -75,7 +75,7 @@ const SectionBody = () => {
                         onBlur={handleSetLength}
                     />
 
-                    <div className="input-unit input-unit-end">mm</div>
+                    <div className="input-unit input-unit-end" title='Jednostka: milimetry'>mm</div>
                 </div>
 
             </label>

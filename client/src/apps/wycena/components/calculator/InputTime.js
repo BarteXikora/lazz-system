@@ -110,7 +110,7 @@ const InputTime = ({ value, setValue }) => {
             ref={minutesRef}
         />
 
-        <div className="input-unit input-unit-end">Godz.</div>
+        <div className="input-unit input-unit-end" title='Jednostka: godziny'>Godz.</div>
     </div>
 
 }
