@@ -44,3 +44,19 @@
         border-color: $wrong;
     }
 }
+
+.validation-list-item {
+    border-left: 10px solid $gray;
+    background-color: $white;
+    transition: $transition;
+
+    &.validation-list-item-correct {
+        border-color: $sec;
+        background-color: $sec-s;
+    }
+
+    &.validation-list-item-wrong {
+        border-color: $wrong;
+        background-color: $wrong-s;
+    }
+}

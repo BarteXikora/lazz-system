@@ -1,7 +1,12 @@
 import Invalid from './Invalid'
+import ValidationList from './ValidationList'
 
 const ThePrice = () => {
-    return <Invalid />
+    return <>
+        <Invalid />
+
+        <ValidationList />
+    </>
 }
 
 export default ThePrice

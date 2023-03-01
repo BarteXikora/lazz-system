@@ -1471,6 +1471,20 @@ button:focus,
   border-color: #e63a62;
 }
 
+.validation-list-item {
+  border-left: 10px solid #B5C6D2;
+  background-color: #F4FAFF;
+  transition: all 0.2s ease-in-out;
+}
+.validation-list-item.validation-list-item-correct {
+  border-color: #00b18e;
+  background-color: #a7ffed;
+}
+.validation-list-item.validation-list-item-wrong {
+  border-color: #e63a62;
+  background-color: #ffd5df;
+}
+
 ._sizes {
   position: fixed;
   bottom: 0;
