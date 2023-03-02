@@ -49,14 +49,63 @@
     border-left: 10px solid $gray;
     background-color: $white;
     transition: $transition;
+    opacity: 1;
 
     &.validation-list-item-correct {
+        animation-name: animation-validation-list-item-correct;
+        animation-duration: 1s;
+    }
+
+    &.validation-list-item-wrong {
+        animation-name: animation-validation-list-item-wrong;
+        animation-duration: 1s;
+    }
+}
+
+@keyframes animation-validation-list-item-correct {
+    0% {
+        border-color: $gray;
+        background-color: $white;
+    }
+
+    25% {
         border-color: $sec;
         background-color: $sec-s;
     }
 
-    &.validation-list-item-wrong {
+    75% {
+        border-color: $sec;
+        background-color: $sec-s;
+        opacity: 1;
+    }
+
+    100% {
+        border-color: $gray;
+        background-color: $white;
+        opacity: 0;
+    }
+}
+
+@keyframes animation-validation-list-item-wrong {
+    0% {
+        border-color: $gray;
+        background-color: $white;
+        opacity: 0;
+    }
+
+    25% {
         border-color: $wrong;
         background-color: $wrong-s;
+        opacity: 1;
+    }
+
+    75% {
+        border-color: $wrong;
+        background-color: $wrong-s;
+    }
+
+    100% {
+        border-color: $gray;
+        background-color: $white;
     }
 }

@@ -1,11 +1,30 @@
+import { useState, useEffect, useContext } from 'react'
+import AppContext from '../../functions/AppContext'
+
+import validateCalculator from '../../functions/validateCalculator'
+
 import Invalid from './Invalid'
 import ValidationList from './ValidationList'
 
 const ThePrice = () => {
-    return <>
-        <Invalid />
+    const { appState, appDispatch } = useContext(AppContext)
 
-        <ValidationList />
+    const [validate, setValidate] = useState([])
+    useEffect(() => setValidate(validateCalculator()), [appState.calculator])
+
+    return <>
+        {
+            validate.length === 0 ?
+                'all ok'
+
+                :
+
+                <>
+                    <Invalid />
+
+                    <ValidationList list={validate} />
+                </>
+        }
     </>
 }
 

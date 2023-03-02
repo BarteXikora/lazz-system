@@ -1,27 +1,65 @@
+import { useState, useEffect } from 'react'
+import _ from 'lodash'
+
 import ValidationItem from './ValidationItem'
 
-const ValidationList = () => {
+const ValidationList = ({ list }) => {
+    const [localList, setLocalList] = useState([])
+
+    useEffect(() => {
+        const localErrIDs = [], incomingErrIDs = []
+        localList.forEach(err => localErrIDs.push(err.errID))
+        list.forEach(err => incomingErrIDs.push(err.errID))
+
+        const newErrIDs = _.difference(incomingErrIDs, localErrIDs)
+        const remErrIDs = _.difference(localErrIDs, incomingErrIDs)
+
+        let classesRemove = [...localList]
+        for (const removed of remErrIDs) {
+            for (const local of classesRemove) {
+                if (local.errID === removed) local['addClass'] = 'validation-list-item-correct'
+            }
+        }
+
+        setLocalList(classesRemove)
+
+        setTimeout(() => {
+            setLocalList(list)
+
+            const classesAdded = [...list]
+            for (const added of newErrIDs) {
+                for (const local of classesAdded) {
+                    if (local.errID === added) local['addClass'] = 'validation-list-item-wrong'
+                }
+            }
+
+        }, remErrIDs.length === 0 ? 0 : 1000)
+
+    }, [list])
+
     return <div className="px-3 pt-3 pb-5">
         <h2 className="font-big fw-bold mb-3">Lista pól do uzupełnienia:</h2>
 
-        <ValidationItem
-            number={1}
-            section='Czas pracy'
-            message='Czas wykonania projektu musi być większy od 0.'
-        />
-
-        <ValidationItem
-            number={2}
-            section='Czas pracy'
-            message='Czas frezowania musi być większy od 0.'
-        />
-
-        <ValidationItem
-            number={3}
-            section='Wysyłka'
-            message='Nie wybrano regionu wysyłki.'
-        />
+        {
+            localList.map((error, n) => <ValidationItem
+                key={n}
+                number={n + 1}
+                section={error.section}
+                message={error.message}
+                addClass={error.addClass || ''}
+            />)
+        }
     </div>
 }
 
 export default ValidationList
+
+/*
+let newErrors = []
+        for (const incoming of list) for (const newErr of newErrIDs)
+            if (incoming.errID === newErr) newErrors.push(incoming)
+
+        let remErrors = []
+        for (const local of localList) for (const remErr of remErrIDs)
+            if (local.errID === remErr) remErrors.push(local)
+*/

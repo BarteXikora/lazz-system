@@ -1475,16 +1475,57 @@ button:focus,
   border-left: 10px solid #B5C6D2;
   background-color: #F4FAFF;
   transition: all 0.2s ease-in-out;
+  opacity: 1;
 }
 .validation-list-item.validation-list-item-correct {
-  border-color: #00b18e;
-  background-color: #a7ffed;
+  animation-name: animation-validation-list-item-correct;
+  animation-duration: 1s;
 }
 .validation-list-item.validation-list-item-wrong {
-  border-color: #e63a62;
-  background-color: #ffd5df;
+  animation-name: animation-validation-list-item-wrong;
+  animation-duration: 1s;
 }
 
+@keyframes animation-validation-list-item-correct {
+  0% {
+    border-color: #B5C6D2;
+    background-color: #F4FAFF;
+  }
+  25% {
+    border-color: #00b18e;
+    background-color: #a7ffed;
+  }
+  75% {
+    border-color: #00b18e;
+    background-color: #a7ffed;
+    opacity: 1;
+  }
+  100% {
+    border-color: #B5C6D2;
+    background-color: #F4FAFF;
+    opacity: 0;
+  }
+}
+@keyframes animation-validation-list-item-wrong {
+  0% {
+    border-color: #B5C6D2;
+    background-color: #F4FAFF;
+    opacity: 0;
+  }
+  25% {
+    border-color: #e63a62;
+    background-color: #ffd5df;
+    opacity: 1;
+  }
+  75% {
+    border-color: #e63a62;
+    background-color: #ffd5df;
+  }
+  100% {
+    border-color: #B5C6D2;
+    background-color: #F4FAFF;
+  }
+}
 ._sizes {
   position: fixed;
   bottom: 0;
