@@ -1,10 +1,10 @@
 export default {
     times: {
         validation: {
-            project: { min: .5, max: 100 },
-            milling: { min: .5, max: 100 },
-            lathe: { min: .5, max: 100 },
-            montage: { min: .5, max: 100 }
+            timeProject: { min: .5, max: 100 },
+            timeMilling: { min: .5, max: 100 },
+            timeLathe: { min: .5, max: 100 },
+            timeMontage: { min: .5, max: 100 }
         }
     },
     shipment: [
