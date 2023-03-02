@@ -3,6 +3,8 @@ import AppContext from '../functions/AppContext'
 
 import Tab from './Tab'
 
+import iconEraser from '../../../img/icon-eraser.png'
+
 const AppTabs = () => {
     const { appState, appDispatch } = useContext(AppContext)
 
@@ -25,17 +27,32 @@ const AppTabs = () => {
             </div>
         </div>
 
-        <div className="section-white pt-3">
-            <h1 className="font-subtitle fw-bold px-3">
-                {
-                    appState.showCalculator ?
-                        'Kalkulator ceny głowicy:'
-                        :
-                        'Zapisane wyceny:'
-                }
-            </h1>
+        <div className="section-white">
+            {
+                appState.showCalculator ?
+                    <div className="d-flex align-items-center justify-content-between px-3 py-3">
+                        <h1 className="font-subtitle fw-bold m-0">
+                            Kalkulator ceny głowicy:
+                        </h1>
 
-            <hr />
+                        <div>
+                            <button
+                                className="btn btn-sec btn-icon-text-small"
+                                onClick={() => appDispatch({ type: 'RESET_CALCULATOR' })}
+                            >
+                                <img src={iconEraser} alt="Wyczyść formularz" />
+
+                                <span>Wyczyść formularz</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    :
+
+                    'Zapisane wyceny:'
+            }
+
+            <hr className='m-0' />
         </div>
     </div>
 }

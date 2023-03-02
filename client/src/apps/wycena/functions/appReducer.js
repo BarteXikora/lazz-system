@@ -1,3 +1,5 @@
+import defaultCalculatorValues from './defaultCalculatorValues'
+
 const appReducer = (state, action) => {
     if (action.type === 'CHANGE_TAB') {
         return { ...state, showCalculator: action.payload }
@@ -30,6 +32,10 @@ const appReducer = (state, action) => {
         }
 
         return { ...state }
+    }
+
+    if (action.type === 'RESET_CALCULATOR') {
+        return { ...state, calculator: defaultCalculatorValues }
     }
 
     return { ...state }
