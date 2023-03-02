@@ -10,7 +10,10 @@ const ThePrice = () => {
     const { appState, appDispatch } = useContext(AppContext)
 
     const [validate, setValidate] = useState([])
-    useEffect(() => setValidate(validateCalculator()), [appState.calculator])
+    useEffect(() => setValidate(validateCalculator(
+        appState.config, appState.calculator
+
+    )), [appState.calculator])
 
     return <>
         {
