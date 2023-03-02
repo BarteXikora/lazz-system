@@ -5,8 +5,13 @@ import ValidationItem from './ValidationItem'
 
 const ValidationList = ({ list }) => {
     const [localList, setLocalList] = useState([])
+    const [isFirstList, setIsFirstList] = useState(true)
+
+    useEffect(() => setIsFirstList(false), [])
 
     useEffect(() => {
+        if (isFirstList) return setLocalList(list)
+
         const localErrIDs = [], incomingErrIDs = []
         localList.forEach(err => localErrIDs.push(err.errID))
         list.forEach(err => incomingErrIDs.push(err.errID))
