@@ -4,6 +4,7 @@ import AppContext from '../../functions/AppContext'
 import validateCalculator from '../../functions/validateCalculator'
 import calculate from '../../functions/calculate'
 
+import PricesHeader from './PricesHeader'
 import PricesTable from './PricesTable'
 import Invalid from './Invalid'
 import ValidationList from './ValidationList'
@@ -27,7 +28,11 @@ const ThePrice = () => {
     return <>
         {
             validate.length === 0 ?
-                <PricesTable prices={prices} />
+                <>
+                    <PricesHeader />
+
+                    <PricesTable prices={prices} />
+                </>
 
                 :
 
