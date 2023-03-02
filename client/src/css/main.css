@@ -35,6 +35,16 @@ body {
   border-color: #3B4D5A;
 }
 
+.section-prim-d {
+  background-color: #005db4;
+  color: #F4FAFF;
+}
+
+.section-sec-d {
+  background-color: #007b63;
+  color: #F4FAFF;
+}
+
 .section-gradient {
   background: #005db4;
   background: linear-gradient(157deg, #005db4 0%, #00b18e 100%);
@@ -1526,6 +1536,10 @@ button:focus,
     background-color: #F4FAFF;
   }
 }
+.price-table-field {
+  white-space: nowrap;
+}
+
 ._sizes {
   position: fixed;
   bottom: 0;
