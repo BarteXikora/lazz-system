@@ -6,7 +6,7 @@ import Tab from './Tab'
 import iconEraser from '../../../img/icon-eraser.png'
 
 const AppTabs = () => {
-    const { appState, appDispatch } = useContext(AppContext)
+    const { appState, appDispatch, openWindow } = useContext(AppContext)
 
     return <div className="sticky-top">
         <div className="tabs-container d-flex align-items-center justify-content-between px-3">
@@ -38,7 +38,7 @@ const AppTabs = () => {
                         <div>
                             <button
                                 className="btn btn-sec btn-icon-text-small"
-                                onClick={() => appDispatch({ type: 'RESET_CALCULATOR' })}
+                                onClick={() => openWindow('clearCalculator', { appDispatch })}
                             >
                                 <img src={iconEraser} alt="Wyczyść formularz" />
 
