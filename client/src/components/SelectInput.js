@@ -10,6 +10,7 @@ const SelectInput = ({ state, setState, options }) => {
 
         const found = options.filter(opt => opt.id === state.id)
         if (found.length > 0) setSelectedName(found[0].name)
+        else setSelectedName('')
 
     }, [state])
 
