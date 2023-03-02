@@ -38,7 +38,7 @@ const PricesTable = ({ prices, currency = 'PLN' }) => {
 
     return <div className="px-3 py-4">
         <div className="price-table mb-4">
-            <div className="section-sec-d fw-bold p-3 font-big">Nowy klient:</div>
+            <div className="section-sec-d fw-bold py-2 px-3 font-big">Nowy klient:</div>
 
             <TableBody
                 price={formatedPrices.newCustomer.price}
@@ -49,7 +49,7 @@ const PricesTable = ({ prices, currency = 'PLN' }) => {
         </div>
 
         <div className="price-table mb-3">
-            <div className="section-prim-d fw-bold p-3 font-big">Stały klient:</div>
+            <div className="section-prim-d fw-bold py-2 px-3 font-big">Stały klient:</div>
 
             <TableBody
                 price={formatedPrices.regularCustomer.price}

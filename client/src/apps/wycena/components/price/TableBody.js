@@ -19,7 +19,7 @@ const TableBody = ({ price, maxDiscount, discountValue, afterDiscount }) => {
         </div>
 
         <div className="w-100 fw-bold">
-            <div className="section-gray-l px-3 py-2 text-end">
+            <div className="section-gray px-3 py-2 text-end">
                 {price}
             </div>
 
@@ -27,7 +27,7 @@ const TableBody = ({ price, maxDiscount, discountValue, afterDiscount }) => {
                 {maxDiscount}
             </div>
 
-            <div className="section-gray-l px-3 py-2 text-end">
+            <div className="section-gray px-3 py-2 text-end">
                 {discountValue}
             </div>
 
