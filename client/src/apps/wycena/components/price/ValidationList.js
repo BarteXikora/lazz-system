@@ -58,13 +58,3 @@ const ValidationList = ({ list }) => {
 }
 
 export default ValidationList
-
-/*
-let newErrors = []
-        for (const incoming of list) for (const newErr of newErrIDs)
-            if (incoming.errID === newErr) newErrors.push(incoming)
-
-        let remErrors = []
-        for (const local of localList) for (const remErr of remErrIDs)
-            if (local.errID === remErr) remErrors.push(local)
-*/
