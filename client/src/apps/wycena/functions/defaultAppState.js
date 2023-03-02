@@ -13,18 +13,17 @@ const defaultAppReducer = {
         shipment: { id: -1 },
         spindles: [
             {
-                id: 0,
-                type: { id: 0 },
-                montage: { id: 0 },
+                type: { id: -1 },
+                montage: { id: -1 },
                 cnt: 0
             }
         ],
         body: {
             length: 0,
-            flatBar: { id: 0 }
+            flatBar: { id: -1 }
         },
         extra: {
-            cluth: { id: 0 },
+            cluth: { id: -1 },
             backHead: false
         }
     }
