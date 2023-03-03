@@ -1,6 +1,7 @@
 import SelectInput from '../../../../components/SelectInput'
 
 import iconSave from '../../../../img/icon-save.png'
+import iconDiscount from '../../../../img/icon-discount.png'
 import iconEmail from '../../../../img/icon-send.png'
 
 const PricesHeader = () => {
@@ -20,10 +21,16 @@ const PricesHeader = () => {
         <div className="mt-3">
             <hr />
 
-            <button className="btn btn-prim btn-icon-text me-2">
+            <button className="btn btn-prim btn-icon-text me-4">
                 <img src={iconSave} alt="Wyślij e-mail" />
 
                 <span>Zapisz wycenę...</span>
+            </button>
+
+            <button className="btn btn-sec btn-icon-text me-2">
+                <img src={iconDiscount} alt="Wyślij e-mail" />
+
+                <span>Oblicz rabat</span>
             </button>
 
             <button className="btn btn-sec btn-icon-text me-2">
