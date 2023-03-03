@@ -1085,6 +1085,13 @@ button:focus,
   background-color: #d1efff;
 }
 
+.section-gray-l .csi-selected {
+  background-color: #F4FAFF;
+}
+.section-gray-l .csi-selected:hover {
+  background-color: #d1efff;
+}
+
 .section-gray .csi-selected {
   background-color: #E4EBEF;
 }
@@ -1099,13 +1106,6 @@ button:focus,
 }
 .section-gray .csi-options-dropdown {
   background-color: #E4EBEF;
-}
-
-.section-gray-l .csi-selected {
-  background-color: #F4FAFF;
-}
-.section-gray-l .csi-selected:hover {
-  background-color: #d1efff;
 }
 
 .separator {

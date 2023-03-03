@@ -78,6 +78,16 @@
     }
 }
 
+.section-gray-l {
+    .csi-selected {
+        background-color: $white;
+
+        &:hover {
+            background-color: $prim-s;
+        }
+    }
+}
+
 .section-gray {
     .csi-selected {
         background-color: $gray-l;
@@ -97,15 +107,5 @@
 
     .csi-options-dropdown {
         background-color: $gray-l;
-    }
-}
-
-.section-gray-l {
-    .csi-selected {
-        background-color: $white;
-
-        &:hover {
-            background-color: $prim-s;
-        }
     }
 }
