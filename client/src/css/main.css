@@ -1540,6 +1540,24 @@ button:focus,
   white-space: nowrap;
 }
 
+.price-table-name-e {
+  background-color: #001217;
+  color: #F4FAFF;
+}
+
+.price-table-name-o {
+  background-color: #3B4D5A;
+  color: #F4FAFF;
+}
+
+.price-table-value-e {
+  background-color: #B5C6D2;
+}
+
+.price-table-value-o {
+  background-color: #F4FAFF;
+}
+
 ._sizes {
   position: fixed;
   bottom: 0;

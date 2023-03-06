@@ -113,3 +113,21 @@
 .price-table-field {
     white-space: nowrap;
 }
+
+.price-table-name-e {
+    background-color: $black;
+    color: $white;
+}
+
+.price-table-name-o {
+    background-color: $gray-d;
+    color: $white;
+}
+
+.price-table-value-e {
+    background-color: $gray;
+}
+
+.price-table-value-o {
+    background-color: $white;
+}

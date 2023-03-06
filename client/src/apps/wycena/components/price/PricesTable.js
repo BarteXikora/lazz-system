@@ -41,10 +41,13 @@ const PricesTable = ({ prices, currency = 'PLN' }) => {
             <div className="section-sec-d fw-bold py-2 px-3 font-big">Nowy klient:</div>
 
             <TableBody
-                price={formatedPrices.newCustomer.price}
-                maxDiscount={formatedPrices.newCustomer.maxDiscount}
-                discountValue={formatedPrices.newCustomer.discountValue}
-                afterDiscount={formatedPrices.newCustomer.afterDiscount}
+                pricesData={[
+                    { name: 'Cena', value: formatedPrices.newCustomer.price },
+                    { name: 'Max rabat', value: formatedPrices.newCustomer.maxDiscount },
+                    { name: 'Wartość max rabatu', value: formatedPrices.newCustomer.discountValue },
+                    { name: 'Cena z max rabatem', value: formatedPrices.newCustomer.afterDiscount }
+                ]}
+                isBig={true}
             />
         </div>
 
@@ -52,13 +55,21 @@ const PricesTable = ({ prices, currency = 'PLN' }) => {
             <div className="section-prim-d fw-bold py-2 px-3 font-big">Stały klient:</div>
 
             <TableBody
-                price={formatedPrices.regularCustomer.price}
-                maxDiscount={formatedPrices.regularCustomer.maxDiscount}
-                discountValue={formatedPrices.regularCustomer.discountValue}
-                afterDiscount={formatedPrices.regularCustomer.afterDiscount}
+                pricesData={[
+                    { name: 'Cena', value: formatedPrices.regularCustomer.price },
+                    { name: 'Max rabat', value: formatedPrices.regularCustomer.maxDiscount },
+                    { name: 'Wartość max rabatu', value: formatedPrices.regularCustomer.discountValue },
+                    { name: 'Cena z max rabatem', value: formatedPrices.regularCustomer.afterDiscount }
+                ]}
+                isBig={true}
             />
         </div>
     </div>
 }
 
 export default PricesTable
+
+// price={formatedPrices.newCustomer.price}
+            // maxDiscount={formatedPrices.newCustomer.maxDiscount}
+            // discountValue={formatedPrices.newCustomer.discountValue}
+            // afterDiscount={formatedPrices.newCustomer.afterDiscount}

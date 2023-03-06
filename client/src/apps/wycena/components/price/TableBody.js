@@ -1,39 +1,32 @@
-const TableBody = ({ price, maxDiscount, discountValue, afterDiscount }) => {
+import { useState, useEffect } from 'react'
+
+const TableBody = ({ pricesData = {}, isBig = true }) => {
+    const [PYClass, setPYClass] = useState('2')
+    useEffect(() => setPYClass(isBig ? 'py-2' : 'py-1'), [isBig])
+
     return <div className="d-flex">
         <div>
-            <div className="price-table-field section-black px-3 py-2 pe-4">
-                Cena:
-            </div>
-
-            <div className="price-table-field section-gray-d px-3 py-2 pe-4">
-                Max rabat:
-            </div>
-
-            <div className="price-table-field section-black px-3 py-2 pe-4">
-                Wartość max rabatu:
-            </div>
-
-            <div className="price-table-field section-gray-d px-3 py-2 pe-4">
-                Cena po max rabacie:
-            </div>
+            {
+                pricesData.map((row, n) => <div
+                    key={n}
+                    className={`price-table-field 
+                        price-table-name-${n % 2 === 0 ? 'e' : 'o'} 
+                        px-3 ${PYClass} pe-4`}
+                >
+                    {row.name}:
+                </div>)
+            }
         </div>
 
         <div className="w-100 fw-bold">
-            <div className="section-gray px-3 py-2 text-end">
-                {price}
-            </div>
-
-            <div className="section-white px-3 py-2 text-end">
-                {maxDiscount}
-            </div>
-
-            <div className="section-gray px-3 py-2 text-end">
-                {discountValue}
-            </div>
-
-            <div className="section-white px-3 py-2 text-end">
-                {afterDiscount}
-            </div>
+            {
+                pricesData.map((row, n) => <div
+                    key={n}
+                    className={`price-table-value-${n % 2 === 0 ? 'e' : 'o'} px-3 ${PYClass} text-end`}
+                >
+                    {row.value}
+                </div>)
+            }
         </div>
     </div>
 }
