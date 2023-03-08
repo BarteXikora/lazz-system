@@ -1,3 +1,6 @@
+import { useContext } from 'react'
+import AppContext from '../../functions/AppContext'
+
 import SelectInput from '../../../../components/SelectInput'
 
 import iconSave from '../../../../img/icon-save.png'
@@ -5,6 +8,8 @@ import iconDiscount from '../../../../img/icon-discount.png'
 import iconEmail from '../../../../img/icon-send.png'
 
 const PricesHeader = () => {
+    const { openWindow } = useContext(AppContext)
+
     return <div className="section-gray px-3 py-4">
         <div className="d-flex align-items-center justify-content-between">
             <h1 className="font-subtitle fw-bold m-0">Aktualna wycena głowicy:</h1>
@@ -27,10 +32,13 @@ const PricesHeader = () => {
                 <span>Zapisz wycenę...</span>
             </button>
 
-            <button className="btn btn-sec btn-icon-text me-2">
+            <button
+                className="btn btn-sec btn-icon-text me-2"
+                onClick={() => openWindow('calculateDiscount', {})}
+            >
                 <img src={iconDiscount} alt="Wyślij e-mail" />
 
-                <span>Oblicz rabat</span>
+                <span>Oblicz rabat...</span>
             </button>
 
             <button className="btn btn-sec btn-icon-text me-2">

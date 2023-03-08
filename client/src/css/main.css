@@ -1555,6 +1555,10 @@ button:focus,
 }
 
 .price-table-value-o {
+  background-color: #E4EBEF;
+}
+
+.section-gray-l .price-table-value-o {
   background-color: #F4FAFF;
 }
 

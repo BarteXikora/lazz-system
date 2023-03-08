@@ -129,5 +129,11 @@
 }
 
 .price-table-value-o {
-    background-color: $white;
+    background-color: $gray-l;
+}
+
+.section-gray-l {
+    .price-table-value-o {
+        background-color: $white;
+    }
 }
