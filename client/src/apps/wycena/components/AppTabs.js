@@ -3,6 +3,8 @@ import AppContext from '../functions/AppContext'
 
 import Tab from './Tab'
 
+import iconForm from '../../../img/icon-form.png'
+import iconSaved from '../../../img/icon-saved.png'
 import iconEraser from '../../../img/icon-eraser.png'
 
 const AppTabs = () => {
@@ -15,12 +17,14 @@ const AppTabs = () => {
             <div>
                 <Tab
                     title='Wyceń głowicę'
+                    icon={iconForm}
                     isActive={appState.showCalculator}
                     onClick={() => appDispatch({ type: 'CHANGE_TAB', payload: true })}
                 />
 
                 <Tab
                     title='Zapisane wyceny'
+                    icon={iconSaved}
                     isActive={!appState.showCalculator}
                     onClick={() => appDispatch({ type: 'CHANGE_TAB', payload: false })}
                 />
