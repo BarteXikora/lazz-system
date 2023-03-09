@@ -14,13 +14,15 @@ const PricesHeader = () => {
         <div className="d-flex align-items-center justify-content-between">
             <h1 className="font-subtitle fw-bold m-0">Aktualna wycena głowicy:</h1>
 
-            <div style={{ width: '200px' }}>
-                <SelectInput
-                    options={appState.config.allowedCurrencies}
-                    state={appState.currency}
-                    setState={currency => appDispatch({ type: 'SET_CURRENCY', payload: currency })}
-                />
-            </div>
+            {
+                appState.config.allowedCurrencies.length > 1 && <div style={{ width: '200px' }}>
+                    <SelectInput
+                        options={appState.config.allowedCurrencies}
+                        state={appState.currency}
+                        setState={currency => appDispatch({ type: 'SET_CURRENCY', payload: currency })}
+                    />
+                </div>
+            }
         </div>
 
         <div className="mt-3">
