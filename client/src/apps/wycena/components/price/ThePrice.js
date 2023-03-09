@@ -15,13 +15,19 @@ const ThePrice = () => {
     const [validate, setValidate] = useState([])
     const [prices, setPrices] = useState({})
 
+    useEffect(() => setPrices(appState.prices), [appState.prices])
+
+    console.log(prices)
 
     useEffect(() => {
         const validation = validateCalculator(appState.config, appState.calculator)
 
         setValidate(validation)
 
-        if (validation.length === 0) setPrices(calculate(appState.config, appState.calculator))
+        if (validation.length === 0) appDispatch({
+            type: 'SET_PRICES',
+            payload: calculate(appState.config, appState.calculator)
+        })
 
     }, [appState.calculator])
 

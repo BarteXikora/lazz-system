@@ -38,6 +38,10 @@ const appReducer = (state, action) => {
         return { ...state, calculator: defaultCalculatorValues }
     }
 
+    if (action.type === 'SET_PRICES') {
+        return { ...state, prices: action.payload }
+    }
+
     return { ...state }
 }
 
