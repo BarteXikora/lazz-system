@@ -17,8 +17,6 @@ const ThePrice = () => {
 
     useEffect(() => setPrices(appState.prices), [appState.prices])
 
-    console.log(prices)
-
     useEffect(() => {
         const validation = validateCalculator(appState.config, appState.calculator)
 
