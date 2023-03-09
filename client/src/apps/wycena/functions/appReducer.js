@@ -42,6 +42,10 @@ const appReducer = (state, action) => {
         return { ...state, prices: action.payload }
     }
 
+    if (action.type === 'SET_CURRENCY') {
+        return { ...state, currency: action.payload }
+    }
+
     return { ...state }
 }
 

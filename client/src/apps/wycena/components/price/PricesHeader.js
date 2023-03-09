@@ -8,7 +8,7 @@ import iconDiscount from '../../../../img/icon-discount.png'
 import iconEmail from '../../../../img/icon-send.png'
 
 const PricesHeader = () => {
-    const { openWindow } = useContext(AppContext)
+    const { appState, appDispatch, openWindow } = useContext(AppContext)
 
     return <div className="section-gray px-3 py-4">
         <div className="d-flex align-items-center justify-content-between">
@@ -16,9 +16,9 @@ const PricesHeader = () => {
 
             <div style={{ width: '200px' }}>
                 <SelectInput
-                    options={[{ id: 'pln', name: 'PLN' }, { id: 'eu', name: 'EU' }]}
-                    state={{ id: 'pln' }}
-                    setState={null}
+                    options={appState.config.allowedCurrencies}
+                    state={appState.currency}
+                    setState={currency => appDispatch({ type: 'SET_CURRENCY', payload: currency })}
                 />
             </div>
         </div>

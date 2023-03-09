@@ -42,5 +42,9 @@ export default {
             { id: 0, name: 'LAZZONI - na płetwę', price: 0 },
             { id: 1, name: 'Gomad', price: 0 }
         ]
-    }
+    },
+    allowedCurrencies: [
+        { id: 'pln', name: 'PLN' },
+        { id: 'eur', name: 'EUR' }
+    ]
 }
