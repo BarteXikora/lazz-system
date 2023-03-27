@@ -1,6 +1,6 @@
 const dbConnect = require('../functions/dbConnect.js')
 
-const verifyAppPrivilages = async (req, res, next) => {
+const verifyAppAccess = async (req, res, next) => {
     const apiAppSlug = req.baseUrl.replace('/api/', '')
     const userID = req.user
 
@@ -54,4 +54,4 @@ const verifyAppPrivilages = async (req, res, next) => {
     next()
 }
 
-module.exports = verifyAppPrivilages
+module.exports = verifyAppAccess

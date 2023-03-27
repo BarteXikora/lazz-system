@@ -1,10 +1,10 @@
 const path = require('path')
 
 const verifyUser = require(path.join(__dirname, '..', 'functions', 'verifyUserAPI.js'))
-const verifyAppPrivilages = require(path.join(__dirname, '..', 'functions', 'verifyAppPrivilages.js'))
+const verifyAppAccess = require(path.join(__dirname, '..', 'functions', 'verifyAppAccess.js'))
 const verifyByAuthOrIP = require(path.join(__dirname, '..', 'functions', 'verifyByAuthOrIP.js'))
 
-const verifyBoth = [verifyUser, verifyAppPrivilages]
+const verifyBoth = [verifyUser, verifyAppAccess]
 
 // Creates express router:
 const express = require('express')
