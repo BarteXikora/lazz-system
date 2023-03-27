@@ -54,8 +54,8 @@ const whoAmI = async (req, res) => {
     if (admin[0].isAdmin > 0) data.admin = true
 
     const appsList = await dbConnect.q(
-        `SELECT * FROM system_apps, system_app_privilages WHERE system_app_privilages.user_id = ? 
-        AND system_app_privilages.app_id = system_apps.id ORDER BY system_apps.id`,
+        `SELECT * FROM system_apps, system_app_access WHERE system_app_access.user_id = ? 
+        AND system_app_access.app_id = system_apps.id ORDER BY system_apps.id`,
         [verified.id]
     )
 
