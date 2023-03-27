@@ -6,6 +6,7 @@ import WindowAdd from '../windows/WindowAdd'
 import WindowAddConfirm from '../windows/WindowAddConfirm'
 import WindowListOptions from '../windows/WindowListOptions'
 import WindowSort from '../windows/WindowSort'
+import WindowNoPrivilages from '../windows/WindowNoPrivilages'
 
 import NoWindow from '../windows/NoWindow'
 
@@ -17,7 +18,8 @@ const slugs = {
     add: { title: 'Dodaj kontakt', content: <WindowAdd /> },
     confirm: { title: 'Dodaj kontakt', content: <WindowAddConfirm /> },
     list: { title: 'Lista...', content: <WindowListOptions /> },
-    sort: { title: 'Sortuj listę', content: <WindowSort /> }
+    sort: { title: 'Sortuj listę', content: <WindowSort /> },
+    privilages: { title: 'Brak uprawnień', content: <WindowNoPrivilages /> }
 }
 
 const find = (slug) => {

@@ -22,7 +22,7 @@ const WindowListOptions = () => {
                     appState.privilages.add ?
                         () => openWindow('add', { openWindow, reload: fetchList })
                         :
-                        () => openWindow('no-privilages', {})
+                        () => openWindow('privilages', {})
                 }
             >
                 <img src={iconAdd} alt="Dodaj" />
@@ -45,7 +45,7 @@ const WindowListOptions = () => {
                     appState.privilages.download ?
                         () => openWindow('download', { appState, appDispatch })
                         :
-                        () => openWindow('no-privilages', {})
+                        () => openWindow('privilages', {})
                 }
             >
                 <img src={iconDownload} alt="Pobierz..." />

@@ -31,7 +31,7 @@ const PreviewHeader = ({ contact, empty, contentToPrint }) => {
                     appState.privilages.delegate ?
                         () => openWindow('delegate', { contact, workers: appState.workersList, appDispatch })
                         :
-                        () => openWindow('no-privilages', {})
+                        () => openWindow('privilages', {})
                 }
             >
                 <img src={iconDelegate} alt="Przekaż" />
