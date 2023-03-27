@@ -25,8 +25,14 @@ const PreviewHeader = ({ contact, empty, contentToPrint }) => {
 
         <div className='mt-4'>
             <button
-                className="btn btn-prim btn-icon-text-small me-2 mb-2 d-inline-block"
-                onClick={() => openWindow('delegate', { contact, workers: appState.workersList, appDispatch })}
+                className={`btn ${appState.privilages.delegate ? 'btn-prim' : 'btn-dis'} btn-icon-text-small me-2 mb-2 d-inline-block`}
+                title={appState.privilages.delegate ? '' : 'Brak uprawnień'}
+                onClick={
+                    appState.privilages.delegate ?
+                        () => openWindow('delegate', { contact, workers: appState.workersList, appDispatch })
+                        :
+                        () => openWindow('no-privilages', {})
+                }
             >
                 <img src={iconDelegate} alt="Przekaż" />
                 <span>Przekaż zgłoszenie...</span>

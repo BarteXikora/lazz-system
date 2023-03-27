@@ -17,8 +17,14 @@ const WindowListOptions = () => {
             <hr className='mb-4' />
 
             <button
-                className="btn btn-prim btn-icon-text btn-full-width mb-3"
-                onClick={() => openWindow('add', { openWindow, reload: fetchList })}
+                className={`btn ${appState.privilages.add ? 'btn-prim' : 'btn-dis'} btn-icon-text btn-full-width mb-3`}
+                title={appState.privilages.add ? '' : 'Brak uprawnień'}
+                onClick={
+                    appState.privilages.add ?
+                        () => openWindow('add', { openWindow, reload: fetchList })
+                        :
+                        () => openWindow('no-privilages', {})
+                }
             >
                 <img src={iconAdd} alt="Dodaj" />
                 <span>Dodaj kontakt</span>

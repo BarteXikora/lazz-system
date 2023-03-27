@@ -24,6 +24,22 @@ const App = () => {
     const [appState, appDispatch] = useReducer(appReducer, defaultAppState)
 
     const fetchList = async () => {
+        // Get app privilages:
+        const privilages = await APIget(
+            systemState.apiLink,
+            '/system/privilages/zgloszenia',
+            { 'auth-token': systemState.user.authToken }
+        )
+        if (!privilages.success) return appDispatch({
+            type: 'LIST_ERROR', payload: {
+                success: false,
+                message: 'Nie udało się pobrać uprawnień!',
+                error: '@ZGLOSZENIA/get-privilages#00'
+            }
+        })
+        if (!privilages.data.success) return appDispatch({ type: 'LIST_ERROR', payload: privilages.data })
+        appDispatch({ type: 'SET_PRIVILAGES', payload: privilages.data.data })
+
         // Get forms list:
         const forms = await APIget(
             systemState.apiLink,

@@ -37,8 +37,14 @@ const ListHeader = ({ shownCnt, allCnt }) => {
 
         <div className='d-none d-md-flex'>
             <button
-                className="btn btn-sec btn-icon-text-small ms-1"
-                onClick={() => openWindow('download', { appState, appDispatch })}
+                className={`btn ${appState.privilages.download ? 'btn-sec' : 'btn-dis'} btn-icon-text-small ms-1`}
+                title={appState.privilages.download ? '' : 'Brak uprawnień'}
+                onClick={
+                    appState.privilages.download ?
+                        () => openWindow('download', { appState, appDispatch })
+                        :
+                        () => openWindow('no-privilages', {})
+                }
             >
                 <img src={iconDownload} alt="Pobierz..." />
                 <span>Pobierz...</span>
@@ -55,8 +61,14 @@ const ListHeader = ({ shownCnt, allCnt }) => {
             </button>
 
             <button
-                className="btn btn-prim btn-icon-text-small ms-3"
-                onClick={() => openWindow('add', { openWindow, reload: fetchList })}
+                className={`btn ${appState.privilages.add ? 'btn-prim' : 'btn-dis'} btn-icon-text-small ms-3`}
+                title={appState.privilages.add ? '' : 'Brak uprawnień'}
+                onClick={
+                    appState.privilages.add ?
+                        () => openWindow('add', { openWindow, reload: fetchList })
+                        :
+                        () => openWindow('no-privilages', {})
+                }
             >
                 <img src={iconAdd} alt="Dodaj" />
                 <span>Dodaj kontakt</span>
