@@ -22,7 +22,14 @@ const checkForIP = async (ip) => {
 const verifyByAuthOrIP = async (req, res, next) => {
     const token = req.header('auth-token')
 
-    if (checkForAuthToken(token)) return next()
+    const verified = checkForAuthToken(token)
+
+    if (verified) {
+        req.user = verified
+
+        return next()
+    }
+
     if (await checkForIP(req.ip)) return next()
 
     res.json({
