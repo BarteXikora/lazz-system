@@ -31,9 +31,9 @@ textarea,
 }
 
 .input-wrong {
-    border-color: $wrong;
-    color: $wrong;
-    background-color: $wrong-s;
+    border-color: $wrong !important;
+    color: $wrong !important;
+    background-color: $wrong-s !important;
 }
 
 label {
@@ -67,6 +67,96 @@ label {
             &:hover {
                 background-color: $gray;
             }
+        }
+    }
+}
+
+.input-unit {
+    display: block;
+    padding: 8px 12px;
+    background-color: $gray;
+    border: 1px solid $black;
+    font-weight: bold;
+    transition: $transition;
+
+    &.input-unit-middle {
+        border-left: 0;
+        border-right: 0;
+    }
+
+    &.input-unit-end {
+        border-left: 0;
+    }
+}
+
+.section-gray .input-unit {
+    background-color: $gray-d;
+    color: $white;
+}
+
+.fake-input {
+    display: flex;
+    border: 1px solid $black;
+    transition: $transition;
+
+    input,
+    .input-unit {
+        border: 0;
+        transition: $transition;
+    }
+
+    &:hover,
+    &:focus-within {
+        border-color: $prim;
+    }
+
+    .fake-input-text {
+        padding: 8px 0;
+        background-color: $gray-l;
+        transition: $transition;
+    }
+
+    &.fake-input-validated {
+        border-color: $sec-d;
+
+        input,
+        .fake-input-text {
+            background-color: $sec-s;
+        }
+
+        .input-unit {
+            background-color: $sec;
+            color: $white;
+        }
+    }
+}
+
+.input-group.input-validated {
+    input {
+        border-color: $sec-d !important;
+        background-color: $sec-s;
+    }
+
+    .input-unit {
+        border-color: $sec-d !important;
+        background-color: $sec;
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.section-gray-l {
+
+    input,
+    textarea,
+    .form-control {
+        background-color: $white;
+
+        &:focus {
+            background-color: $prim-s;
+            color: $prim;
         }
     }
 }

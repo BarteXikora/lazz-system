@@ -40,6 +40,16 @@ body {
     }
 }
 
+.section-prim-d {
+    background-color: $prim-d;
+    color: $white;
+}
+
+.section-sec-d {
+    background-color: $sec-d;
+    color: $white;
+}
+
 .section-gradient {
     background: $prim-d;
     background: $gradient-v;

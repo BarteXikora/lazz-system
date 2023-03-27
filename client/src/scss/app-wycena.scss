@@ -2,7 +2,138 @@
     width: 50%;
 }
 
-.calculator-form {
-    height: 100%;
-    overflow-y: scroll;
+.tabs-container {
+    background-color: $gray;
+    border-bottom: 2px solid $prim;
+}
+
+.tab {
+    margin: 0;
+    background-color: $gray-l;
+    border-radius: 5px 5px 0 0 !important;
+    font-weight: bold;
+    font-size: $f-default;
+    transition: $transition;
+
+    &:hover {
+        background-color: $prim-s;
+    }
+
+    &.tab-active {
+        position: relative;
+        outline: 2px solid $prim !important;
+        background-color: $white;
+
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: -2px;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background-color: $white;
+        }
+    }
+}
+
+.spindle-container {
+    background-color: $gray-l;
+    border-left: 10px solid $gray-d;
+
+    &.spindle-wrong {
+        border-color: $wrong;
+    }
+}
+
+.validation-list-item {
+    border-left: 10px solid $gray;
+    background-color: $white;
+    transition: $transition;
+    opacity: 1;
+
+    &.validation-list-item-correct {
+        animation-name: animation-validation-list-item-correct;
+        animation-duration: 1s;
+    }
+
+    &.validation-list-item-wrong {
+        animation-name: animation-validation-list-item-wrong;
+        animation-duration: 1s;
+    }
+}
+
+@keyframes animation-validation-list-item-correct {
+    0% {
+        border-color: $gray;
+        background-color: $white;
+    }
+
+    25% {
+        border-color: $sec;
+        background-color: $sec-s;
+    }
+
+    75% {
+        border-color: $sec;
+        background-color: $sec-s;
+        opacity: 1;
+    }
+
+    100% {
+        border-color: $gray;
+        background-color: $white;
+        opacity: 0;
+    }
+}
+
+@keyframes animation-validation-list-item-wrong {
+    0% {
+        border-color: $gray;
+        background-color: $white;
+        opacity: 0;
+    }
+
+    25% {
+        border-color: $wrong;
+        background-color: $wrong-s;
+        opacity: 1;
+    }
+
+    75% {
+        border-color: $wrong;
+        background-color: $wrong-s;
+    }
+
+    100% {
+        border-color: $gray;
+        background-color: $white;
+    }
+}
+
+.price-table-field {
+    white-space: nowrap;
+}
+
+.price-table-name-e {
+    background-color: $black;
+    color: $white;
+}
+
+.price-table-name-o {
+    background-color: $gray-d;
+    color: $white;
+}
+
+.price-table-value-e {
+    background-color: $gray;
+}
+
+.price-table-value-o {
+    background-color: $gray-l;
+}
+
+.section-gray-l {
+    .price-table-value-o {
+        background-color: $white;
+    }
 }
