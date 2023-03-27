@@ -29,7 +29,7 @@ const verifyAppPrivilages = async (req, res, next) => {
     const appID = app[0].id
 
     const privilage = await dbConnect.q(
-        'SELECT COUNT(id) as privilage FROM system_app_privilages WHERE user_id = ? AND app_id = ?;',
+        'SELECT COUNT(id) as privilage FROM system_app_access WHERE user_id = ? AND app_id = ?;',
         [userID, appID]
     )
 
