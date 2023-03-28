@@ -90,6 +90,7 @@ button,
     background-color: transparent;
     color: $black;
 
+    &.btn-selected,
     &:hover {
         background-color: $gray;
         color: $black;

@@ -784,7 +784,7 @@ button:focus,
   background-color: transparent;
   color: #001217;
 }
-.btn-tr:hover {
+.btn-tr.btn-selected, .btn-tr:hover {
   background-color: #B5C6D2;
   color: #001217;
 }
@@ -1560,6 +1560,17 @@ button:focus,
 
 .section-gray-l .price-table-value-o {
   background-color: #F4FAFF;
+}
+
+.column-menu {
+  overflow-y: scroll;
+  width: 330px;
+  min-width: 330px;
+}
+
+.column-main {
+  overflow-y: scroll;
+  width: 100%;
 }
 
 ._sizes {
