@@ -2,6 +2,16 @@ import filterContacts from './filterContacts'
 import sortContacts from './sortContacts'
 
 const appReducer = (state, action) => {
+    if (action.type === 'SET_PRIVILAGES') {
+        let privilagesToSet = {
+            add: action.payload.includes('add'),
+            delegate: action.payload.includes('delegate'),
+            download: action.payload.includes('download')
+        }
+
+        return { ...state, privilages: privilagesToSet }
+    }
+
     if (action.type === 'LOAD_FORMS') {
         return { ...state, formsList: action.payload }
     }

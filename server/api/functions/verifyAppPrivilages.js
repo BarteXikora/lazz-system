@@ -1,57 +1,37 @@
-const dbConnect = require('../functions/dbConnect.js')
+const dbConnect = require('./dbConnect.js')
 
-const verifyAppPrivilages = async (req, res, next) => {
-    const apiAppSlug = req.baseUrl.replace('/api/', '')
-    const userID = req.user
+const verifyAppPrivilages = async (userID, privilageSlug) => {
+    const privilageData =
+        await dbConnect.q('SELECT * FROM privilages_list WHERE slug = ?;', [privilageSlug])
 
-    const errorCode = '@API' + req.originalUrl + '@verify-app-privilages#'
-
-    if (!apiAppSlug || !userID) return res.json({
+    if (!privilageData) return {
         success: false,
-        message: 'Nie udało się zweryfikować uprawnień do aplikacji!',
-        error: errorCode + '00'
-    })
+        code: '@VERIFY_APP_PRIVILAGES#00'
+    }
 
-    const app = await dbConnect.q('SELECT id FROM system_apps WHERE slug = ?;', [apiAppSlug])
-
-    if (!app) return res.json({
+    if (privilageData.length !== 1) return {
         success: false,
-        message: 'Nie udało się zweryfikować uprawnień do aplikacji!',
-        error: errorCode + '01'
-    })
+        code: '@VERIFY_APP_PRIVILAGES#01'
+    }
 
-    if (app.length !== 1) return res.json({
-        success: false,
-        message: 'Nie udało się zweryfikować uprawnień do aplikacji!',
-        error: errorCode + '02'
-    })
+    const privilageID = privilageData[0].id
 
-    const appID = app[0].id
-
-    const privilage = await dbConnect.q(
-        'SELECT COUNT(id) as privilage FROM system_app_access WHERE user_id = ? AND app_id = ?;',
-        [userID, appID]
+    const hasPrivilage = await dbConnect.q(
+        'SELECT COUNT(id) AS privilage FROM privilages WHERE user_id = ? AND privilage_id = ?',
+        [userID, privilageID]
     )
 
-    if (!privilage) return res.json({
+    if (!hasPrivilage) return {
         success: false,
-        message: 'Nie udało się zweryfikować uprawnień do aplikacji!',
-        error: errorCode + '03'
-    })
+        code: '@VERIFY_APP_PRIVILAGES#02'
+    }
 
-    if (privilage.length !== 1) return res.json({
-        success: false,
-        message: 'Nie udało się zweryfikować uprawnień do aplikacji!',
-        error: errorCode + '04'
-    })
+    if (hasPrivilage[0].privilage !== 1) return {
+        success: true,
+        data: false
+    }
 
-    if (privilage[0].privilage !== 1) return res.json({
-        success: false,
-        message: 'Nie posiadasz praw dostepu do tej aplikacji!',
-        error: errorCode + '05'
-    })
-
-    next()
+    return { success: true, data: true }
 }
 
 module.exports = verifyAppPrivilages

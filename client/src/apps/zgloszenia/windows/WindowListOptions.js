@@ -17,8 +17,13 @@ const WindowListOptions = () => {
             <hr className='mb-4' />
 
             <button
-                className="btn btn-prim btn-icon-text btn-full-width mb-3"
-                onClick={() => openWindow('add', { openWindow, reload: fetchList })}
+                className={`btn ${appState.privilages.add ? 'btn-prim' : 'btn-dis'} btn-icon-text btn-full-width mb-3`}
+                onClick={
+                    appState.privilages.add ?
+                        () => openWindow('add', { openWindow, reload: fetchList })
+                        :
+                        () => openWindow('privilages', {})
+                }
             >
                 <img src={iconAdd} alt="Dodaj" />
                 <span>Dodaj kontakt</span>
@@ -35,8 +40,13 @@ const WindowListOptions = () => {
             </button>
 
             <button
-                className="btn btn-sec btn-icon-text btn-full-width mb-2 me-2"
-                onClick={() => openWindow('download', { appState, appDispatch })}
+                className={`btn ${appState.privilages.download ? 'btn-sec' : 'btn-dis'} btn-icon-text btn-full-width mb-2 me-2`}
+                onClick={
+                    appState.privilages.download ?
+                        () => openWindow('download', { appState, appDispatch })
+                        :
+                        () => openWindow('privilages', {})
+                }
             >
                 <img src={iconDownload} alt="Pobierz..." />
                 <span>Pobierz...</span>

@@ -1,6 +1,7 @@
 import clearFilters from './clearFilters'
 
 const defaultAppState = {
+    privilages: { add: false, delegate: false, download: false },
     listReady: false,
     formsList: [],
     departmentsList: [],
