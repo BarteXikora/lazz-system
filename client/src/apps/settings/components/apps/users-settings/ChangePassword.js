@@ -1,11 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import SystemContext from '../../../../../functions/SystemContext'
 import ButtonLoading from '../../../../../components/ButtonLoading'
+
+import { APIpost } from '../../../../../functions/api'
 
 import iconView from '../../../../../img/icon-view.png'
 import iconHide from '../../../../../img/icon-unview.png'
 import picSuccess from '../../../../../img/pic-success.png'
 
 const ChangePassword = () => {
+    const { systemState } = useContext(SystemContext)
+
     const emptyForm = { newPassword: '', repeatPassword: '', currentPassword: '' }
 
     const [form, setForm] = useState(emptyForm)
@@ -51,18 +56,47 @@ const ChangePassword = () => {
 
     }, [form])
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (isLoading) return
 
         if (!liveValidate.ok) return setLiveValidate({ ...liveValidate, showInfo: true })
 
         setIsLoading(true)
 
-        setTimeout(() => {
+        const answer = await APIpost(
+            systemState.apiLink,
+            '/system/users/change-password',
+            { 'auth-token': systemState.user.authToken },
+            { currentPassword: form.currentPassword, newPassword: form.newPassword }
+        )
+
+        if (!answer.success) {
+            setLiveValidate({
+                ok: false,
+                message: 'Nie udało się zmienić hasła.',
+                code: '@SETTINGS/user-settings/change-password#00',
+                showInfo: true
+            })
             setIsLoading(false)
-            setShowSuccess(true)
-            setForm(emptyForm)
-        }, 5000)
+
+            return
+        }
+
+        if (!answer.data.success) {
+            setLiveValidate({
+                ok: false,
+                message: answer.data.message,
+                code: answer.data.code,
+                showInfo: true
+            })
+            setIsLoading(false)
+
+            return
+        }
+
+        setIsLoading(false)
+        setShowSuccess(true)
+        setForm(emptyForm)
     }
 
     return <div className="col-6">
@@ -180,7 +214,7 @@ const ChangePassword = () => {
                             {
                                 liveValidate.showInfo && <div className="warning-box my-4">
                                     <span className="font-wrong font-big fw-bold">{liveValidate.message}</span>
-                                    {liveValidate.code && <span className="font-gray">{liveValidate.code}</span>}
+                                    {liveValidate.code && <span className="d-block font-gray fw-bold mt-2">{liveValidate.code}</span>}
                                 </div>
                             }
 
