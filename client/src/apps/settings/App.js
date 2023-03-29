@@ -18,13 +18,13 @@ const App = () => {
 
                 <Route path='user' element={<UserSettings />} />
 
-                {
+                { /*
                     systemState.appsList.map((app, n) => <Route
                         key={n}
                         path={app.slug}
                         element={<AppSection slug={app.slug} />}
                     />)
-                }
+                */ }
 
                 <Route path='*' element={<Navigate to='user' />} />
             </Routes>

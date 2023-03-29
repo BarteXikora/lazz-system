@@ -19,7 +19,7 @@ const Menu = ({ apps }) => {
             Ustawienia użytkownika
         </button>
 
-        {
+        { /*
             apps.map(app => <>
                 {
                     app.id >= 0 && <button
@@ -32,7 +32,7 @@ const Menu = ({ apps }) => {
                     </button>
                 }
             </>)
-        }
+        */ }
     </div>
 }
 
