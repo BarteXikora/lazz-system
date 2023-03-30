@@ -85,8 +85,8 @@ const ChangePassword = () => {
         if (!answer.data.success) {
             setLiveValidate({
                 ok: false,
-                message: answer.data.message,
-                code: answer.data.code,
+                message: answer.data.data.message,
+                code: answer.data.data.code,
                 showInfo: true
             })
             setIsLoading(false)
