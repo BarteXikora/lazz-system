@@ -4,12 +4,15 @@ import SelectInput from '../../../../../components/SelectInput'
 import ButtonLoading from '../../../../../components/ButtonLoading'
 import { APIpost } from '../../../../../functions/api'
 
+import picSuccess from '../../../../../img/pic-success.png'
+
 const DefaultApp = () => {
     const { systemState, systemDispatch } = useContext(SystemContext)
 
     const [selectedApp, setSelectedApp] = useState(systemState.defaultApp || { id: null })
     const [validate, setValidate] = useState({ ok: false, message: '', code: '', showInfo: false })
     const [isLoading, setIsLoading] = useState(false)
+    const [showSuccess, setShowSuccess] = useState(false)
 
     useEffect(() => {
         if (selectedApp.id === null) return setValidate({
@@ -73,6 +76,7 @@ const DefaultApp = () => {
         setIsLoading(false)
         setValidate({ ...validate, showInfo: false })
         systemDispatch({ type: 'UPDATE_DEFAULT_APP', payload: selectedApp })
+        setShowSuccess(true)
     }
 
     return <div className="col-6">
@@ -81,72 +85,98 @@ const DefaultApp = () => {
         <div className="row m-0 px-1">
             <div className="col-10 p-0 pe-2">
                 {
-                    systemState.appsList.filter(app => app.id >= 0).length > 1 ?
+                    !showSuccess ?
 
-                        <>
-                            <p>
-                                Aplikacja domyślna to aplikacja, która uruchomi się automatycznie po zalogowaniu,
-                                pod warunkiem, że użytkownik nie użyje bezpośredniego linku do innej
-                                aplikacji.
-                            </p>
+                        systemState.appsList.filter(app => app.id >= 0).length > 1 ?
 
-                            <SelectInput
-                                options={systemState.appsList.filter(app => app.id >= 0)}
-                                state={selectedApp}
-                                setState={app => { if (!isLoading) setSelectedApp(app) }}
-                            />
-
-                            {
-                                validate.showInfo && <div className="warning-box mt-4">
-                                    <h5 className="font-big font-wrong fw-bold m-0">
-                                        {validate.message}
-                                    </h5>
-
-                                    {
-                                        validate.code && <span className="d-block font-gray fw-bold">
-                                            Kod błędu: {validate.code}
-                                        </span>
-                                    }
-                                </div>
-                            }
-
-                            <button
-                                className={`btn ${validate.ok ? 'btn-prim' : 'btn-dis'} mt-4`}
-                                onClick={handleSubmit}
-                            >
-                                {isLoading && <ButtonLoading />}
-
-                                Zapisz
-                            </button>
-                        </>
-
-                        :
-
-
-                        systemState.appsList.filter(app => app.id >= 0).length === 1 ?
-
-                            <div className="info-box w-100 p-4">
-                                <h5 className="font-big fw-bold m-0">
-                                    Masz dostęp do jednej palikacji: {' '}
-                                    {systemState.appsList.filter(app => app.id >= 0)[0].name}.
-                                </h5>
-
-                                <p className='m-0'>
-                                    Aplikacja ta będzie zawsze uruchamiana automatycznie po zalogowaniu.
+                            <>
+                                <p>
+                                    Aplikacja domyślna to aplikacja, która uruchomi się automatycznie po zalogowaniu,
+                                    pod warunkiem, że użytkownik nie użyje bezpośredniego linku do innej
+                                    aplikacji.
                                 </p>
-                            </div>
+
+                                <SelectInput
+                                    options={systemState.appsList.filter(app => app.id >= 0)}
+                                    state={selectedApp}
+                                    setState={app => { if (!isLoading) setSelectedApp(app) }}
+                                />
+
+                                {
+                                    validate.showInfo && <div className="warning-box mt-4">
+                                        <h5 className="font-big font-wrong fw-bold m-0">
+                                            {validate.message}
+                                        </h5>
+
+                                        {
+                                            validate.code && <span className="d-block font-gray fw-bold">
+                                                Kod błędu: {validate.code}
+                                            </span>
+                                        }
+                                    </div>
+                                }
+
+                                <button
+                                    className={`btn ${validate.ok ? 'btn-prim' : 'btn-dis'} mt-4`}
+                                    onClick={handleSubmit}
+                                >
+                                    {isLoading && <ButtonLoading />}
+
+                                    Zapisz
+                                </button>
+                            </>
 
                             :
 
-                            <div className="warning-box w-100 p-4">
-                                <h5 className="font-big fw-bold m-0">
-                                    Nie posiadasz dostępu do żadnej aplikacji.
-                                </h5>
 
-                                <p className='m-0'>
-                                    Aby otrzymać dostep do aplikacji skontaktuj się z administratorem.
+                            systemState.appsList.filter(app => app.id >= 0).length === 1 ?
+
+                                <div className="info-box w-100 p-4">
+                                    <h5 className="font-big fw-bold m-0">
+                                        Masz dostęp do jednej palikacji: {' '}
+                                        {systemState.appsList.filter(app => app.id >= 0)[0].name}.
+                                    </h5>
+
+                                    <p className='m-0'>
+                                        Aplikacja ta będzie zawsze uruchamiana automatycznie po zalogowaniu.
+                                    </p>
+                                </div>
+
+                                :
+
+                                <div className="warning-box w-100 p-4">
+                                    <h5 className="font-big fw-bold m-0">
+                                        Nie posiadasz dostępu do żadnej aplikacji.
+                                    </h5>
+
+                                    <p className='m-0'>
+                                        Aby otrzymać dostep do aplikacji skontaktuj się z administratorem.
+                                    </p>
+                                </div>
+
+                        :
+
+                        <div className='w-100 d-flex align-items-center section-gray-l'>
+                            <img src={picSuccess} />
+
+                            <div className="mx-3 py-4 mt-1">
+                                <h4 className="font-subtitle fw-bold">
+                                    Zapisano &bdquo;{selectedApp.name}&rdquo; jako aplikację domyślną!
+                                </h4>
+
+                                <p>
+                                    Od teraz po zalogowaniu aplikacja ta będzie uruchamiana
+                                    automatycznie.
                                 </p>
+
+                                <button
+                                    className="btn btn-sec"
+                                    onClick={() => setShowSuccess(false)}
+                                >
+                                    Wróć do formularza
+                                </button>
                             </div>
+                        </div>
 
                 }
             </div>
