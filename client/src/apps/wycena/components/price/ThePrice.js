@@ -10,6 +10,9 @@ import Invalid from './Invalid'
 import ValidationList from './ValidationList'
 
 const ThePrice = () => {
+    return 'prices'
+
+    /*
     const { appState, appDispatch } = useContext(AppContext)
 
     const [validate, setValidate] = useState([])
@@ -47,6 +50,8 @@ const ThePrice = () => {
                 </>
         }
     </>
+
+    */
 }
 
 export default ThePrice
