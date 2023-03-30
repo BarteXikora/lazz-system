@@ -13,7 +13,7 @@ const StepSpindlesType = () => {
     const [selected, setSelected] = useState({ id: -1 })
 
     return <>
-        <div className="row section-gray pb-5 m-0">
+        <div className="row section-gray pt-3 pb-5 m-0">
             <div className="col-6 px-3">
                 <label>
                     Typ wrzeciona:

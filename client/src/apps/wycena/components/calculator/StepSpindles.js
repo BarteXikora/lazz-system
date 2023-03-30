@@ -17,7 +17,7 @@ const StepSpindles = () => {
     }, [spindlesCnt])
 
     return <>
-        <div className="row section-gray pt-4 pb-5 m-0">
+        <div className="row section-gray pt-4 m-0">
             <div className="col-12 px-3">
                 <h2 className="font-big fw-bold m-0 mt-2">Wrzeciona:</h2>
             </div>
@@ -66,6 +66,10 @@ const StepSpindles = () => {
                     </div>
                 </label>
             </div>
+
+            {
+                (spindleSpacing.id !== 0 || spindlesCnt === 0 || spindlesCnt > 25) && <div className='pb-5'></div>
+            }
         </div>
 
         {
