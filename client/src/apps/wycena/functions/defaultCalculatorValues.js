@@ -1,24 +1,19 @@
 export default {
-    times: {
-        timeProject: 0,
-        timeMilling: 0,
-        timeLathe: 0,
-        timeMontage: 0
-    },
-    shipment: { id: -1 },
-    spindles: [
-        {
-            type: { id: -1 },
-            montage: { id: -1 },
-            cnt: 0
+    headType: { id: -1 },
+    adjustableHead: { id: -1 },
+    linearHead: {
+        spindleSpacing: { id: -1 },
+        standardSpacing: {
+            spindlesCnt: 0,
+            standardSpindlesCnt: {
+                spindleType: { id: -1 },
+                material: { id: -1 },
+                shipment: { id: -1 },
+                bodyLength: 0,
+                flatBarType: { id: -1 },
+                clutchType: { id: -1 },
+                isRear: false,
+            }
         }
-    ],
-    body: {
-        length: 0,
-        flatBar: { id: -1 }
-    },
-    extra: {
-        cluth: { id: -1 },
-        backHead: false
     }
 }
