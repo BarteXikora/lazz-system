@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import SelectInput from '../../../../components/SelectInput'
 
-import StepBody from './StepBody'
+import StepShipment from './StepShipment'
 
 const StepMaterial = () => {
     const _materials = [{ id: 0, name: 'Stal' }, { id: 1, name: 'Aluminium' }]
@@ -9,7 +9,7 @@ const StepMaterial = () => {
     const [material, setMaterial] = useState({ id: -1 })
 
     return <>
-        <div className="row section-gray pb-5 pt-4 m-0">
+        <div className="row pb-5 pt-4 m-0">
             <div className="col-12 px-3">
                 <h2 className="font-big fw-bold m-0 mt-2">Materiał wykonania głowicy:</h2>
             </div>
@@ -26,7 +26,7 @@ const StepMaterial = () => {
         {
             material.id === -1 ?
 
-                <div className="row mt-4 pb-5 m-0">
+                <div className="row pb-5 m-0">
                     <div className="col-6 px-3">
                         <div className="info-box w-100">
                             <h5 className="font-big fw-bold m-0">
@@ -38,7 +38,7 @@ const StepMaterial = () => {
 
                 :
 
-                <StepBody />
+                <StepShipment />
         }
     </>
 }
