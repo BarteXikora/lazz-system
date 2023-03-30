@@ -13,7 +13,16 @@ const systemReducer = (state, action) => {
 
         const appsList = createAppsArray(action.payload.data.appsList)
 
-        return { ...defaultSystemState, ...action.payload.data, appsList }
+        return {
+            ...defaultSystemState,
+            ...action.payload.data,
+            appsList,
+            defaultApp: action.payload.data.defaultApp
+        }
+    }
+
+    if (action.type === 'UPDATE_DEFAULT_APP') {
+        return { ...state, defaultApp: action.payload }
     }
 
     if (action.type === 'LOG_IN') {

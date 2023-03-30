@@ -13,7 +13,12 @@ const SelectingApp = () => {
     const systemNavigate = useNavigate()
 
     useEffect(() => {
-        const preferedApp = selectAppSmart(systemState.appsList, systemState.currentApp, null)
+        const preferedApp = selectAppSmart(
+            systemState.appsList,
+            systemState.currentApp,
+            systemState.defaultApp && systemState.defaultApp.slug
+        )
+
         if (!preferedApp) setNoApps(true)
         else {
             systemDispatch({ type: 'SELECT_APP', payload: preferedApp })
