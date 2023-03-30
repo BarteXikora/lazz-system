@@ -46,6 +46,7 @@ const initialize = async (authToken) => {
             response.data.user.authToken = authToken
 
             response.data.appsList = answer.data.appsList
+            response.data.defaultApp = answer.data.defaultApp
         }
     }
 

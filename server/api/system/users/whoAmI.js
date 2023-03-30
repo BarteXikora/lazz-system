@@ -61,6 +61,19 @@ const whoAmI = async (req, res) => {
 
     data.appsList = appsList.map(app => { return { id: app.app_id, slug: app.slug, name: app.name } })
 
+    const defaultApp = await dbConnect.q(
+        'SELECT app_id FROM system_users_def_app WHERE user_id = ?;',
+        [data.id]
+    )
+
+    if (defaultApp.length > 0) {
+        const appID = defaultApp[0].app_id
+
+        const appsFound = data.appsList.filter(app => app.id === appID)
+
+        if (appsFound.length === 1) data.defaultApp = appsFound[0]
+    }
+
     res.json({
         success: true,
         data
