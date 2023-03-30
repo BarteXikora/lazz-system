@@ -5,7 +5,7 @@ import ButtonLoading from '../../../../../components/ButtonLoading'
 import { APIpost } from '../../../../../functions/api'
 
 const DefaultApp = () => {
-    const { systemState } = useContext(SystemContext)
+    const { systemState, systemDispatch } = useContext(SystemContext)
 
     const [selectedApp, setSelectedApp] = useState(systemState.defaultApp || { id: null })
     const [validate, setValidate] = useState({ ok: false, message: '', code: '', showInfo: false })
@@ -33,7 +33,7 @@ const DefaultApp = () => {
             showInfo: false
         })
 
-    }, [selectedApp])
+    }, [selectedApp, systemState.defaultApp])
 
     const handleSubmit = async () => {
         if (isLoading) return
@@ -72,6 +72,7 @@ const DefaultApp = () => {
 
         setIsLoading(false)
         setValidate({ ...validate, showInfo: false })
+        systemDispatch({ type: 'UPDATE_DEFAULT_APP', payload: selectedApp })
     }
 
     return <div className="col-6">

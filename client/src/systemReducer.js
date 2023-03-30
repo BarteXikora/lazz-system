@@ -21,6 +21,10 @@ const systemReducer = (state, action) => {
         }
     }
 
+    if (action.type === 'UPDATE_DEFAULT_APP') {
+        return { ...state, defaultApp: action.payload }
+    }
+
     if (action.type === 'LOG_IN') {
         localStorage.setItem('auth-token', action.payload)
 
