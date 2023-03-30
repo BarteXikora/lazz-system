@@ -10,6 +10,7 @@ router.post('/users/register-user', verifyUser, require(path.join(__dirname, 'us
 router.post('/users/login-user', require(path.join(__dirname, 'users', 'loginUser.js')))
 router.get('/users/who-am-i', require(path.join(__dirname, 'users', 'whoAmI.js')))
 router.post('/users/change-password', verifyUser, require(path.join(__dirname, 'users', 'changePassword.js')))
+router.post('/users/change-default-app', verifyUser, require(path.join(__dirname, 'users', 'changeDefaultApp.js')))
 
 router.get('/privilages/zgloszenia', verifyUser, require(path.join(__dirname, 'privilages', 'zgloszenia.js')).getZgloszenia)
 
