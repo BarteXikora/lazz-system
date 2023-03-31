@@ -795,6 +795,20 @@ button:focus,
   background-color: #d1efff !important;
 }
 
+.btn-item {
+  background-color: #E4EBEF;
+  color: #001217;
+  border: 1px solid #001217 !important;
+  font-weight: bold;
+}
+.btn-item:hover {
+  border-color: #0084ff !important;
+  background-color: #d1efff;
+}
+.btn-item.active {
+  background-color: #43bdff;
+}
+
 .section-gray .btn-tr:not(.btn-active):hover {
   background-color: #E4EBEF !important;
 }

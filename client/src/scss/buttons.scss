@@ -105,6 +105,22 @@ button,
     }
 }
 
+.btn-item {
+    background-color: $gray-l;
+    color: $black;
+    border: 1px solid $black !important;
+    font-weight: bold;
+
+    &:hover {
+        border-color: $prim !important;
+        background-color: $prim-s;
+    }
+
+    &.active {
+        background-color: $prim-l;
+    }
+}
+
 .section-gray .btn-tr:not(.btn-active):hover {
     background-color: $gray-l !important;
 }
