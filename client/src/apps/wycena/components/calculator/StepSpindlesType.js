@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import SelectInput from '../../../../components/SelectInput'
 
-import StepMaterial from './StepMaterial'
+import StepBody from './StepBody'
 
 const StepSpindlesType = () => {
     const _types = [
@@ -42,7 +42,7 @@ const StepSpindlesType = () => {
 
                 :
 
-                <StepMaterial />
+                <StepBody />
         }
     </>
 }

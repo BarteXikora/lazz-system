@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import SelectInput from '../../../../components/SelectInput'
 
-import StepBody from './StepBody'
+import StepPriceReady from './StepPriceReady'
 
 const StepShipment = () => {
     const [shipment, setShipment] = useState({ id: -1 })
@@ -36,7 +36,7 @@ const StepShipment = () => {
 
                 :
 
-                <StepBody />
+                <StepPriceReady />
         }
     </>
 }
