@@ -1,7 +1,9 @@
 import WorkInProgress from '../../components/WorkInProgress'
 
-const App = () => {
-    return <WorkInProgress />
+import App from './App'
+
+const Index = () => {
+    return <App />
 }
 
-export default App
+export default Index
