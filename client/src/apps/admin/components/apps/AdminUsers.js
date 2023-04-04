@@ -1,5 +1,3 @@
-import WorkInProgress from "../../../../components/WorkInProgress"
-
 import TitleBar from './admin-users/TitleBar'
 import UsersList from './admin-users/UsersList'
 
