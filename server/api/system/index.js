@@ -17,6 +17,7 @@ router.get('/users/get-admins', verifyUser, require(path.join(__dirname, 'users'
 router.get('/users/get-users-apps-accesses', [verifyUser, verifyAdmin], require(path.join(__dirname, 'users', 'getUsersAppsAccesses.js')))
 
 router.get('/privilages/zgloszenia', verifyUser, require(path.join(__dirname, 'privilages', 'zgloszenia.js')).getZgloszenia)
+router.get('/privilages/get-privilages', verifyUser, require(path.join(__dirname, 'privilages', 'getPrivilages.js')))
 
 router.get('/', (req, res) => res.status(200).json({ success: true }))
 router.get('*', (req, res) => res.status(404).json({ success: false }))
