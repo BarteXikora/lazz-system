@@ -5,9 +5,11 @@ const initialize = async (apiLink, authToken) => {
         success: false,
         message: '',
         code: '',
-        usersList: []
+        usersList: [],
+        adminsList: []
     }
 
+    // Users list:
     const usersList = await APIget(apiLink, '/system/users/get-users', { 'auth-token': authToken })
 
     if (!usersList.success) {
@@ -24,7 +26,26 @@ const initialize = async (apiLink, authToken) => {
         return response
     }
 
-    response.usersList = usersList.data
+    response.usersList = usersList.data.data
+
+    // Admins list:
+    const adminsList = await APIget(apiLink, '/system/users/get-admins', { 'auth-token': authToken })
+
+    if (!adminsList.success) {
+        response.message = 'Nie udało się wczytać listy administratorów systemu.'
+        response.code = '@ADMIN/initialize#01'
+
+        return response
+    }
+
+    if (!adminsList.data.success) {
+        response.message = adminsList.data.message
+        response.code = adminsList.data.code
+
+        return response
+    }
+
+    response.adminsList = adminsList.data.data
     response.success = true
 
     return response
