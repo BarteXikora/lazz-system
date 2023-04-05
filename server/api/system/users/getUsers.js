@@ -9,7 +9,7 @@ const getUsers = async (req, res) => {
         code: '@API/system/users/get-users#00'
     })
 
-    return res.json({ seccess: true, data: users })
+    return res.json({ success: true, data: users })
 }
 
 module.exports = getUsers
