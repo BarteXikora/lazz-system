@@ -24,7 +24,7 @@ const initialize = async (apiLink, authToken) => {
         return response
     }
 
-    response.usersList = usersList
+    response.usersList = usersList.data
     response.success = true
 
     return response

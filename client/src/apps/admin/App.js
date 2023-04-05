@@ -20,7 +20,7 @@ const App = () => {
     const [initReady, setInitReady] = useState(false)
 
     const fetchInitialValues = async () => {
-        const initValues = await initialize(systemState.apiLink, systemState.authToken)
+        const initValues = await initialize(systemState.apiLink, systemState.user.authToken)
 
         setInitReady(true)
         appDispatch({ type: 'INIT', payload: initValues })
@@ -29,7 +29,7 @@ const App = () => {
         if (!initReady) fetchInitialValues()
     }, [])
 
-    return <AppContext.Provider>
+    return <AppContext.Provider value={{ appState, appDispatch }}>
         <div className='scroll-columns h-100'>
             <Menu />
 
