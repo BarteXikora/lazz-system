@@ -1,7 +1,7 @@
 const dbConnect = require('../../functions/dbConnect.js')
 
 const getUsers = async (req, res) => {
-    const users = await dbConnect.q('SELECT id, email, name FROM system_users;')
+    const users = await dbConnect.q('SELECT id, email, name FROM system_users ORDER BY name;')
 
     if (!users) return res.json({
         success: false,
