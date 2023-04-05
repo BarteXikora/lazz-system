@@ -16,7 +16,7 @@ const UsersListItem = ({ user }) => {
         }
 
         {
-            user.appsAccess && user.appsAccess.length === 0 && <span className="font-wrong">{' '}(Brak dostępu do jakielkowiek aplikacji)</span>
+            !user.isAdmin && user.appsAccess && user.appsAccess.length === 0 && <span className="font-wrong">{' '}(Brak dostępu do jakielkowiek aplikacji)</span>
         }
     </div>
 }
