@@ -7,6 +7,7 @@ import appReducer from './functions/appReducer'
 import defaultAppState from './functions/defaultAppState'
 
 import initialize from './functions/initialize'
+import windowsSlugs from './functions/windowsSlugs'
 
 import Menu from './components/Menu'
 import { LoadingBig } from '../../components/Loading'
@@ -15,7 +16,7 @@ import AdminUsers from './components/apps/AdminUsers'
 import AdminZgloszenia from './components/apps/AdminZgloszenia'
 
 const App = () => {
-    const { systemState } = useContext(SystemContext)
+    const { systemState, systemDispatch } = useContext(SystemContext)
 
     const [appState, appDispatch] = useReducer(appReducer, defaultAppState)
     const [initReady, setInitReady] = useState(false)
@@ -30,7 +31,16 @@ const App = () => {
         if (!initReady) fetchInitialValues()
     }, [])
 
-    return <AppContext.Provider value={{ appState, appDispatch, currentUser: systemState.user }}>
+    const openWindow = (slug, data = {}) => {
+        const { title, content } = windowsSlugs.find(slug)
+
+        systemDispatch({
+            type: 'OPEN_WINDOW',
+            payload: { title, content, data }
+        })
+    }
+
+    return <AppContext.Provider value={{ appState, appDispatch, openWindow, currentUser: systemState.user }}>
         <div className='scroll-columns h-100'>
             <Menu />
 
