@@ -6,7 +6,8 @@ const initialize = async (apiLink, authToken) => {
         message: '',
         code: '',
         usersList: [],
-        adminsList: []
+        adminsList: [],
+        appsAccesses: []
     }
 
     // Users list:
@@ -46,6 +47,25 @@ const initialize = async (apiLink, authToken) => {
     }
 
     response.adminsList = adminsList.data.data
+
+    // Apps accesses:
+    const appsAccesses = await APIget(apiLink, '/system/users/get-users-apps-accesses', { 'auth-token': authToken })
+
+    if (!appsAccesses.success) {
+        response.message = 'Nie udało się wczytać listy dostepów do aplikacji użytkowników.'
+        response.code = '@ADMIN/initialize#02'
+
+        return response
+    }
+
+    if (!appsAccesses.data.success) {
+        response.message = appsAccesses.data.message
+        response.code = appsAccesses.data.code
+
+        return response
+    }
+
+    response.appsAccesses = appsAccesses.data.data
     response.success = true
 
     return response

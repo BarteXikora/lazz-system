@@ -17,6 +17,16 @@ const appReducer = (state, action) => {
             })
         })
 
+        console.log(data.appsAccesses)
+
+        data.usersList.forEach(user => {
+            user.appsAccess = []
+
+            data.appsAccesses.forEach(app => {
+                if (app.user_id === user.id) user.appsAccess.push(app.app_id)
+            })
+        })
+
         return { ...state, usersList: data.usersList, error: { ...state.error, isError: false } }
     }
 
