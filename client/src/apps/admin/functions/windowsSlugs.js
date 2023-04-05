@@ -1,8 +1,9 @@
+import WindowRegisterUser from '../windows/WindowRegisterUser'
 
 import NoWindow from '../windows/NoWindow'
 
 const slugs = {
-    registerUser: { title: 'Utwórz konto użytkownika', content: <></> },
+    registerUser: { title: 'Utwórz konto użytkownika', content: <WindowRegisterUser /> },
 }
 
 const find = (slug) => {

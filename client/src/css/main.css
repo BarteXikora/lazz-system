@@ -376,6 +376,7 @@ label {
   border: 1px solid #001217 !important;
   border-left: 0 !important;
   background-color: #E4EBEF;
+  color: #001217;
 }
 .input-btn button:hover {
   background-color: #B5C6D2;
