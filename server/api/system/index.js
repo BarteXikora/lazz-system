@@ -14,6 +14,7 @@ router.post('/users/change-password', verifyUser, require(path.join(__dirname, '
 router.post('/users/change-default-app', verifyUser, require(path.join(__dirname, 'users', 'changeDefaultApp.js')))
 router.get('/users/get-users', [verifyUser, verifyAdmin], require(path.join(__dirname, 'users', 'getUsers.js')))
 router.get('/users/get-admins', verifyUser, require(path.join(__dirname, 'users', 'getAdmins.js')))
+router.get('/users/get-users-apps-accesses', [verifyUser, verifyAdmin], require(path.join(__dirname, 'users', 'getUsersAppsAccesses.js')))
 
 router.get('/privilages/zgloszenia', verifyUser, require(path.join(__dirname, 'privilages', 'zgloszenia.js')).getZgloszenia)
 
