@@ -11,7 +11,7 @@ const appReducer = (state, action) => {
             }
         }
 
-        return { ...state, usersList: data.usersList }
+        return { ...state, usersList: data.usersList, error: { ...state.error, isError: false } }
     }
 
     return { ...state }

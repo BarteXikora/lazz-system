@@ -10,6 +10,7 @@ import initialize from './functions/initialize'
 
 import Menu from './components/Menu'
 import { LoadingBig } from '../../components/Loading'
+import FatalError from '../../components/FatalError'
 import AdminUsers from './components/apps/AdminUsers'
 import AdminZgloszenia from './components/apps/AdminZgloszenia'
 
@@ -34,25 +35,36 @@ const App = () => {
             <Menu />
 
             {
-                initReady ?
-                    <div className="column-main">
-                        <Routes>
-                            <Route path='/' element={<Navigate to='user' />} />
-
-                            <Route path='user' element={<AdminUsers />} />
-                            <Route path='zgloszenia' element={<AdminZgloszenia />} />
-
-                            <Route path='*' element={<Navigate to='user' />} />
-                        </Routes>
-                    </div>
-
-                    :
+                !initReady ?
 
                     <div className="column-main d-flex justify-content-center align-items-center">
                         <div className="mb-5">
                             <LoadingBig />
                         </div>
                     </div>
+
+                    :
+
+                    appState.error.isError ?
+
+                        <FatalError
+                            message={appState.error.message}
+                            code={appState.error.code}
+                            reload={() => { setInitReady(false); fetchInitialValues() }}
+                        />
+
+                        :
+
+                        <div className="column-main">
+                            <Routes>
+                                <Route path='/' element={<Navigate to='user' />} />
+
+                                <Route path='user' element={<AdminUsers />} />
+                                <Route path='zgloszenia' element={<AdminZgloszenia />} />
+
+                                <Route path='*' element={<Navigate to='user' />} />
+                            </Routes>
+                        </div>
             }
         </div>
     </AppContext.Provider>
