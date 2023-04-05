@@ -7,7 +7,8 @@ const initialize = async (apiLink, authToken) => {
         code: '',
         usersList: [],
         adminsList: [],
-        appsAccesses: []
+        appsAccesses: [],
+        privilagesList: []
     }
 
     // Users list:
@@ -66,6 +67,25 @@ const initialize = async (apiLink, authToken) => {
     }
 
     response.appsAccesses = appsAccesses.data.data
+
+    // Privilages list:
+    const privilagesList = await APIget(apiLink, '/system/privilages/get-privilages', { 'auth-token': authToken })
+
+    if (!privilagesList.success) {
+        response.message = 'Nie udało się pobrać listy uprawnień.'
+        response.code = '@ADMIN/initialize#03'
+
+        return response
+    }
+
+    if (!privilagesList.data.success) {
+        response.message = privilagesList.data.message
+        response.code = privilagesList.data.code
+
+        return response
+    }
+
+    response.privilagesList = privilagesList.data.data
     response.success = true
 
     return response

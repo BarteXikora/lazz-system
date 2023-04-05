@@ -17,8 +17,6 @@ const appReducer = (state, action) => {
             })
         })
 
-        console.log(data.appsAccesses)
-
         data.usersList.forEach(user => {
             user.appsAccess = []
 
@@ -27,7 +25,12 @@ const appReducer = (state, action) => {
             })
         })
 
-        return { ...state, usersList: data.usersList, error: { ...state.error, isError: false } }
+        return {
+            ...state,
+            usersList: data.usersList,
+            privilagesList: data.privilagesList,
+            error: { ...state.error, isError: false }
+        }
     }
 
     return { ...state }

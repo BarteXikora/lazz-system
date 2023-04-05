@@ -1,6 +1,7 @@
 const defaultAppState = {
     error: { isError: false, message: '', code: '' },
-    usersList: []
+    usersList: [],
+    privilagesList: []
 }
 
 export default defaultAppState
