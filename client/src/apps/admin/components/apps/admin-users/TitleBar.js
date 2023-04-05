@@ -1,6 +1,6 @@
 import iconAddUser from '../../../../../img/icon-user-add.png'
 
-const TitleBar = ({ usersCnt, openWindow }) => {
+const TitleBar = ({ usersCnt, openWindow, privilagesList }) => {
     return <div className='sticky-top col-12 section-gray d-flex align-items-center justify-content-between p-3'>
         <h1 className="font-big fw-bold m-0">
             Użytkownicy systemu: {' '}
@@ -9,7 +9,7 @@ const TitleBar = ({ usersCnt, openWindow }) => {
 
         <button
             className="btn btn-prim btn-icon-text"
-            onClick={() => openWindow('registerUser')}
+            onClick={() => openWindow('registerUser', { privilagesList })}
         >
             <img src={iconAddUser} />
 

@@ -7,8 +7,14 @@ import UsersList from './admin-users/UsersList'
 const AdminUsers = () => {
     const { appState, openWindow } = useContext(AppContext)
 
+    console.log(appState)
+
     return <div className="row p-0 m-0">
-        <TitleBar usersCnt={appState.usersList.length} openWindow={openWindow} />
+        <TitleBar
+            usersCnt={appState.usersList.length}
+            openWindow={openWindow}
+            privilagesList={appState.privilagesList}
+        />
 
         <UsersList users={appState.usersList} />
     </div>

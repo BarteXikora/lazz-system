@@ -1,5 +1,6 @@
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import WindowContext from '../../../functions/WindowContext'
+import { Collapse } from 'react-bootstrap'
 import _ from 'lodash'
 
 import iconView from '../../../img/icon-view.png'
@@ -7,6 +8,7 @@ import iconHide from '../../../img/icon-unview.png'
 
 const WindowRegisterUser = () => {
     const { systemState, systemDispatch } = useContext(WindowContext)
+    const { privilagesList } = systemState.window.data
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -15,6 +17,29 @@ const WindowRegisterUser = () => {
 
     const [showPassword, setShowPassword] = useState(false)
     const [adminPassword, setAdminPassword] = useState('')
+
+    const preparePrivilages = () => {
+        let privilagesToSet = {}
+
+        systemState.appsList
+            .filter(app => app.id >= 0)
+            .forEach(app => privilagesToSet[app.slug] = { app: false, privs: [] })
+
+        return privilagesToSet
+    }
+
+    const [privilages, setPrivilages] = useState(preparePrivilages())
+
+    const handleSetPrivilage = (app, priv) => {
+        let privsToSet = { ...privilages }
+
+        if (privsToSet[app].privs.includes(priv))
+            privsToSet[app].privs = privsToSet[app].privs.filter(p => p !== priv)
+
+        else privsToSet[app].privs.push(priv)
+
+        setPrivilages(privsToSet)
+    }
 
     const handleGeneratePassword = () => {
         const lettersCnt = 4, bigLettersCnt = 4, numbersCnt = 4, symbolsCnt = 3
@@ -83,13 +108,15 @@ const WindowRegisterUser = () => {
         <div className="col-12 mb-4">
             <div className="info-box">
                 <b>Uwaga!</b> Należy skopiować hasło użytkownika, gdyż po utworzeniu konta nie będzie można
-                go odczytać.
+                go odczytać. Każdy użytkownik może zmienić swoje hasło w ustawieniach.
             </div>
         </div>
 
         <hr className='mt-2 mb-4' />
 
         <div className="col-12 mb-4">
+            <h3 className="fw-bold font-big mb-3">Utwórz konto z uprawnieniem "Administrator systemu":</h3>
+
             <div className="checkbox-container ms-1">
                 <label>
                     Administrator systemu
@@ -129,7 +156,67 @@ const WindowRegisterUser = () => {
 
                 :
 
-                <>hehe</>
+                <>
+                    <hr className='mt-2 mb-4' />
+
+                    <div className="col-12">
+                        <h3 className="fw-bold font-big mb-3">Uprawnienia użytkownika:</h3>
+
+                        {
+                            systemState.appsList.filter(app => app.id >= 0).map(app => <>
+                                <div className="checkbox-container d-block ms-1 mb-2">
+                                    <label>
+                                        Aplikacja <b>{app.name}</b>
+
+                                        <input
+                                            type="checkbox"
+                                            checked={privilages[app.slug].app}
+                                            onChange={() => setPrivilages({
+                                                ...privilages,
+                                                [app.slug]: { ...privilages[app.slug], app: !privilages[app.slug].app }
+                                            })}
+                                        />
+
+                                        <div className="checkmark"></div>
+                                    </label>
+                                </div>
+
+                                {
+                                    privilagesList.filter(priv => priv.app_id === app.id).length > 0 && (
+                                        <Collapse in={privilages[app.slug].app}>
+                                            <div className="pt-1 pb-4 ps-4">
+                                                {
+                                                    privilagesList.filter(priv => priv.app_id === app.id).map(priv => (
+                                                        <div className="checkbox-container d-block ms-1 mb-2">
+                                                            <label>
+                                                                <b>{priv.name}</b> &mdash; {priv.description}
+
+                                                                <input
+                                                                    type="checkbox"
+                                                                    checked={privilages[app.slug].privs.includes(priv.id)}
+                                                                    onChange={() => handleSetPrivilage(app.slug, priv.id)}
+                                                                />
+
+                                                                <div className="checkmark"></div>
+                                                            </label>
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
+                                        </Collapse>
+                                    )
+                                }
+                            </>)
+                        }
+
+                        <div className="info-box mt-4 mb-3">
+                            <b>Uwaga!</b> Zaznaczenie checkboxa z uprawnieniem "Aplikacja: <b>Nazwa aplikacji</b>"
+                            jest jednoznaczne z przydzieleniem użytkownikowi uprawnień dostępu do
+                            zaznaczonej aplikacji. Przydzielenie dostepu do aplikacji rozwinie
+                            uprawnienia wewnątrz tej aplikacji.
+                        </div>
+                    </div>
+                </>
         }
 
         <hr className='mt-2 mb-4' />
@@ -144,10 +231,9 @@ const WindowRegisterUser = () => {
                     className="mb-0"
                     name="password"
                     type={showPassword ? 'text' : 'password'}
-                    placeholder="Hasło"
                     value={adminPassword}
                     onChange={e => setAdminPassword(e.target.value)}
-                    autocomplete="new-password"
+                    autoComplete="new-password"
                 />
 
                 <button
