@@ -53,13 +53,20 @@ const whoAmI = async (req, res) => {
 
     if (admin[0].isAdmin > 0) data.admin = true
 
-    const appsList = await dbConnect.q(
-        `SELECT * FROM system_apps, system_app_access WHERE system_app_access.user_id = ? 
-        AND system_app_access.app_id = system_apps.id ORDER BY system_apps.id`,
-        [verified.id]
-    )
+    let appsList
 
-    data.appsList = appsList.map(app => { return { id: app.app_id, slug: app.slug, name: app.name } })
+    if (data.admin) {
+        appsList = await dbConnect.q(`SELECT * FROM system_apps ORDER BY id;`)
+
+    } else {
+        appsList = await dbConnect.q(
+            `SELECT * FROM system_apps, system_app_access WHERE system_app_access.user_id = ? 
+            AND system_app_access.app_id = system_apps.id ORDER BY system_apps.id`,
+            [verified.id]
+        )
+    }
+
+    data.appsList = appsList.map(app => { return { id: app.id, slug: app.slug, name: app.name } })
 
     const defaultApp = await dbConnect.q(
         'SELECT app_id FROM system_users_def_app WHERE user_id = ?;',

@@ -12,18 +12,30 @@ const verifyAppAccess = async (req, res, next) => {
         error: errorCode + '00'
     })
 
-    const app = await dbConnect.q('SELECT id FROM system_apps WHERE slug = ?;', [apiAppSlug])
+    const admin = await dbConnect.cnt(`SELECT id FROM system_admins WHERE user_id = ?;`, [userID])
 
-    if (!app) return res.json({
+    if (!admin) return res.json({
         success: false,
         message: 'Nie udało się zweryfikować uprawnień do aplikacji!',
         error: errorCode + '01'
     })
 
-    if (app.length !== 1) return res.json({
+    const isAdmin = admin.data === 1
+
+    if (isAdmin) return next()
+
+    const app = await dbConnect.q('SELECT id FROM system_apps WHERE slug = ?;', [apiAppSlug])
+
+    if (!app) return res.json({
         success: false,
         message: 'Nie udało się zweryfikować uprawnień do aplikacji!',
         error: errorCode + '02'
+    })
+
+    if (app.length !== 1) return res.json({
+        success: false,
+        message: 'Nie udało się zweryfikować uprawnień do aplikacji!',
+        error: errorCode + '03'
     })
 
     const appID = app[0].id
@@ -36,19 +48,19 @@ const verifyAppAccess = async (req, res, next) => {
     if (!privilage) return res.json({
         success: false,
         message: 'Nie udało się zweryfikować uprawnień do aplikacji!',
-        error: errorCode + '03'
+        error: errorCode + '04'
     })
 
     if (privilage.length !== 1) return res.json({
         success: false,
         message: 'Nie udało się zweryfikować uprawnień do aplikacji!',
-        error: errorCode + '04'
+        error: errorCode + '05'
     })
 
     if (privilage[0].privilage !== 1) return res.json({
         success: false,
         message: 'Nie posiadasz praw dostepu do tej aplikacji!',
-        error: errorCode + '05'
+        error: errorCode + '06'
     })
 
     next()
