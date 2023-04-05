@@ -30,7 +30,7 @@ const App = () => {
         if (!initReady) fetchInitialValues()
     }, [])
 
-    return <AppContext.Provider value={{ appState, appDispatch }}>
+    return <AppContext.Provider value={{ appState, appDispatch, currentUser: systemState.user }}>
         <div className='scroll-columns h-100'>
             <Menu />
 

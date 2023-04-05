@@ -7,12 +7,10 @@ import UsersList from './admin-users/UsersList'
 const AdminUsers = () => {
     const { appState } = useContext(AppContext)
 
-    console.log(appState)
-
     return <div className="row p-0 m-0">
         <TitleBar usersCnt={appState.usersList.length} />
 
-        <UsersList />
+        <UsersList users={appState.usersList} />
     </div>
 }
 
