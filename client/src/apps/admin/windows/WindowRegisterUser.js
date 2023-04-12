@@ -60,10 +60,16 @@ const WindowRegisterUser = () => {
     }
 
     return <div className='row px-2'>
-        <div className="col-12 mb-4">
-            <h2 className='font-subtitle fw-bold m-0 mb-2'>
+        <div className="col-12 mb-3">
+            <h2 className='font-subtitle fw-bold m-0 mb-3'>
                 Dodaj konto użytkownika:
             </h2>
+
+            <h3 className="fw-bold font-big mb-0">Dane użytkownika:</h3>
+
+            <p className='m-0'>
+                Wszystkie pola są wymagane.
+            </p>
         </div>
 
         <div className="col-6 mb-2">
@@ -222,30 +228,32 @@ const WindowRegisterUser = () => {
         <hr className='mt-2 mb-4' />
 
         <div className="col-6">
-            <span className="fw-bold">
-                Podaj swoje hasło w celu weryfikacji:
-            </span>
+            <h3 className="fw-bold font-big mb-0">Weryfikacja:</h3>
 
-            <div className="input-btn mt-2 mb-3">
-                <input
-                    className="mb-0"
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
-                    value={adminPassword}
-                    onChange={e => setAdminPassword(e.target.value)}
-                    autoComplete="new-password"
-                />
+            <label className='mt-2'>
+                Podaj swoje hasło:
 
-                <button
-                    className={`${showPassword && 'active'} btn btn-icon-small`}
-                    type='button'
-                    onClick={() => {
-                        setShowPassword(!showPassword)
-                    }}
-                >
-                    <img src={showPassword ? iconView : iconHide} alt="Pokaż / ukryj hasło" />
-                </button>
-            </div>
+                <div className="input-btn mb-3">
+                    <input
+                        className="mb-0"
+                        name="password"
+                        type={showPassword ? 'text' : 'password'}
+                        value={adminPassword}
+                        onChange={e => setAdminPassword(e.target.value)}
+                        autoComplete="new-password"
+                    />
+
+                    <button
+                        className={`${showPassword && 'active'} btn btn-icon-small`}
+                        type='button'
+                        onClick={() => {
+                            setShowPassword(!showPassword)
+                        }}
+                    >
+                        <img src={showPassword ? iconView : iconHide} alt="Pokaż / ukryj hasło" />
+                    </button>
+                </div>
+            </label>
         </div>
 
         <div className="col-12 d-flex justify-content-end">
