@@ -59,6 +59,42 @@ const WindowRegisterUser = () => {
         setPassword(_.shuffle(allChars).join(''))
     }
 
+    const [validation, setValidation] = useState({ ok: false, showMessage: false, message: '', code: '' })
+
+    useEffect(() => {
+        const defValidation = { ok: false, showMessage: false, message: '', code: '' }
+
+        if (name.length < 5 || name.length > 25) return setValidation({
+            ...defValidation,
+            message: 'Imię i nazwisko muszą mieć łącznie między 5, a 25 znaków.'
+        })
+
+        if (email.length < 5 || email.length > 25) return setValidation({
+            ...defValidation,
+            message: 'Podano nieprawidłowy adres e-mail. Proszę sprawdzić składnię podanego adresu!'
+        })
+
+        if (password.length < 8 || password.length > 50) return setValidation({
+            ...defValidation,
+            message: 'Hasło nowego użytkownika musi mieć przynajmniej 8, a maksymalnie 50 znaków.'
+        })
+
+        if (adminPassword.length < 8 || adminPassword.length > 50) return setValidation({
+            ...defValidation,
+            message: 'Twoje hasło musi mieć przynajmniej 8, a maksymalnie 50 znaków.'
+        })
+
+        return setValidation({
+            ...defValidation,
+            ok: true
+        })
+
+    }, [name, email, password, adminPassword])
+
+    const handleSubmit = () => {
+        if (!validation.ok) return setValidation({ ...validation, showMessage: true })
+    }
+
     return <div className='row px-2'>
         <div className="col-12 mb-3">
             <h2 className='font-subtitle fw-bold m-0 mb-3'>
@@ -256,6 +292,18 @@ const WindowRegisterUser = () => {
             </label>
         </div>
 
+        {
+            !validation.ok && validation.showMessage && <div className="col-12 my-4">
+                <div className="warning-box fw-bold">
+                    {validation.message}
+
+                    {validation.code && <span className='d-block font-gray'>
+                        Kod błędu: {validation.code}
+                    </span>}
+                </div>
+            </div>
+        }
+
         <div className="col-12 d-flex justify-content-end">
             <button
                 className="btn btn-sec ms-2 mb-1"
@@ -264,7 +312,12 @@ const WindowRegisterUser = () => {
                 Anuluj
             </button>
 
-            <button className="btn btn-prim ms-2 mb-1">Utwórz konto</button>
+            <button
+                className={`btn ${validation.ok ? 'btn-prim' : 'btn-dis'} ms-2 mb-1`}
+                onClick={handleSubmit}
+            >
+                Utwórz konto
+            </button>
         </div>
     </div>
 }
